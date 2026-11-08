@@ -1,0 +1,392 @@
+<!DOCTYPE html>
+<html lang="en" class="no-js">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+<title>FlowCHAOS 1.0 release notes | FlowCHAOS</title>
+    <meta name="description" content="What FlowCHAOS 1.0 adds, improves and fixes.">
+    <link rel="canonical" href="https://hobbybwanali.github.io/flowchaos-site/releases/1.0">
+    <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1">
+    <meta name="author" content="The FlowCHAOS contributors">
+    <meta name="application-name" content="FlowCHAOS">
+    <meta property="og:site_name" content="FlowCHAOS">
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="FlowCHAOS 1.0 release notes | FlowCHAOS">
+    <meta property="og:description" content="What FlowCHAOS 1.0 adds, improves and fixes.">
+    <meta property="og:url" content="https://hobbybwanali.github.io/flowchaos-site/releases/1.0">
+    <meta property="og:image" content="https://hobbybwanali.github.io/flowchaos-site/images/og/flowchaos.png">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:image:alt" content="FlowCHAOS: water networks designed on real maps and terrain">
+    <meta property="og:locale" content="en_GB">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="FlowCHAOS 1.0 release notes | FlowCHAOS">
+    <meta name="twitter:description" content="What FlowCHAOS 1.0 adds, improves and fixes.">
+    <meta name="twitter:image" content="https://hobbybwanali.github.io/flowchaos-site/images/og/flowchaos.png">
+    <link rel="sitemap" type="application/xml" title="Sitemap" href="https://hobbybwanali.github.io/flowchaos-site/sitemap.xml">
+    <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"Organization","@id":"https://hobbybwanali.github.io/flowchaos-site#organisation","name":"FlowCHAOS","url":"https://hobbybwanali.github.io/flowchaos-site","logo":"https://hobbybwanali.github.io/flowchaos-site/images/flowchaos-mark.png","sameAs":[]},{"@type":"WebSite","@id":"https://hobbybwanali.github.io/flowchaos-site#website","name":"FlowCHAOS","alternateName":"Comprehensive Hydraulic Analysis and Optimization System","url":"https://hobbybwanali.github.io/flowchaos-site","inLanguage":"en","publisher":{"@id":"https://hobbybwanali.github.io/flowchaos-site#organisation"}},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"FlowCHAOS","item":"https://hobbybwanali.github.io/flowchaos-site"},{"@type":"ListItem","position":2,"name":"Release notes","item":"https://hobbybwanali.github.io/flowchaos-site/releases"},{"@type":"ListItem","position":3,"name":"Version 1.0","item":"https://hobbybwanali.github.io/flowchaos-site/releases/1.0"}]}]}</script>
+    <meta name="theme-color" content="#0b7a84">
+    
+    <link rel="icon" href="https://hobbybwanali.github.io/flowchaos-site/favicon.ico?v=1792392055" sizes="any">
+    <link rel="icon" type="image/svg+xml" href="https://hobbybwanali.github.io/flowchaos-site/images/flowchaos-mark.svg?v=1792392054">
+    <link rel="icon" type="image/png" sizes="192x192" href="https://hobbybwanali.github.io/flowchaos-site/images/flowchaos-mark.png?v=1792392055">
+    <link rel="apple-touch-icon" href="https://hobbybwanali.github.io/flowchaos-site/images/flowchaos-mark.png?v=1792392055">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght,SOFT,WONK@0,9..144,400..700,0..100,0..1;1,9..144,400..700,0..100,0..1&family=JetBrains+Mono:wght@400;500&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://hobbybwanali.github.io/flowchaos-site/css/app.css?v=1792392348">
+    <script nonce="59dUyr7Qds63PUJ5X6KZMmY0">
+        document.documentElement.classList.replace('no-js', 'js');
+        try {
+            const asked = new URLSearchParams(location.search).get('theme');
+            const theme = (asked === 'light' || asked === 'dark') ? asked : localStorage.getItem('fc-theme');
+            document.documentElement.dataset.theme = theme === 'dark' ? 'dark' : 'light';  // light unless chosen
+        } catch (e) { document.documentElement.dataset.theme = 'light'; }
+    </script>
+</head>
+<body>
+<a href="#main" class="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-50 focus:rounded-full focus:bg-ink focus:px-4 focus:py-2 focus:text-white">Skip to content</a>
+
+<header class="masthead">
+    <div class="wrap flex h-[72px] items-center gap-6">
+        <a href="https://hobbybwanali.github.io/flowchaos-site" class="flex items-center gap-3 no-underline" aria-label="FlowCHAOS home">
+            <svg class="mark" width="36" height="36" viewBox="3.09 2.40 60.38 60.38" aria-hidden="true">
+    <defs><linearGradient id="fc-teal-36" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#3596ad"/>
+      <stop offset="1" stop-color="#1d6175"/>
+    </linearGradient>
+    <linearGradient id="fc-water-36" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#3fa9c2"/>
+      <stop offset="1" stop-color="#1f6a80"/>
+    </linearGradient></defs>
+    <g data-part="mark" transform="rotate(-16 32 35)">
+    <path data-part="outer-drop" d="M32 1.5C26.83 12.48 8.5 26.07 8.5 39C8.5 52.16 18.84 62.5 32 62.5C45.16 62.5 55.5 52.16 55.5 39C55.5 26.07 37.17 12.48 32 1.5Z" fill="url(#fc-teal-36)"/>
+    <path data-part="inner-drop" d="M16.2 40.2C16.2 32.6 19.9 26.6 23.9 21.8C25 19.6 25.8 17.7 26.6 15.8C27.3 18.5 28.2 20.4 29.5 21.4C30.4 17.6 31.4 14 32.4 10.8C36.8 17.6 47.8 28.2 47.8 40.2C47.8 49.3 40.7 56.6 32 56.6C23.3 56.6 16.2 49.3 16.2 40.2Z" fill="#ffffff"/>
+    <path data-part="water" d="M19.45 42.94L19.57 43.66L20.02 45.24L20.63 46.71L21.39 48.07L22.31 49.29L23.35 50.38L24.53 51.33L25.82 52.12L27.22 52.76L28.73 53.22L30.32 53.50L32.00 53.60L33.68 53.50L35.27 53.22L36.78 52.76L38.18 52.12L39.47 51.33L40.65 50.38L41.69 49.29L42.61 48.07L43.37 46.71L43.98 45.24L44.43 43.66L44.55 42.93L44.50 42.94L44.25 42.98L44.00 43.02L43.75 43.05L43.50 43.08L43.25 43.11L43.00 43.13L42.75 43.14L42.50 43.15L42.25 43.15L42.00 43.15L41.75 43.14L41.50 43.13L41.25 43.11L41.00 43.08L40.75 43.05L40.50 43.02L40.25 42.98L40.00 42.93L39.75 42.89L39.50 42.83L39.25 42.78L39.00 42.72L38.75 42.66L38.50 42.59L38.25 42.53L38.00 42.46L37.75 42.39L37.50 42.32L37.25 42.24L37.00 42.17L36.75 42.10L36.50 42.03L36.25 41.96L36.00 41.89L35.75 41.82L35.50 41.75L35.25 41.69L35.00 41.63L34.75 41.58L34.50 41.52L34.25 41.47L34.00 41.43L33.75 41.39L33.50 41.35L33.25 41.32L33.00 41.30L32.75 41.28L32.50 41.26L32.25 41.25L32.00 41.25L31.75 41.25L31.50 41.26L31.25 41.27L31.00 41.29L30.75 41.31L30.50 41.34L30.25 41.38L30.00 41.41L29.75 41.46L29.50 41.50L29.25 41.55L29.00 41.61L28.75 41.67L28.50 41.73L28.25 41.79L28.00 41.86L27.75 41.93L27.50 42.00L27.25 42.07L27.00 42.14L26.75 42.21L26.50 42.29L26.25 42.36L26.00 42.43L25.75 42.50L25.50 42.57L25.25 42.63L25.00 42.70L24.75 42.76L24.50 42.81L24.25 42.87L24.00 42.92L23.75 42.96L23.50 43.00L23.25 43.04L23.00 43.07L22.75 43.10L22.50 43.12L22.25 43.13L22.00 43.14L21.75 43.15L21.50 43.15L21.25 43.14L21.00 43.13L20.75 43.11L20.50 43.09L20.25 43.06L20.00 43.03L19.75 42.99L19.50 42.95L19.45 42.94Z" fill="url(#fc-water-36)"/>
+    <path data-part="wave" d="M18.00 31.22L18.00 31.22L18.25 31.35L18.50 31.48L18.75 31.60L19.00 31.71L19.25 31.82L19.50 31.92L19.75 32.02L20.00 32.11L20.25 32.19L20.50 32.27L20.75 32.33L21.00 32.39L21.25 32.44L21.50 32.48L21.75 32.52L22.00 32.54L22.25 32.56L22.50 32.57L22.75 32.57L23.00 32.56L23.25 32.54L23.50 32.52L23.75 32.49L24.00 32.45L24.25 32.41L24.50 32.36L24.75 32.31L25.00 32.25L25.25 32.18L25.50 32.12L25.75 32.04L26.00 31.97L26.25 31.90L26.50 31.82L26.75 31.74L27.00 31.66L27.25 31.58L27.50 31.51L27.75 31.43L28.00 31.36L28.25 31.29L28.50 31.23L28.75 31.17L29.00 31.11L29.25 31.06L29.50 31.01L29.75 30.97L30.00 30.94L30.25 30.91L30.50 30.89L30.75 30.88L31.00 30.88L31.25 30.89L31.50 30.90L31.75 30.92L32.00 30.95L32.25 30.99L32.50 31.04L32.75 31.09L33.00 31.15L33.25 31.22L33.50 31.30L33.75 31.39L34.00 31.48L34.25 31.58L34.50 31.69L34.75 31.80L35.00 31.92L35.25 32.05L35.50 32.17L35.75 32.31L36.00 32.44L36.25 32.58L36.50 32.72L36.75 32.86L37.00 33.01L37.25 33.15L37.50 33.29L37.75 33.43L38.00 33.57L38.25 33.71L38.50 33.84L38.75 33.98L39.00 34.10L39.25 34.23L39.50 34.34L39.75 34.46L40.00 34.56L40.25 34.66L40.50 34.75L40.75 34.84L41.00 34.92L41.25 34.99L41.50 35.05L41.75 35.10L42.00 35.15L42.25 35.18L42.50 35.21L42.75 35.23L43.00 35.24L43.25 35.25L43.50 35.24L43.75 35.23L44.00 35.21L44.25 35.18L44.50 35.15L44.75 35.11L45.00 35.06L45.25 35.01L45.50 34.95L45.75 34.89L46.00 34.82L46.25 34.75L46.50 34.68L46.75 34.60L47.00 34.53L47.01 34.52L47.22 35.32L47.47 36.52L47.52 36.91L47.50 36.92L47.25 37.00L47.00 37.08L46.75 37.15L46.50 37.23L46.25 37.30L46.00 37.37L45.75 37.44L45.50 37.50L45.25 37.56L45.00 37.61L44.75 37.66L44.50 37.70L44.25 37.73L44.00 37.76L43.75 37.78L43.50 37.79L43.25 37.80L43.00 37.79L42.75 37.78L42.50 37.76L42.25 37.73L42.00 37.70L41.75 37.65L41.50 37.60L41.25 37.54L41.00 37.47L40.75 37.39L40.50 37.30L40.25 37.21L40.00 37.11L39.75 37.01L39.50 36.89L39.25 36.78L39.00 36.65L38.75 36.53L38.50 36.39L38.25 36.26L38.00 36.12L37.75 35.98L37.50 35.84L37.25 35.70L37.00 35.56L36.75 35.41L36.50 35.27L36.25 35.13L36.00 34.99L35.75 34.86L35.50 34.72L35.25 34.60L35.00 34.47L34.75 34.35L34.50 34.24L34.25 34.13L34.00 34.03L33.75 33.94L33.50 33.85L33.25 33.77L33.00 33.70L32.75 33.64L32.50 33.59L32.25 33.54L32.00 33.50L31.75 33.47L31.50 33.45L31.25 33.44L31.00 33.43L30.75 33.43L30.50 33.44L30.25 33.46L30.00 33.49L29.75 33.52L29.50 33.56L29.25 33.61L29.00 33.66L28.75 33.72L28.50 33.78L28.25 33.84L28.00 33.91L27.75 33.98L27.50 34.06L27.25 34.13L27.00 34.21L26.75 34.29L26.50 34.37L26.25 34.45L26.00 34.52L25.75 34.59L25.50 34.67L25.25 34.73L25.00 34.80L24.75 34.86L24.50 34.91L24.25 34.96L24.00 35.00L23.75 35.04L23.50 35.07L23.25 35.09L23.00 35.11L22.75 35.12L22.50 35.12L22.25 35.11L22.00 35.09L21.75 35.07L21.50 35.03L21.25 34.99L21.00 34.94L20.75 34.88L20.50 34.82L20.25 34.74L20.00 34.66L19.75 34.57L19.50 34.47L19.25 34.37L19.00 34.26L18.75 34.15L18.50 34.03L18.25 33.90L18.00 33.77L17.75 33.64L17.50 33.50L17.25 33.36L17.24 33.35L17.31 33.12L17.68 32.04L18.00 31.22Z" fill="#287b91"/>
+  </g>
+</svg>
+            <span class="font-display text-[1.45rem] font-semibold tracking-tight text-ink dark:text-white">Flow<span class="italic font-normal text-water">CHAOS</span></span>
+        </a>
+        <nav id="site-nav" class="ml-auto hidden items-center gap-1 lg:flex" aria-label="Main">
+                            <a href="https://hobbybwanali.github.io/flowchaos-site/features" class="navlink">Features</a>
+                            <a href="https://hobbybwanali.github.io/flowchaos-site/docs" class="navlink">Documentation</a>
+                            <a href="https://hobbybwanali.github.io/flowchaos-site/about" class="navlink">About</a>
+                            <a href="https://hobbybwanali.github.io/flowchaos-site/community" class="navlink">Community</a>
+                            <a href="https://hobbybwanali.github.io/flowchaos-site/support" class="navlink">Support</a>
+                    </nav>
+        <div class="ml-auto flex items-center gap-2 lg:ml-2">
+            <button class="theme-toggle grid size-10 place-items-center rounded-full text-ink-soft ring-1 ring-line transition hover:ring-lagoon dark:text-[#b5c7cc]" type="button" aria-label="Light or dark">
+                <svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><path d="M12 3a9 9 0 1 0 9 9 7 7 0 0 1-9-9Z" fill="currentColor"/></svg>
+            </button>
+            <a href="https://hobbybwanali.github.io/flowchaos-site/download" class="btn btn-water gap-2 max-sm:size-10 max-sm:p-0 max-sm:justify-center"
+               title="Download FlowCHAOS for Windows" aria-label="Download FlowCHAOS">
+                <svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><path d="M12 4v11m0 0-4.5-4.5M12 15l4.5-4.5M5 19.5h14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                <span class="max-sm:hidden">Download</span>
+            </a>
+            <button class="nav-toggle grid size-10 place-items-center rounded-full ring-1 ring-line lg:hidden" aria-expanded="false" aria-controls="mobile-nav" aria-label="Menu">
+                <svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path class="bar b1" d="M4 7h16"/><path class="bar b2" d="M4 12h16"/><path class="bar b3" d="M4 17h10"/></svg>
+            </button>
+        </div>
+    </div>
+    <nav id="mobile-nav" class="wrap mobile-nav" aria-label="Main">
+        <div class="mobile-nav-inner">
+                    <a href="https://hobbybwanali.github.io/flowchaos-site/features" class="navlink">Features</a>
+                    <a href="https://hobbybwanali.github.io/flowchaos-site/docs" class="navlink">Documentation</a>
+                    <a href="https://hobbybwanali.github.io/flowchaos-site/about" class="navlink">About</a>
+                    <a href="https://hobbybwanali.github.io/flowchaos-site/community" class="navlink">Community</a>
+                    <a href="https://hobbybwanali.github.io/flowchaos-site/support" class="navlink">Support</a>
+                    <a href="https://hobbybwanali.github.io/flowchaos-site/download" class="navlink">Download</a>
+                </div>
+    </nav>
+</header>
+
+<main id="main">
+    <div class="wrap py-10">
+    <a href="https://hobbybwanali.github.io/flowchaos-site/releases" class="text-sm font-semibold">All release notes</a>
+    <article class="prose-docs mt-6 [&_h1]:font-display [&_h1]:text-4xl [&_h1]:font-semibold [&_h1]:mb-6">
+        <h1>FlowCHAOS 1.0 - first public release</h1>
+<p>FlowCHAOS (Comprehensive Hydraulic Analysis &amp; Optimization System) designs, analyses and presents
+pressurised water networks and irrigation systems. This is its first public release.</p>
+<h2>In this release</h2>
+<h3>Hydraulic analysis</h3>
+<ul>
+<li>Steady-state and extended-period analysis, demand-driven or pressure-driven, with the advanced engine.</li>
+<li>Pumps with curves and speeds, every valve type, tanks with volume curves, emitters and leakage.</li>
+<li>Simple controls by time, clock time, tank level or junction pressure, and rule-based controls with
+AND / OR conditions, ELSE actions and priorities; samples written with the network's own elements,
+checked against the network before a run.</li>
+<li>Four solution algorithms to compare with the engine (global gradient, Newton nodal, linear theory,
+Hardy Cross); fire flow, criticality, energy and automatic pipe sizing.</li>
+<li>A failed run explains itself: the error in plain words, when it happened, what the solver reported
+and the likely cause found in the network, with the elements selected on the map.</li>
+<li>Reports: the status report (every pump, valve and tank change through the run, with the quality mass
+balance), a calibration report against field measurements (errors by location, correlation and a fit
+chart) and the full text report of every node and link at every time step.</li>
+<li>Statistics over a run in the time list: the minimum, maximum, average and range of every result.</li>
+<li>Runs from the command line (<code>FlowCHAOS --run model.inp report.txt</code>) for batch studies.</li>
+<li>Demand profiles start at the run's start clock time, for every algorithm.</li>
+<li>Validated against the reference engine: identical heads and flows through the advanced engine, and the
+four own algorithms within millimetres (scripts/validate_solvers.py writes the comparison).</li>
+</ul>
+<h3>Water quality</h3>
+<ul>
+<li>Chlorine, chemicals, water age and source tracing.</li>
+<li>Ready studies: chlorine residual compliance, boosters at service tanks, water age and tank turnover,
+source zones, contamination events, conservative chemicals such as fluoride.</li>
+<li>Sources for part of the run, bulk decay from a bottle test with temperature correction, wall decay by
+pipe material, tank mixing models.</li>
+<li>Compliance by junction, by time and by delivered water; arrival times; CSV and PDF reports; the run on
+the map with the time bar.</li>
+</ul>
+<h3>GIS and data</h3>
+<ul>
+<li>Every network is a layer, edited one at a time, with display switches for junctions, tanks, pipes and
+labels; FlowCHAOS network files (.fcnet) to share one network.</li>
+<li>Vector layers with symbology, labels, an attribute table and a field calculator.</li>
+<li>Rasters, elevation models, basemaps, any coordinate system, georeferencing of scans and drawings.</li>
+<li>Processing tools for vector layers in five groups: analysis (statistics, totals by category, points
+in polygons, line lengths in polygons, nearest distance), geoprocessing (buffer, clip, intersection,
+difference, union, dissolve, convex hull), geometry (centroids, polygons and lines, explode, simplify,
+smooth, densify, points along lines, vertices, geometry fields, bounding boxes, single parts),
+selection and research (by location, at random, by expression, grid, random points) and data
+management (merge, split, joins by field and location, duplicates, numbering, field calculator).</li>
+<li>DXF drawings as vector layers: one for each drawing layer and kind of geometry, blocks drawn, texts
+labelled, colours and levels kept; shapefiles, GeoPackage, GeoJSON and KML with every layer they hold.</li>
+<li>Build Network from Lines: a network layer from chosen line layers with field mapping, snapping,
+tees, junctions where lines cross and joins, previewed before it is made.</li>
+<li>Check and Fix Network: crossings with no junction, ends short of or past a pipe, junctions on top of
+each other, pipes drawn twice, loose junctions and parts with no source, found with their place on
+the map and fixed in one undoable step.</li>
+<li>Find and Query on the network layer or vector layer you choose, with between, one of, ends with and
+does not contain, invert, saved queries that each run on their own layer, selection modes and CSV
+export.</li>
+<li>PDF drawings and maps georeferenced from the page chosen among previews.</li>
+<li>DEMs drawn as terrain: shaded from several directions, smooth when zoomed in, without speckle when
+zoomed out.</li>
+<li>A Log Messages panel with tabs; a default coordinate system suggested for the computer's country.</li>
+<li>Spreadsheets and documents written in the FlowCHAOS colours; the climate sheet typed, pasted or
+saved as a climate file.</li>
+<li>Make DEM from project layers or a CSV with chosen X, Y and Z columns, analysed in the background, a
+smooth surface by default and contours of it on request.</li>
+<li>Dialogs with their main action in the FlowCHAOS teal; colour buttons with a square swatch; distinct
+attribute table icons for networks and vector layers.</li>
+<li>Print layout map grids: several on a map, in metres or in longitude and latitude, as lines, crosses or
+dots, with zebra, tick or line frames and labels in numbers, with E and N or in degrees and minutes.</li>
+<li>Layers read from one file grouped under the file's name; a waste bin for delete; a terrain icon for DEMs.</li>
+<li>Large projects: an edit no longer copies vector layers it does not touch (a node moved in 0.04 s with a
+50,000-feature drawing loaded, not 18.7 s), large line layers drawn as one path, shaded DEMs in half the
+memory, closed tool windows give their memory back, runs no longer kept in the undo history.</li>
+<li>Area Demand Allocator: junction design withdrawals from the polygons they supply (area or a field
+times a rate), matched, drawn on the map, reassigned where needed and set in one step; settings
+beside the table of matches, the junctions' current withdrawals, rounding to a chosen number of
+decimals; areas measured from the polygons (no area field needed); a rate per area or a total flow
+shared by area; five allocation methods (nearest node, equal shares, the area a junction lies in,
+Thiessen service areas, half pipe length); arrows on the map dragged to another junction or area; its
+own colours; a banner saying how Apply went.</li>
+<li>Vector areas, perimeters and lengths measured on the ellipsoid (or on the map grid, a project
+setting); polygon holes kept from reading to saving and left out of areas.</li>
+<li>Select Features: one button whose menu selects vector features of any layer on the map by a click, a
+box or a polygon, by expression or by location, and selects all, inverts or deselects.</li>
+<li>An icon for every vector tool and group of the Vector menu and the Processing Toolbox; scissors for
+Split Features; a new layer icon of its own.</li>
+<li>Vector menu with analysis, geoprocessing, geometry, research and data management tools; new tools:
+line intersections, mean coordinates, split with lines, symmetrical difference, fix geometries,
+Voronoi polygons, polygon from layer extent, extract by location, reproject layer, delete field.</li>
+<li>A dialog's main command stays beside Close when its page scrolls (Network Builder and others).</li>
+<li>Expressions name fields as they read: in double quotes, with their spaces and brackets, or with _ for
+the spaces, in any case; suggestions while typing; a click on a column puts its field in.</li>
+<li>Print layouts show everything the map shows (vector layers and their labels included); legends list
+vector layers, terrain and imagery, with items chosen and renamed; no grid on a new map; nothing
+disappears while zooming; Refresh in the layout and on the main toolbar.</li>
+<li>Auto-save with recovery after a crash (Settings &gt; Auto-save).</li>
+<li>Browser panel beside the Layers panel: drag files from the computer onto the map.</li>
+<li>Map grid settings: automatic or fixed spacing, lines, dots or crosses, colour, coordinates along the
+edges.</li>
+<li>Saving vector edits without file dialogs (temporary layers), Discard that puts the layer back, and
+automatic numbers for pieces of a cut.</li>
+<li>The longitudinal profile at a horizontal scale, scrolled sideways along the pipeline.</li>
+<li>Vector tools renamed in FlowCHAOS's own words; one Select Features tool for vector layers and Select
+Network Elements for the network; a formula icon for the Field Calculator and Select by Expression.</li>
+<li>The measure tool's distances on the ellipsoid, as its areas.</li>
+<li>Expressions checked as they are written (a tick or a cross with the reason) and coloured in the
+Expression Builder; the Update lists name every column, greying those that cannot be set.</li>
+<li>Grid lines, coordinate labels and rulers each on or off, a preference that never leaves a project
+unsaved; the scale bar and north arrow switches and opening a print layout do not either.</li>
+<li>Vector layers being edited get an id field that numbers new features (unique: a used id is refused);
+new features take the values every feature of the layer shares; several fields deleted at once.</li>
+<li>Check and Fix shows each problem in orange-red.</li>
+<li>New features numbered automatically with no form (a layer asks only when set to); a polygon follows a
+vertex while it is dragged; the temporary mark on layers kept in the project.</li>
+<li>Faster with large drawings: an edit copies only the layer it changes, point layers and labels drawn
+in one go, Refresh no longer re-projects every feature, box selection reuses its index.</li>
+<li>The vector attribute table rebuilt: multi-row selection with the map, Select by Expression, editing in
+place, an Update bar, one Delete menu, column tools; large layers open at once.</li>
+<li>Advanced vector editing: split along a line, merge, separate parts, simplify, copy and paste features.</li>
+<li>Contours dropdown and surface layers with their own icons; contour legends say which map they are of.</li>
+<li>Several layers removed at once from the Layers panel, asking to save unsaved vector edits.</li>
+<li>Fixes: a cut after Discard that cut nothing until the features were selected again; drawings opened
+with plain default colours instead of their own, and texts of drawings shown
+with their formatting codes; a cut drawn just short of a polygon's edge left uncut; vector labels not
+drawn after they were turned on (and labels now placed inside each polygon,
+overlapping ones left out); a crash while gridding large surveys; selection marks left on a hidden layer; a vector layer
+shown or hidden counted as an unsaved edit; the last values of Value Relay out of reach; pale seams
+between map tiles.</li>
+</ul>
+<h3>Drawing, terrain, design and delivery</h3>
+<ul>
+<li>CAD-precision drawing and editing; networks from DXF, shapefiles, KML and GPX.</li>
+<li>Contours, surface maps, 3D views and longitudinal profiles.</li>
+<li>Colour band legends on the map for colour relief and surface maps; layer icons drawn from their
+symbology; the 3D view turns the way the mouse moves.</li>
+<li>Longitudinal profiles with bedding in the trench volume and the grade line drawn from every node
+that has a result.</li>
+<li>Irrigation design, bills of quantities, construction planning (Gantt, critical path, PERT), print
+layouts, animations with their legend, saved as video or GIF.</li>
+<li>Planning with manual or automatic scheduling per task, Gantt themes, presets and bar styles, labels
+on the bars, filters, outline levels, Move Project and a Resource menu.</li>
+<li>Components inserted on many pipes at once (isolation and control valves, meters, pumps), air valves
+and washouts at high and low points, service connections to the nearest pipe.</li>
+<li>Automatic pipe sizing from 45 pipe series; sample curves of every kind; pumping energy and cost summed
+over the run.</li>
+<li>Samples for Malawi smallholder and commercial irrigation: solar boreholes, plastic tanks, uPVC
+distribution, a 10 ha banana farm, rebuilt with block valves, schedules and pressure-dependent outlets.</li>
+<li>Climate data in irrigation design: monthly reference evapotranspiration and rainfall give the crop
+need and the design flow of each month, with a Lilongwe sample and a July sprinkler scheme.</li>
+<li>Curves chosen by what they mean (volume, head-flow, efficiency, loss) and assigned from the library
+in the element's properties; speed and tariff profiles chosen from a list.</li>
+<li>Print layouts: pan and zoom the map inside its frame (Move Map Content, or Ctrl and the wheel) and
+overview maps that show the extent of another map on the sheet.</li>
+<li>Map Options: scale bar and north arrow on the map, closed links dashed, hover information, and
+design checks that mark pressures and velocities outside your limits.</li>
+</ul>
+<h3>Drawing and editing</h3>
+<ul>
+<li>Dragging a node moves only that node, leaves no bend behind, and joins the node or pipe it is dropped
+on; an edit that is not allowed springs back on the map, and editing starts in the layer by itself
+when no layer is being edited.</li>
+<li>Pipes end exactly on the node they snap to; a node placed on another never breaks it.</li>
+<li>Trim and Extend are tools whose buttons stay pressed while in use; Extend continues a pipe straight
+to the next pipe it meets.</li>
+<li>Move, Copy, Rotate, Scale and Mirror act on the element clicked; elements made by Offset, Split,
+Divide and other commands join the layer being edited.</li>
+<li>Print layouts: double-click a map to pan and zoom its content.</li>
+<li>Vector layers: calculated area, perimeter and length fields for styles and labels, and features
+numbered automatically.</li>
+<li>The FlowCHAOS network file (.fcnet) is structured and documented (version 2).</li>
+<li>More stable: memory is freed on the main thread only, and tool windows close safely.</li>
+</ul>
+<h3>Engineering in depth</h3>
+<ul>
+<li>Bills of quantities with fittings as they are made for each material: the bend angles sold for PVC,
+ductile iron, polyethylene, GRP, steel and small-bore pipes, turns taken by the joints or by laying the
+pipe to a curve, joints and couplings between lengths and coils, flanges to suit the material, thrust
+blocks only where the pipe does not carry the end load, route markers, pressure classes each material
+is made in, a warning for lines above them, and the lengths and coils to order.</li>
+<li>Longitudinal profiles that never overlap their values (spread with leaders), a quantities box placed in
+a corner or dragged anywhere, fixed vertical exaggeration, km+m chainage, high and low points.</li>
+<li>Irrigation concept drawings to scale in five land shapes (and three for pivots) with dimensions,
+legend, north arrow, scale bar and title block; Quick Design Estimates with correct set times, blocks
+and pump flows.</li>
+<li>Planning: schedule risk by Monte Carlo (P50, P80, P90 finish and how often each task is critical) and
+the 14-point schedule quality check.</li>
+<li>Design checks on the map for pressure, velocity, head loss, pipe class, cover, standing water and dead
+ends, with a summary box; new map views (cover, pressure margin, shortfall, travel time, class use,
+Reynolds number, velocity head) applied to the selected layer, all layers or one layer.</li>
+<li>Fire flow on the advanced engine with a model kept open between runs: seconds instead of minutes, and
+Stop that stops at once.</li>
+<li>DEMs (GeoTIFF) from points, DXF contours or surfaces, exact to the survey; contour lines read from DXF;
+contours and DEMs made in the background with their progress in the status bar.</li>
+<li>Drawing: Dissolve Nodes joins a run of pipes into one line, Pipe Shape (reverse, simplify, fillet bends,
+exact length), Select and Delete by Region, Value Relay to copy or move a value between elements, Merge
+Network Layers, line colour, thickness and pattern per layer, reprojected copies of vector layers, and
+a key for every drawing tool.</li>
+<li>Plugins: Plugin Builder, install from ZIP, reload and uninstall, a Design Check Report sample plugin and
+a step by step tutorial.</li>
+</ul>
+<h3>For everyone</h3>
+<ul>
+<li>Faster on big networks: one map build when a project opens, layer ticks without a rebuild, and a
+flow animation that draws only the analysed network over a still map.</li>
+<li>Several layers selected and removed at once; the analysed and running network marked in the Layers
+panel; run commands work on the selected network layer.</li>
+<li>Twenty-four languages and regional formats; a user manual (Help &gt; User Manual) and built-in help that
+work offline; a save and export indicator; plugins in Python; freeware, licensed without a fee under the FlowCHAOS Freeware Licence.</li>
+</ul>
+
+    </article>
+</div>
+</main>
+
+<footer class="relative mt-10 overflow-hidden">
+    <svg class="wave-divider" viewBox="0 0 1440 90" preserveAspectRatio="none" aria-hidden="true"><path fill="currentColor" d="M0 50C160 20 320 80 480 60S800 10 960 30s320 60 480 30V90H0Z"/></svg>
+    <div class="bg-foam pb-12 pt-6 dark:bg-[#0d2029]">
+        <div class="wrap grid gap-10 md:grid-cols-[1.6fr_1fr_1fr_1fr]">
+            <div>
+                <a href="https://hobbybwanali.github.io/flowchaos-site" class="flex items-center gap-3 no-underline">
+                    <svg class="mark" width="32" height="32" viewBox="3.09 2.40 60.38 60.38" aria-hidden="true">
+    <defs><linearGradient id="fc-teal-32" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#3596ad"/>
+      <stop offset="1" stop-color="#1d6175"/>
+    </linearGradient>
+    <linearGradient id="fc-water-32" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#3fa9c2"/>
+      <stop offset="1" stop-color="#1f6a80"/>
+    </linearGradient></defs>
+    <g data-part="mark" transform="rotate(-16 32 35)">
+    <path data-part="outer-drop" d="M32 1.5C26.83 12.48 8.5 26.07 8.5 39C8.5 52.16 18.84 62.5 32 62.5C45.16 62.5 55.5 52.16 55.5 39C55.5 26.07 37.17 12.48 32 1.5Z" fill="url(#fc-teal-32)"/>
+    <path data-part="inner-drop" d="M16.2 40.2C16.2 32.6 19.9 26.6 23.9 21.8C25 19.6 25.8 17.7 26.6 15.8C27.3 18.5 28.2 20.4 29.5 21.4C30.4 17.6 31.4 14 32.4 10.8C36.8 17.6 47.8 28.2 47.8 40.2C47.8 49.3 40.7 56.6 32 56.6C23.3 56.6 16.2 49.3 16.2 40.2Z" fill="#ffffff"/>
+    <path data-part="water" d="M19.45 42.94L19.57 43.66L20.02 45.24L20.63 46.71L21.39 48.07L22.31 49.29L23.35 50.38L24.53 51.33L25.82 52.12L27.22 52.76L28.73 53.22L30.32 53.50L32.00 53.60L33.68 53.50L35.27 53.22L36.78 52.76L38.18 52.12L39.47 51.33L40.65 50.38L41.69 49.29L42.61 48.07L43.37 46.71L43.98 45.24L44.43 43.66L44.55 42.93L44.50 42.94L44.25 42.98L44.00 43.02L43.75 43.05L43.50 43.08L43.25 43.11L43.00 43.13L42.75 43.14L42.50 43.15L42.25 43.15L42.00 43.15L41.75 43.14L41.50 43.13L41.25 43.11L41.00 43.08L40.75 43.05L40.50 43.02L40.25 42.98L40.00 42.93L39.75 42.89L39.50 42.83L39.25 42.78L39.00 42.72L38.75 42.66L38.50 42.59L38.25 42.53L38.00 42.46L37.75 42.39L37.50 42.32L37.25 42.24L37.00 42.17L36.75 42.10L36.50 42.03L36.25 41.96L36.00 41.89L35.75 41.82L35.50 41.75L35.25 41.69L35.00 41.63L34.75 41.58L34.50 41.52L34.25 41.47L34.00 41.43L33.75 41.39L33.50 41.35L33.25 41.32L33.00 41.30L32.75 41.28L32.50 41.26L32.25 41.25L32.00 41.25L31.75 41.25L31.50 41.26L31.25 41.27L31.00 41.29L30.75 41.31L30.50 41.34L30.25 41.38L30.00 41.41L29.75 41.46L29.50 41.50L29.25 41.55L29.00 41.61L28.75 41.67L28.50 41.73L28.25 41.79L28.00 41.86L27.75 41.93L27.50 42.00L27.25 42.07L27.00 42.14L26.75 42.21L26.50 42.29L26.25 42.36L26.00 42.43L25.75 42.50L25.50 42.57L25.25 42.63L25.00 42.70L24.75 42.76L24.50 42.81L24.25 42.87L24.00 42.92L23.75 42.96L23.50 43.00L23.25 43.04L23.00 43.07L22.75 43.10L22.50 43.12L22.25 43.13L22.00 43.14L21.75 43.15L21.50 43.15L21.25 43.14L21.00 43.13L20.75 43.11L20.50 43.09L20.25 43.06L20.00 43.03L19.75 42.99L19.50 42.95L19.45 42.94Z" fill="url(#fc-water-32)"/>
+    <path data-part="wave" d="M18.00 31.22L18.00 31.22L18.25 31.35L18.50 31.48L18.75 31.60L19.00 31.71L19.25 31.82L19.50 31.92L19.75 32.02L20.00 32.11L20.25 32.19L20.50 32.27L20.75 32.33L21.00 32.39L21.25 32.44L21.50 32.48L21.75 32.52L22.00 32.54L22.25 32.56L22.50 32.57L22.75 32.57L23.00 32.56L23.25 32.54L23.50 32.52L23.75 32.49L24.00 32.45L24.25 32.41L24.50 32.36L24.75 32.31L25.00 32.25L25.25 32.18L25.50 32.12L25.75 32.04L26.00 31.97L26.25 31.90L26.50 31.82L26.75 31.74L27.00 31.66L27.25 31.58L27.50 31.51L27.75 31.43L28.00 31.36L28.25 31.29L28.50 31.23L28.75 31.17L29.00 31.11L29.25 31.06L29.50 31.01L29.75 30.97L30.00 30.94L30.25 30.91L30.50 30.89L30.75 30.88L31.00 30.88L31.25 30.89L31.50 30.90L31.75 30.92L32.00 30.95L32.25 30.99L32.50 31.04L32.75 31.09L33.00 31.15L33.25 31.22L33.50 31.30L33.75 31.39L34.00 31.48L34.25 31.58L34.50 31.69L34.75 31.80L35.00 31.92L35.25 32.05L35.50 32.17L35.75 32.31L36.00 32.44L36.25 32.58L36.50 32.72L36.75 32.86L37.00 33.01L37.25 33.15L37.50 33.29L37.75 33.43L38.00 33.57L38.25 33.71L38.50 33.84L38.75 33.98L39.00 34.10L39.25 34.23L39.50 34.34L39.75 34.46L40.00 34.56L40.25 34.66L40.50 34.75L40.75 34.84L41.00 34.92L41.25 34.99L41.50 35.05L41.75 35.10L42.00 35.15L42.25 35.18L42.50 35.21L42.75 35.23L43.00 35.24L43.25 35.25L43.50 35.24L43.75 35.23L44.00 35.21L44.25 35.18L44.50 35.15L44.75 35.11L45.00 35.06L45.25 35.01L45.50 34.95L45.75 34.89L46.00 34.82L46.25 34.75L46.50 34.68L46.75 34.60L47.00 34.53L47.01 34.52L47.22 35.32L47.47 36.52L47.52 36.91L47.50 36.92L47.25 37.00L47.00 37.08L46.75 37.15L46.50 37.23L46.25 37.30L46.00 37.37L45.75 37.44L45.50 37.50L45.25 37.56L45.00 37.61L44.75 37.66L44.50 37.70L44.25 37.73L44.00 37.76L43.75 37.78L43.50 37.79L43.25 37.80L43.00 37.79L42.75 37.78L42.50 37.76L42.25 37.73L42.00 37.70L41.75 37.65L41.50 37.60L41.25 37.54L41.00 37.47L40.75 37.39L40.50 37.30L40.25 37.21L40.00 37.11L39.75 37.01L39.50 36.89L39.25 36.78L39.00 36.65L38.75 36.53L38.50 36.39L38.25 36.26L38.00 36.12L37.75 35.98L37.50 35.84L37.25 35.70L37.00 35.56L36.75 35.41L36.50 35.27L36.25 35.13L36.00 34.99L35.75 34.86L35.50 34.72L35.25 34.60L35.00 34.47L34.75 34.35L34.50 34.24L34.25 34.13L34.00 34.03L33.75 33.94L33.50 33.85L33.25 33.77L33.00 33.70L32.75 33.64L32.50 33.59L32.25 33.54L32.00 33.50L31.75 33.47L31.50 33.45L31.25 33.44L31.00 33.43L30.75 33.43L30.50 33.44L30.25 33.46L30.00 33.49L29.75 33.52L29.50 33.56L29.25 33.61L29.00 33.66L28.75 33.72L28.50 33.78L28.25 33.84L28.00 33.91L27.75 33.98L27.50 34.06L27.25 34.13L27.00 34.21L26.75 34.29L26.50 34.37L26.25 34.45L26.00 34.52L25.75 34.59L25.50 34.67L25.25 34.73L25.00 34.80L24.75 34.86L24.50 34.91L24.25 34.96L24.00 35.00L23.75 35.04L23.50 35.07L23.25 35.09L23.00 35.11L22.75 35.12L22.50 35.12L22.25 35.11L22.00 35.09L21.75 35.07L21.50 35.03L21.25 34.99L21.00 34.94L20.75 34.88L20.50 34.82L20.25 34.74L20.00 34.66L19.75 34.57L19.50 34.47L19.25 34.37L19.00 34.26L18.75 34.15L18.50 34.03L18.25 33.90L18.00 33.77L17.75 33.64L17.50 33.50L17.25 33.36L17.24 33.35L17.31 33.12L17.68 32.04L18.00 31.22Z" fill="#287b91"/>
+  </g>
+</svg>
+                    <span class="font-display text-xl font-semibold text-ink dark:text-white">Flow<span class="italic font-normal text-water">CHAOS</span></span>
+                </a>
+                <p class="mt-2 text-[0.82rem] text-ink-soft dark:text-[#a9bec4]"><span class="tagline"><b>C</b>omprehensive <b>H</b>ydraulic <b>A</b>nalysis &amp; <b>O</b>ptimization <b>S</b>ystem</span>
+</p>
+                <p class="mt-3 max-w-sm text-[0.95rem] text-ink-soft dark:text-[#a9bec4]">Modern water distribution network design and analysis. Freeware for commercial and non-commercial use.</p>
+            </div>
+                            <div>
+                    <h3 class="mb-3 font-sans text-sm font-bold text-ink dark:text-white">Use</h3>
+                    <ul class="space-y-2 text-[0.95rem]">
+                                                    <li><a class="text-ink-soft no-underline hover:text-water dark:text-[#a9bec4]" href="https://hobbybwanali.github.io/flowchaos-site/features">Features</a></li>
+                                                    <li><a class="text-ink-soft no-underline hover:text-water dark:text-[#a9bec4]" href="https://hobbybwanali.github.io/flowchaos-site/docs">Documentation</a></li>
+                                                    <li><a class="text-ink-soft no-underline hover:text-water dark:text-[#a9bec4]" href="https://hobbybwanali.github.io/flowchaos-site/download">Download</a></li>
+                                                    <li><a class="text-ink-soft no-underline hover:text-water dark:text-[#a9bec4]" href="https://hobbybwanali.github.io/flowchaos-site/docs/getting-started">Getting started</a></li>
+                                            </ul>
+                </div>
+                            <div>
+                    <h3 class="mb-3 font-sans text-sm font-bold text-ink dark:text-white">Take part</h3>
+                    <ul class="space-y-2 text-[0.95rem]">
+                                                    <li><a class="text-ink-soft no-underline hover:text-water dark:text-[#a9bec4]" href="https://hobbybwanali.github.io/flowchaos-site/support?topic=support#contact">Support or donate</a></li>
+                                                    <li><a class="text-ink-soft no-underline hover:text-water dark:text-[#a9bec4]" href="https://hobbybwanali.github.io/flowchaos-site/community">Community</a></li>
+                                                    <li><a class="text-ink-soft no-underline hover:text-water dark:text-[#a9bec4]" href="https://hobbybwanali.github.io/flowchaos-site/support?topic=bug#contact">Report a problem</a></li>
+                                                    <li><a class="text-ink-soft no-underline hover:text-water dark:text-[#a9bec4]" href="https://hobbybwanali.github.io/flowchaos-site/docs/plugins">Write a plugin</a></li>
+                                            </ul>
+                </div>
+                            <div>
+                    <h3 class="mb-3 font-sans text-sm font-bold text-ink dark:text-white">About</h3>
+                    <ul class="space-y-2 text-[0.95rem]">
+                                                    <li><a class="text-ink-soft no-underline hover:text-water dark:text-[#a9bec4]" href="https://hobbybwanali.github.io/flowchaos-site/about">About FlowCHAOS</a></li>
+                                                    <li><a class="text-ink-soft no-underline hover:text-water dark:text-[#a9bec4]" href="https://hobbybwanali.github.io/flowchaos-site/releases">Release notes</a></li>
+                                                    <li><a class="text-ink-soft no-underline hover:text-water dark:text-[#a9bec4]" href="https://hobbybwanali.github.io/flowchaos-site/support">Support and contact</a></li>
+                                                    <li><a class="text-ink-soft no-underline hover:text-water dark:text-[#a9bec4]" href="https://hobbybwanali.github.io/flowchaos-site/licence">Licence</a></li>
+                                            </ul>
+                </div>
+                    </div>
+        <div class="wrap mt-10 flex flex-wrap justify-between gap-3 border-t border-line pt-6 text-sm text-mist dark:border-[#1b3a45]">
+            <span>FlowCHAOS is freeware, licensed without a fee under the FlowCHAOS Freeware Licence.</span>
+            <span>Map data and imagery belong to their providers.</span>
+        </div>
+    </div>
+</footer>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js" defer
+        integrity="sha384-g4NTh/Iv5PPU4xPyhEWqPcwtNXOvdaDI8LLnyYfyNZOjKJeYQyjzQ9X5275eBjpt" crossorigin="anonymous"
+        referrerpolicy="no-referrer"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js" defer
+        integrity="sha384-Z3REaz79l2IaAZqJsSABtTbhjgOUYyV3p90XNnAPCSHg3EMTz1fouunq9WZRtj3d" crossorigin="anonymous"
+        referrerpolicy="no-referrer"></script>
+<script src="https://hobbybwanali.github.io/flowchaos-site/js/site.js?v=1792390476" defer></script>
+</body>
+</html>

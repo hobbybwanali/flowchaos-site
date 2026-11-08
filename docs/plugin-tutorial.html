@@ -1,0 +1,466 @@
+<!DOCTYPE html>
+<html lang="en" class="no-js">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Tutorial: build a plugin | Documentation | FlowCHAOS</title>
+    <meta name="description" content="Tutorial: build a FlowCHAOS plugin step by step, from an empty folder to a ZIP your colleagues install.
+">
+    <link rel="canonical" href="https://hobbybwanali.github.io/flowchaos-site/docs/plugin-tutorial">
+    <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1">
+    <meta name="author" content="The FlowCHAOS contributors">
+    <meta name="application-name" content="FlowCHAOS">
+    <meta property="og:site_name" content="FlowCHAOS">
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="Tutorial: build a plugin | Documentation | FlowCHAOS">
+    <meta property="og:description" content="Tutorial: build a FlowCHAOS plugin step by step, from an empty folder to a ZIP your colleagues install.
+">
+    <meta property="og:url" content="https://hobbybwanali.github.io/flowchaos-site/docs/plugin-tutorial">
+    <meta property="og:image" content="https://hobbybwanali.github.io/flowchaos-site/images/og/flowchaos.png">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:image:alt" content="FlowCHAOS: water networks designed on real maps and terrain">
+    <meta property="og:locale" content="en_GB">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Tutorial: build a plugin | Documentation | FlowCHAOS">
+    <meta name="twitter:description" content="Tutorial: build a FlowCHAOS plugin step by step, from an empty folder to a ZIP your colleagues install.
+">
+    <meta name="twitter:image" content="https://hobbybwanali.github.io/flowchaos-site/images/og/flowchaos.png">
+    <link rel="sitemap" type="application/xml" title="Sitemap" href="https://hobbybwanali.github.io/flowchaos-site/sitemap.xml">
+    <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"Organization","@id":"https://hobbybwanali.github.io/flowchaos-site#organisation","name":"FlowCHAOS","url":"https://hobbybwanali.github.io/flowchaos-site","logo":"https://hobbybwanali.github.io/flowchaos-site/images/flowchaos-mark.png","sameAs":[]},{"@type":"WebSite","@id":"https://hobbybwanali.github.io/flowchaos-site#website","name":"FlowCHAOS","alternateName":"Comprehensive Hydraulic Analysis and Optimization System","url":"https://hobbybwanali.github.io/flowchaos-site","inLanguage":"en","publisher":{"@id":"https://hobbybwanali.github.io/flowchaos-site#organisation"}},{"@type":"TechArticle","headline":"Tutorial: build a plugin","description":"Tutorial: build a FlowCHAOS plugin step by step, from an empty folder to a ZIP your colleagues install.\n","url":"https://hobbybwanali.github.io/flowchaos-site/docs/plugin-tutorial","inLanguage":"en","dateModified":"2026-10-21","about":{"@id":"https://hobbybwanali.github.io/flowchaos-site#software"},"publisher":{"@id":"https://hobbybwanali.github.io/flowchaos-site#organisation"}},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"FlowCHAOS","item":"https://hobbybwanali.github.io/flowchaos-site"},{"@type":"ListItem","position":2,"name":"Documentation","item":"https://hobbybwanali.github.io/flowchaos-site/docs"},{"@type":"ListItem","position":3,"name":"Tutorial: build a plugin","item":"https://hobbybwanali.github.io/flowchaos-site/docs/plugin-tutorial"}]}]}</script>
+    <meta name="theme-color" content="#0b7a84">
+    
+    <link rel="icon" href="https://hobbybwanali.github.io/flowchaos-site/favicon.ico?v=1792392055" sizes="any">
+    <link rel="icon" type="image/svg+xml" href="https://hobbybwanali.github.io/flowchaos-site/images/flowchaos-mark.svg?v=1792392054">
+    <link rel="icon" type="image/png" sizes="192x192" href="https://hobbybwanali.github.io/flowchaos-site/images/flowchaos-mark.png?v=1792392055">
+    <link rel="apple-touch-icon" href="https://hobbybwanali.github.io/flowchaos-site/images/flowchaos-mark.png?v=1792392055">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght,SOFT,WONK@0,9..144,400..700,0..100,0..1;1,9..144,400..700,0..100,0..1&family=JetBrains+Mono:wght@400;500&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://hobbybwanali.github.io/flowchaos-site/css/app.css?v=1792392348">
+    <script nonce="awQ+68Fw4N5E/eUK2zhmjfbL">
+        document.documentElement.classList.replace('no-js', 'js');
+        try {
+            const asked = new URLSearchParams(location.search).get('theme');
+            const theme = (asked === 'light' || asked === 'dark') ? asked : localStorage.getItem('fc-theme');
+            document.documentElement.dataset.theme = theme === 'dark' ? 'dark' : 'light';  // light unless chosen
+        } catch (e) { document.documentElement.dataset.theme = 'light'; }
+    </script>
+</head>
+<body>
+<a href="#main" class="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-50 focus:rounded-full focus:bg-ink focus:px-4 focus:py-2 focus:text-white">Skip to content</a>
+
+<header class="masthead">
+    <div class="wrap flex h-[72px] items-center gap-6">
+        <a href="https://hobbybwanali.github.io/flowchaos-site" class="flex items-center gap-3 no-underline" aria-label="FlowCHAOS home">
+            <svg class="mark" width="36" height="36" viewBox="3.09 2.40 60.38 60.38" aria-hidden="true">
+    <defs><linearGradient id="fc-teal-36" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#3596ad"/>
+      <stop offset="1" stop-color="#1d6175"/>
+    </linearGradient>
+    <linearGradient id="fc-water-36" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#3fa9c2"/>
+      <stop offset="1" stop-color="#1f6a80"/>
+    </linearGradient></defs>
+    <g data-part="mark" transform="rotate(-16 32 35)">
+    <path data-part="outer-drop" d="M32 1.5C26.83 12.48 8.5 26.07 8.5 39C8.5 52.16 18.84 62.5 32 62.5C45.16 62.5 55.5 52.16 55.5 39C55.5 26.07 37.17 12.48 32 1.5Z" fill="url(#fc-teal-36)"/>
+    <path data-part="inner-drop" d="M16.2 40.2C16.2 32.6 19.9 26.6 23.9 21.8C25 19.6 25.8 17.7 26.6 15.8C27.3 18.5 28.2 20.4 29.5 21.4C30.4 17.6 31.4 14 32.4 10.8C36.8 17.6 47.8 28.2 47.8 40.2C47.8 49.3 40.7 56.6 32 56.6C23.3 56.6 16.2 49.3 16.2 40.2Z" fill="#ffffff"/>
+    <path data-part="water" d="M19.45 42.94L19.57 43.66L20.02 45.24L20.63 46.71L21.39 48.07L22.31 49.29L23.35 50.38L24.53 51.33L25.82 52.12L27.22 52.76L28.73 53.22L30.32 53.50L32.00 53.60L33.68 53.50L35.27 53.22L36.78 52.76L38.18 52.12L39.47 51.33L40.65 50.38L41.69 49.29L42.61 48.07L43.37 46.71L43.98 45.24L44.43 43.66L44.55 42.93L44.50 42.94L44.25 42.98L44.00 43.02L43.75 43.05L43.50 43.08L43.25 43.11L43.00 43.13L42.75 43.14L42.50 43.15L42.25 43.15L42.00 43.15L41.75 43.14L41.50 43.13L41.25 43.11L41.00 43.08L40.75 43.05L40.50 43.02L40.25 42.98L40.00 42.93L39.75 42.89L39.50 42.83L39.25 42.78L39.00 42.72L38.75 42.66L38.50 42.59L38.25 42.53L38.00 42.46L37.75 42.39L37.50 42.32L37.25 42.24L37.00 42.17L36.75 42.10L36.50 42.03L36.25 41.96L36.00 41.89L35.75 41.82L35.50 41.75L35.25 41.69L35.00 41.63L34.75 41.58L34.50 41.52L34.25 41.47L34.00 41.43L33.75 41.39L33.50 41.35L33.25 41.32L33.00 41.30L32.75 41.28L32.50 41.26L32.25 41.25L32.00 41.25L31.75 41.25L31.50 41.26L31.25 41.27L31.00 41.29L30.75 41.31L30.50 41.34L30.25 41.38L30.00 41.41L29.75 41.46L29.50 41.50L29.25 41.55L29.00 41.61L28.75 41.67L28.50 41.73L28.25 41.79L28.00 41.86L27.75 41.93L27.50 42.00L27.25 42.07L27.00 42.14L26.75 42.21L26.50 42.29L26.25 42.36L26.00 42.43L25.75 42.50L25.50 42.57L25.25 42.63L25.00 42.70L24.75 42.76L24.50 42.81L24.25 42.87L24.00 42.92L23.75 42.96L23.50 43.00L23.25 43.04L23.00 43.07L22.75 43.10L22.50 43.12L22.25 43.13L22.00 43.14L21.75 43.15L21.50 43.15L21.25 43.14L21.00 43.13L20.75 43.11L20.50 43.09L20.25 43.06L20.00 43.03L19.75 42.99L19.50 42.95L19.45 42.94Z" fill="url(#fc-water-36)"/>
+    <path data-part="wave" d="M18.00 31.22L18.00 31.22L18.25 31.35L18.50 31.48L18.75 31.60L19.00 31.71L19.25 31.82L19.50 31.92L19.75 32.02L20.00 32.11L20.25 32.19L20.50 32.27L20.75 32.33L21.00 32.39L21.25 32.44L21.50 32.48L21.75 32.52L22.00 32.54L22.25 32.56L22.50 32.57L22.75 32.57L23.00 32.56L23.25 32.54L23.50 32.52L23.75 32.49L24.00 32.45L24.25 32.41L24.50 32.36L24.75 32.31L25.00 32.25L25.25 32.18L25.50 32.12L25.75 32.04L26.00 31.97L26.25 31.90L26.50 31.82L26.75 31.74L27.00 31.66L27.25 31.58L27.50 31.51L27.75 31.43L28.00 31.36L28.25 31.29L28.50 31.23L28.75 31.17L29.00 31.11L29.25 31.06L29.50 31.01L29.75 30.97L30.00 30.94L30.25 30.91L30.50 30.89L30.75 30.88L31.00 30.88L31.25 30.89L31.50 30.90L31.75 30.92L32.00 30.95L32.25 30.99L32.50 31.04L32.75 31.09L33.00 31.15L33.25 31.22L33.50 31.30L33.75 31.39L34.00 31.48L34.25 31.58L34.50 31.69L34.75 31.80L35.00 31.92L35.25 32.05L35.50 32.17L35.75 32.31L36.00 32.44L36.25 32.58L36.50 32.72L36.75 32.86L37.00 33.01L37.25 33.15L37.50 33.29L37.75 33.43L38.00 33.57L38.25 33.71L38.50 33.84L38.75 33.98L39.00 34.10L39.25 34.23L39.50 34.34L39.75 34.46L40.00 34.56L40.25 34.66L40.50 34.75L40.75 34.84L41.00 34.92L41.25 34.99L41.50 35.05L41.75 35.10L42.00 35.15L42.25 35.18L42.50 35.21L42.75 35.23L43.00 35.24L43.25 35.25L43.50 35.24L43.75 35.23L44.00 35.21L44.25 35.18L44.50 35.15L44.75 35.11L45.00 35.06L45.25 35.01L45.50 34.95L45.75 34.89L46.00 34.82L46.25 34.75L46.50 34.68L46.75 34.60L47.00 34.53L47.01 34.52L47.22 35.32L47.47 36.52L47.52 36.91L47.50 36.92L47.25 37.00L47.00 37.08L46.75 37.15L46.50 37.23L46.25 37.30L46.00 37.37L45.75 37.44L45.50 37.50L45.25 37.56L45.00 37.61L44.75 37.66L44.50 37.70L44.25 37.73L44.00 37.76L43.75 37.78L43.50 37.79L43.25 37.80L43.00 37.79L42.75 37.78L42.50 37.76L42.25 37.73L42.00 37.70L41.75 37.65L41.50 37.60L41.25 37.54L41.00 37.47L40.75 37.39L40.50 37.30L40.25 37.21L40.00 37.11L39.75 37.01L39.50 36.89L39.25 36.78L39.00 36.65L38.75 36.53L38.50 36.39L38.25 36.26L38.00 36.12L37.75 35.98L37.50 35.84L37.25 35.70L37.00 35.56L36.75 35.41L36.50 35.27L36.25 35.13L36.00 34.99L35.75 34.86L35.50 34.72L35.25 34.60L35.00 34.47L34.75 34.35L34.50 34.24L34.25 34.13L34.00 34.03L33.75 33.94L33.50 33.85L33.25 33.77L33.00 33.70L32.75 33.64L32.50 33.59L32.25 33.54L32.00 33.50L31.75 33.47L31.50 33.45L31.25 33.44L31.00 33.43L30.75 33.43L30.50 33.44L30.25 33.46L30.00 33.49L29.75 33.52L29.50 33.56L29.25 33.61L29.00 33.66L28.75 33.72L28.50 33.78L28.25 33.84L28.00 33.91L27.75 33.98L27.50 34.06L27.25 34.13L27.00 34.21L26.75 34.29L26.50 34.37L26.25 34.45L26.00 34.52L25.75 34.59L25.50 34.67L25.25 34.73L25.00 34.80L24.75 34.86L24.50 34.91L24.25 34.96L24.00 35.00L23.75 35.04L23.50 35.07L23.25 35.09L23.00 35.11L22.75 35.12L22.50 35.12L22.25 35.11L22.00 35.09L21.75 35.07L21.50 35.03L21.25 34.99L21.00 34.94L20.75 34.88L20.50 34.82L20.25 34.74L20.00 34.66L19.75 34.57L19.50 34.47L19.25 34.37L19.00 34.26L18.75 34.15L18.50 34.03L18.25 33.90L18.00 33.77L17.75 33.64L17.50 33.50L17.25 33.36L17.24 33.35L17.31 33.12L17.68 32.04L18.00 31.22Z" fill="#287b91"/>
+  </g>
+</svg>
+            <span class="font-display text-[1.45rem] font-semibold tracking-tight text-ink dark:text-white">Flow<span class="italic font-normal text-water">CHAOS</span></span>
+        </a>
+        <nav id="site-nav" class="ml-auto hidden items-center gap-1 lg:flex" aria-label="Main">
+                            <a href="https://hobbybwanali.github.io/flowchaos-site/features" class="navlink">Features</a>
+                            <a href="https://hobbybwanali.github.io/flowchaos-site/docs" class="navlink is-here">Documentation</a>
+                            <a href="https://hobbybwanali.github.io/flowchaos-site/about" class="navlink">About</a>
+                            <a href="https://hobbybwanali.github.io/flowchaos-site/community" class="navlink">Community</a>
+                            <a href="https://hobbybwanali.github.io/flowchaos-site/support" class="navlink">Support</a>
+                    </nav>
+        <div class="ml-auto flex items-center gap-2 lg:ml-2">
+            <button class="theme-toggle grid size-10 place-items-center rounded-full text-ink-soft ring-1 ring-line transition hover:ring-lagoon dark:text-[#b5c7cc]" type="button" aria-label="Light or dark">
+                <svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><path d="M12 3a9 9 0 1 0 9 9 7 7 0 0 1-9-9Z" fill="currentColor"/></svg>
+            </button>
+            <a href="https://hobbybwanali.github.io/flowchaos-site/download" class="btn btn-water gap-2 max-sm:size-10 max-sm:p-0 max-sm:justify-center"
+               title="Download FlowCHAOS for Windows" aria-label="Download FlowCHAOS">
+                <svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><path d="M12 4v11m0 0-4.5-4.5M12 15l4.5-4.5M5 19.5h14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                <span class="max-sm:hidden">Download</span>
+            </a>
+            <button class="nav-toggle grid size-10 place-items-center rounded-full ring-1 ring-line lg:hidden" aria-expanded="false" aria-controls="mobile-nav" aria-label="Menu">
+                <svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path class="bar b1" d="M4 7h16"/><path class="bar b2" d="M4 12h16"/><path class="bar b3" d="M4 17h10"/></svg>
+            </button>
+        </div>
+    </div>
+    <nav id="mobile-nav" class="wrap mobile-nav" aria-label="Main">
+        <div class="mobile-nav-inner">
+                    <a href="https://hobbybwanali.github.io/flowchaos-site/features" class="navlink">Features</a>
+                    <a href="https://hobbybwanali.github.io/flowchaos-site/docs" class="navlink is-here">Documentation</a>
+                    <a href="https://hobbybwanali.github.io/flowchaos-site/about" class="navlink">About</a>
+                    <a href="https://hobbybwanali.github.io/flowchaos-site/community" class="navlink">Community</a>
+                    <a href="https://hobbybwanali.github.io/flowchaos-site/support" class="navlink">Support</a>
+                    <a href="https://hobbybwanali.github.io/flowchaos-site/download" class="navlink">Download</a>
+                </div>
+    </nav>
+</header>
+
+<main id="main">
+    <div class="wrap grid gap-10 py-10 lg:grid-cols-[250px_minmax(0,1fr)] xl:grid-cols-[250px_minmax(0,1fr)_220px]">
+    <aside class="lg:sticky lg:top-24 lg:max-h-[calc(100vh-7rem)] lg:self-start lg:overflow-y-auto" aria-label="Manual">
+        <div class="relative mb-5">
+            <input class="field py-2.5 pl-10 text-sm" type="search" placeholder="Search" data-doc-search="https://hobbybwanali.github.io/flowchaos-site/docs/search.json" aria-label="Search the documentation">
+            <svg class="pointer-events-none absolute left-3.5 top-1/2 -translate-y-1/2 text-mist" viewBox="0 0 24 24" width="16" height="16" aria-hidden="true"><circle cx="11" cy="11" r="7" fill="none" stroke="currentColor" stroke-width="2"/><path d="M16.5 16.5L21 21" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+            <div class="absolute left-0 top-full z-30 mt-2 hidden max-h-[60vh] w-[340px] overflow-y-auto rounded-3xl bg-white p-2 shadow-2xl ring-1 ring-line dark:bg-[#0d2029]" data-doc-results></div>
+        </div>
+                    <p class="mb-1.5 mt-6 px-3 text-xs font-bold tracking-wide text-mist first-of-type:mt-0">Getting started</p>
+                            <a href="https://hobbybwanali.github.io/flowchaos-site/docs/introduction" class="doclink">Introduction</a>
+                            <a href="https://hobbybwanali.github.io/flowchaos-site/docs/install" class="doclink">Install</a>
+                            <a href="https://hobbybwanali.github.io/flowchaos-site/docs/getting-started" class="doclink">Tutorial: a village supply</a>
+                            <a href="https://hobbybwanali.github.io/flowchaos-site/docs/interface" class="doclink">The window</a>
+                                <p class="mb-1.5 mt-6 px-3 text-xs font-bold tracking-wide text-mist first-of-type:mt-0">User guide</p>
+                            <a href="https://hobbybwanali.github.io/flowchaos-site/docs/projects" class="doclink">Working with projects</a>
+                            <a href="https://hobbybwanali.github.io/flowchaos-site/docs/drawing" class="doclink">Drawing and editing</a>
+                            <a href="https://hobbybwanali.github.io/flowchaos-site/docs/data" class="doclink">Layers and data</a>
+                            <a href="https://hobbybwanali.github.io/flowchaos-site/docs/labels" class="doclink">Labels</a>
+                            <a href="https://hobbybwanali.github.io/flowchaos-site/docs/network-model" class="doclink">The network model</a>
+                            <a href="https://hobbybwanali.github.io/flowchaos-site/docs/analysis" class="doclink">Running an analysis</a>
+                            <a href="https://hobbybwanali.github.io/flowchaos-site/docs/options" class="doclink">Analysis options</a>
+                            <a href="https://hobbybwanali.github.io/flowchaos-site/docs/controls" class="doclink">Controls and rules</a>
+                            <a href="https://hobbybwanali.github.io/flowchaos-site/docs/water-quality" class="doclink">Water quality</a>
+                            <a href="https://hobbybwanali.github.io/flowchaos-site/docs/results" class="doclink">Reading the results</a>
+                            <a href="https://hobbybwanali.github.io/flowchaos-site/docs/map" class="doclink">Map views, legends and animation</a>
+                            <a href="https://hobbybwanali.github.io/flowchaos-site/docs/surfaces" class="doclink">Terrain and surface maps</a>
+                            <a href="https://hobbybwanali.github.io/flowchaos-site/docs/design" class="doclink">Design tools</a>
+                            <a href="https://hobbybwanali.github.io/flowchaos-site/docs/quantities" class="doclink">Quantities and planning</a>
+                            <a href="https://hobbybwanali.github.io/flowchaos-site/docs/layouts" class="doclink">Map sheets and reports</a>
+                                <p class="mb-1.5 mt-6 px-3 text-xs font-bold tracking-wide text-mist first-of-type:mt-0">Reference</p>
+                            <a href="https://hobbybwanali.github.io/flowchaos-site/docs/shortcuts" class="doclink">Keyboard shortcuts</a>
+                            <a href="https://hobbybwanali.github.io/flowchaos-site/docs/file-formats" class="doclink">File formats</a>
+                            <a href="https://hobbybwanali.github.io/flowchaos-site/docs/input-format" class="doclink">The network file</a>
+                            <a href="https://hobbybwanali.github.io/flowchaos-site/docs/units" class="doclink">Units of measurement</a>
+                            <a href="https://hobbybwanali.github.io/flowchaos-site/docs/coordinates" class="doclink">Coordinates and regional settings</a>
+                            <a href="https://hobbybwanali.github.io/flowchaos-site/docs/messages" class="doclink">Errors and warnings</a>
+                            <a href="https://hobbybwanali.github.io/flowchaos-site/docs/algorithms" class="doclink">How a network is solved</a>
+                            <a href="https://hobbybwanali.github.io/flowchaos-site/docs/glossary" class="doclink">Glossary</a>
+                            <a href="https://hobbybwanali.github.io/flowchaos-site/docs/faq" class="doclink">Questions and answers</a>
+                            <a href="https://hobbybwanali.github.io/flowchaos-site/docs/troubleshooting" class="doclink">Troubleshooting</a>
+                                <p class="mb-1.5 mt-6 px-3 text-xs font-bold tracking-wide text-mist first-of-type:mt-0">Developers</p>
+                            <a href="https://hobbybwanali.github.io/flowchaos-site/docs/plugins" class="doclink">Writing plugins</a>
+                            <a href="https://hobbybwanali.github.io/flowchaos-site/docs/plugin-tutorial" class="doclink is-here">Tutorial: build a plugin</a>
+                            <a href="https://hobbybwanali.github.io/flowchaos-site/docs/plugin-api" class="doclink">Plugin API</a>
+                            <a href="https://hobbybwanali.github.io/flowchaos-site/docs/project-model" class="doclink">Project model</a>
+                            <a href="https://hobbybwanali.github.io/flowchaos-site/docs/plugin-examples" class="doclink">Plugin examples</a>
+                        </aside>
+
+    <article class="min-w-0">
+        <p class="eyebrow">Developers</p>
+        <h1 class="mt-2 font-display text-4xl font-semibold md:text-5xl">Tutorial: build a plugin</h1>
+        <div class="prose-docs mt-6"><p>Tutorial: build a FlowCHAOS plugin step by step, from an empty folder to a ZIP your colleagues install.</p>
+<p>This tutorial builds <strong>Design Check Report</strong>, a plugin that lists, after a run, every pressure, velocity
+and head loss outside your design limits, in a window of its own and as a tool in the Processing Toolbox.
+The finished plugin comes with FlowCHAOS as an example (<code>FlowCHAOS-Design-Check-1.0.0.zip</code>); building it
+yourself shows every part a plugin can have. You need FlowCHAOS and a text editor; Python knowledge helps
+but each step shows the full code.</p>
+<h2 id="step-1-let-the-plugin-builder-make-the-folder">Step 1: let the Plugin Builder make the folder</h2>
+<p><strong>Plugins &gt; Plugin Builder...</strong> writes a complete, working starting folder:</p>
+<ol>
+<li><strong>Name</strong>: <code>Design Check Report</code>.</li>
+<li><strong>Description</strong>: <code>Pressures, velocities and head losses outside the design limits, after a run.</code></li>
+<li><strong>Category</strong>: Engineering tools.</li>
+<li>Leave the three parts ticked (a command, a tool window, a toolbox tool), keep <strong>Install it in
+FlowCHAOS and switch it on now</strong> ticked and press <strong>Build Plugin</strong>.</li>
+</ol>
+<p>The builder writes the folder (by default in Documents\FlowCHAOS plugins), installs it and switches it
+on: the Plugins menu now has its commands and the Processing Toolbox its tool. The folder opens in
+Explorer:</p>
+<pre><code>design_check_report/
+    plugin.json          the manifest
+    __init__.py          register(host): what the plugin adds to FlowCHAOS
+    tools.py             the plugin's own work, without windows
+    README.md            what it does and how to install it
+    tests/test_tools.py  a first test
+</code></pre>
+<h2 id="step-2-the-manifest">Step 2: the manifest</h2>
+<p><code>plugin.json</code> tells FlowCHAOS what the plugin is:</p>
+<pre><code class="language-json">{
+  &quot;id&quot;: &quot;design-check-report&quot;,
+  &quot;name&quot;: &quot;Design Check Report&quot;,
+  &quot;description&quot;: &quot;Pressures, velocities and head losses outside the design limits, after a run.&quot;,
+  &quot;version&quot;: &quot;0.1.0&quot;,
+  &quot;category&quot;: &quot;Engineering tools&quot;,
+  &quot;min_flowchaos&quot;: &quot;1.0.0&quot;,
+  &quot;startup&quot;: true
+}
+</code></pre>
+<p>The <code>id</code> must be unique; <code>min_flowchaos</code> is the oldest FlowCHAOS your plugin works with (an older one
+refuses to load it, with a clear message); <code>startup</code> loads it each time FlowCHAOS starts. The keys are
+explained in <a href="/docs/plugins">Plugins</a>.</p>
+<h2 id="step-3-keep-the-work-apart-from-the-windows">Step 3: keep the work apart from the windows</h2>
+<p>Put the calculation in a module of its own, <code>checks.py</code>, with plain functions on the project. They need
+no window, so they are easy to test and to reuse in a menu command, a window and a toolbox tool alike:</p>
+<pre><code class="language-python">from dataclasses import dataclass
+
+DEFAULTS = {&quot;min_pressure_m&quot;: 10.0, &quot;max_pressure_m&quot;: 60.0, &quot;min_velocity_mps&quot;: 0.3,
+            &quot;max_velocity_mps&quot;: 2.0, &quot;max_headloss_m_per_km&quot;: 10.0}
+
+
+@dataclass
+class Finding:
+    kind: str          # &quot;node&quot; or &quot;link&quot;
+    element_id: str
+    name: str
+    check: str
+    value: float
+    limit: float
+    severity: str      # &quot;High&quot;, &quot;Medium&quot; or &quot;Low&quot;
+
+
+def check_design(project, limits=None):
+    limits = {**DEFAULTS, **(limits or {})}
+    results = project.results or {}
+    nodes = {row[&quot;name&quot;]: row for row in results.get(&quot;nodes&quot;, [])}
+    found = []
+    for node in project.nodes:
+        row = nodes.get(node.name)
+        if node.node_type != &quot;JUNCTION&quot; or row is None:
+            continue
+        pressure = float(row[&quot;pressure_m&quot;])
+        if pressure &lt; limits[&quot;min_pressure_m&quot;]:
+            found.append(Finding(&quot;node&quot;, node.id, node.name, &quot;Pressure below the minimum (m)&quot;,
+                                 pressure, limits[&quot;min_pressure_m&quot;], &quot;Medium&quot;))
+    return found
+</code></pre>
+<p>What the project holds is in <a href="/docs/project-model">The project model</a>: <code>project.nodes</code> and
+<code>project.links</code> with their values, <code>project.results</code> after a run (one row per node and link, with
+<code>pressure_m</code>, <code>head_m</code>, <code>flow_lps</code>, <code>velocity_mps</code>, <code>headloss_m</code>), and <code>project.link_length_m(link)</code>.
+The full <code>checks.py</code> of the example also checks velocities, head loss per kilometre and dead ends.</p>
+<h2 id="step-4-register-what-the-plugin-adds">Step 4: register what the plugin adds</h2>
+<p><code>__init__.py</code> defines <code>register(host)</code>. FlowCHAOS calls it when the plugin is switched on and gives it
+the <strong>host</strong>, the main window (<a href="/docs/plugin-api">Plugin API</a>):</p>
+<pre><code class="language-python">from . import checks
+
+
+def register(host):
+    host.add_tool_window(&quot;design-check-report&quot;, &quot;Design Check Report&quot;, lambda: _window(host),
+                         &quot;Pressures, velocities and head losses outside the design limits&quot;)
+</code></pre>
+<p><code>add_tool_window</code> puts a command in the Plugins menu that opens your window beside the map, one at a
+time. <code>add_plugin_action(text, callback, tooltip)</code> adds a plain command instead.</p>
+<h2 id="step-5-a-window-of-your-own">Step 5: a window of your own</h2>
+<p>A window is ordinary Qt (PySide6). Build it in a function that returns it:</p>
+<pre><code class="language-python">def _window(host):
+    from PySide6.QtWidgets import QLabel, QPushButton, QTableWidget, QTableWidgetItem, QVBoxLayout, QWidget
+
+    window = QWidget()
+    window.setWindowTitle(&quot;Design Check Report&quot;)
+    layout = QVBoxLayout(window)
+    summary = QLabel(&quot;Run a steady-state analysis, then Check.&quot;)
+    table = QTableWidget(0, 4)
+    table.setHorizontalHeaderLabels([&quot;Severity&quot;, &quot;Check&quot;, &quot;Element&quot;, &quot;Value&quot;])
+    check = QPushButton(&quot;Check&quot;)
+    layout.addWidget(summary)
+    layout.addWidget(table, 1)
+    layout.addWidget(check)
+
+    def run_check():
+        found = checks.check_design(host.document.project)
+        table.setRowCount(len(found))
+        for r, f in enumerate(found):
+            for c, value in enumerate((f.severity, f.check, f.name, round(f.value, 2))):
+                table.setItem(r, c, QTableWidgetItem(str(value)))
+        summary.setText(f&quot;{len(found)} finding(s).&quot;)
+        host.canvas.set_selection({(f.kind, f.element_id) for f in found})  # shown on the map
+
+    check.clicked.connect(run_check)
+    return window
+</code></pre>
+<p><code>host.canvas.set_selection({(&quot;node&quot;, id), (&quot;link&quot;, id)})</code> selects elements on the map; the user sees
+them highlighted and can zoom to them with Ctrl+J.</p>
+<h2 id="step-6-a-tool-in-the-processing-toolbox">Step 6: a tool in the Processing Toolbox</h2>
+<p>A toolbox tool declares its parameters; FlowCHAOS builds the form, the help, the log, the result table
+and the map selection:</p>
+<pre><code class="language-python">def _toolbox_run(project, values, context):
+    from flowchaos.core.processing import Outcome
+
+    found = checks.check_design(project, values)
+    return Outcome(f&quot;{len(found)} finding(s).&quot;, [&quot;Severity&quot;, &quot;Check&quot;, &quot;Element&quot;],
+                   [[f.severity, f.check, f.name] for f in found],
+                   select={(f.kind, f.element_id) for f in found})
+
+
+def register(host):
+    from flowchaos.core.processing import Algorithm, Param
+
+    host.add_toolbox_algorithm(Algorithm(
+        &quot;design_check_report&quot;, &quot;Design check report&quot;, &quot;Checks&quot;, &quot;tb-check&quot;,
+        &quot;Every value of the last run outside the limits.&quot;,
+        (Param(&quot;min_pressure_m&quot;, &quot;Minimum pressure&quot;, &quot;number&quot;, 10.0, suffix=&quot; m&quot;),),
+        _toolbox_run, needs=&quot;results&quot;))
+</code></pre>
+<p><code>needs</code> keeps the tool greyed until it makes sense: <code>network</code>, <code>links</code>, <code>selection</code>, <code>results</code> or
+<code>none</code>. A tool that changes the network sets <code>changes=True</code>: the toolbox then runs it as one step of
+Undo, and new elements join the network layer being edited.</p>
+<h2 id="step-7-changing-the-network">Step 7: changing the network</h2>
+<p>Every change goes through the document, as one step the user can undo:</p>
+<pre><code class="language-python">def set_material(project):
+    for link in project.links:
+        if link.link_type == &quot;PIPE&quot; and link.diameter_mm &lt;= 110:
+            link.attributes[&quot;material&quot;] = &quot;HDPE&quot;
+
+host.network_edit(&quot;Set materials of small pipes&quot;, set_material)
+</code></pre>
+<p><code>host.network_edit(label, edit)</code> makes the change in the network layer being edited (and asks which
+layer when several exist); <code>host.document.apply(label, edit)</code> changes the project as a whole (settings,
+results). Never keep <code>project.nodes</code> or a node between two edits: each edit makes a new project, so
+read <code>host.document.project</code> again each time.</p>
+<h2 id="step-8-long-work-in-the-background">Step 8: long work in the background</h2>
+<p>A calculation that takes more than a moment must not freeze the window. Run it on a worker and hand the
+result back with a Qt signal:</p>
+<pre><code class="language-python">from PySide6.QtCore import QObject, Signal
+from flowchaos.core import workers
+
+
+class Done(QObject):
+    finished = Signal(object)
+
+
+done = Done()
+done.finished.connect(show_results)        # runs on the window's thread
+project = host.document.project            # read here, then work on it there
+workers.submit(lambda: done.finished.emit(checks.check_design(project)), pool_name=&quot;compute&quot;)
+</code></pre>
+<p>Never touch windows from the worker: compute there, show the result in the connected function.</p>
+<h2 id="step-9-try-it-while-you-write-it">Step 9: try it while you write it</h2>
+<ol>
+<li>Edit the files of the installed copy (Plugins &gt; Manage Plugins &gt; <strong>Open Plugin Folder</strong>), or build
+again with the Plugin Builder.</li>
+<li>Press <strong>Reload</strong> in Plugins &gt; Manage Plugins: the plugin is switched off and on again, reading its
+files anew. No restart is needed.</li>
+<li>An error while loading is shown in the Plugin Manager (point at the plugin's name) and written to
+the log (Help &gt; Open Crash Log Folder, <code>flowchaos.log</code>).</li>
+</ol>
+<p>Test the plain functions with pytest, without starting FlowCHAOS:</p>
+<pre><code class="language-python">from flowchaos.core.sample_library import town_water_supply
+from flowchaos.core.solver_backend import run_with_best_backend
+from flowchaos.ui.main_window import prepare_results
+
+import checks
+
+
+def test_finds_high_pressures():
+    project = town_water_supply()
+    project.results, _message = prepare_results(run_with_best_backend(project))
+    assert any(f.check.startswith(&quot;Pressure above&quot;) for f in checks.check_design(project))
+</code></pre>
+<h2 id="step-10-share-it">Step 10: share it</h2>
+<p>Zip the folder (the folder itself, with <code>plugin.json</code> inside it) and send the ZIP. Your colleagues
+install it with <strong>Plugins &gt; Manage Plugins &gt; Install from ZIP</strong> and tick it. Raise <code>version</code> in
+<code>plugin.json</code> for each new release; installing a newer ZIP replaces the older one.</p>
+<h2 id="good-practice">Good practice</h2>
+<ul>
+<li>Name things as the engineer sees them: &quot;Design check report&quot;, not &quot;dcr_tool&quot;.</li>
+<li>Keep the calculation in plain functions and test them; keep windows thin.</li>
+<li>Every change through <code>network_edit</code> or <code>document.apply</code>, never by changing <code>host.document.project</code>
+directly, so Undo and the map stay right.</li>
+<li>Work longer than half a second goes to a worker (Step 8).</li>
+<li><code>unregister(host)</code> stops anything the plugin started itself: timers, threads, open files. What was
+added through the host is removed by FlowCHAOS.</li>
+<li>A plugin runs with the user's permissions: write only to files the user chooses.</li>
+</ul>
+<p>More examples are in <a href="/docs/plugin-examples">Plugin examples</a>; every call is in <a href="/docs/plugin-api">Plugin API</a>.</p>
+</div>
+        <nav class="mt-16 grid gap-4 border-t border-line pt-8 sm:grid-cols-2 dark:border-[#1b3a45]" aria-label="Previous and next">
+            <div><a class="card block no-underline" href="https://hobbybwanali.github.io/flowchaos-site/docs/plugins"><span class="block text-xs text-mist">Previous</span><span class="font-semibold">Writing plugins</span></a></div>
+            <div class="sm:text-right"><a class="card block no-underline" href="https://hobbybwanali.github.io/flowchaos-site/docs/plugin-api"><span class="block text-xs text-mist">Next</span><span class="font-semibold">Plugin API</span></a></div>
+        </nav>
+    </article>
+
+    <aside class="hidden xl:sticky xl:top-24 xl:block xl:self-start" aria-label="On this page">
+                    <p class="mb-2 text-xs font-bold tracking-wide text-mist">On this page</p>
+                            <a class="block py-1 text-sm text-ink-soft no-underline hover:text-water dark:text-[#9fb5bb]" href="#step-1-let-the-plugin-builder-make-the-folder">Step 1: let the Plugin Builder make the folder</a>
+                            <a class="block py-1 text-sm text-ink-soft no-underline hover:text-water dark:text-[#9fb5bb]" href="#step-2-the-manifest">Step 2: the manifest</a>
+                            <a class="block py-1 text-sm text-ink-soft no-underline hover:text-water dark:text-[#9fb5bb]" href="#step-3-keep-the-work-apart-from-the-windows">Step 3: keep the work apart from the windows</a>
+                            <a class="block py-1 text-sm text-ink-soft no-underline hover:text-water dark:text-[#9fb5bb]" href="#step-4-register-what-the-plugin-adds">Step 4: register what the plugin adds</a>
+                            <a class="block py-1 text-sm text-ink-soft no-underline hover:text-water dark:text-[#9fb5bb]" href="#step-5-a-window-of-your-own">Step 5: a window of your own</a>
+                            <a class="block py-1 text-sm text-ink-soft no-underline hover:text-water dark:text-[#9fb5bb]" href="#step-6-a-tool-in-the-processing-toolbox">Step 6: a tool in the Processing Toolbox</a>
+                            <a class="block py-1 text-sm text-ink-soft no-underline hover:text-water dark:text-[#9fb5bb]" href="#step-7-changing-the-network">Step 7: changing the network</a>
+                            <a class="block py-1 text-sm text-ink-soft no-underline hover:text-water dark:text-[#9fb5bb]" href="#step-8-long-work-in-the-background">Step 8: long work in the background</a>
+                            <a class="block py-1 text-sm text-ink-soft no-underline hover:text-water dark:text-[#9fb5bb]" href="#step-9-try-it-while-you-write-it">Step 9: try it while you write it</a>
+                            <a class="block py-1 text-sm text-ink-soft no-underline hover:text-water dark:text-[#9fb5bb]" href="#step-10-share-it">Step 10: share it</a>
+                            <a class="block py-1 text-sm text-ink-soft no-underline hover:text-water dark:text-[#9fb5bb]" href="#good-practice">Good practice</a>
+                        </aside>
+</div>
+</main>
+
+<footer class="relative mt-10 overflow-hidden">
+    <svg class="wave-divider" viewBox="0 0 1440 90" preserveAspectRatio="none" aria-hidden="true"><path fill="currentColor" d="M0 50C160 20 320 80 480 60S800 10 960 30s320 60 480 30V90H0Z"/></svg>
+    <div class="bg-foam pb-12 pt-6 dark:bg-[#0d2029]">
+        <div class="wrap grid gap-10 md:grid-cols-[1.6fr_1fr_1fr_1fr]">
+            <div>
+                <a href="https://hobbybwanali.github.io/flowchaos-site" class="flex items-center gap-3 no-underline">
+                    <svg class="mark" width="32" height="32" viewBox="3.09 2.40 60.38 60.38" aria-hidden="true">
+    <defs><linearGradient id="fc-teal-32" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#3596ad"/>
+      <stop offset="1" stop-color="#1d6175"/>
+    </linearGradient>
+    <linearGradient id="fc-water-32" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#3fa9c2"/>
+      <stop offset="1" stop-color="#1f6a80"/>
+    </linearGradient></defs>
+    <g data-part="mark" transform="rotate(-16 32 35)">
+    <path data-part="outer-drop" d="M32 1.5C26.83 12.48 8.5 26.07 8.5 39C8.5 52.16 18.84 62.5 32 62.5C45.16 62.5 55.5 52.16 55.5 39C55.5 26.07 37.17 12.48 32 1.5Z" fill="url(#fc-teal-32)"/>
+    <path data-part="inner-drop" d="M16.2 40.2C16.2 32.6 19.9 26.6 23.9 21.8C25 19.6 25.8 17.7 26.6 15.8C27.3 18.5 28.2 20.4 29.5 21.4C30.4 17.6 31.4 14 32.4 10.8C36.8 17.6 47.8 28.2 47.8 40.2C47.8 49.3 40.7 56.6 32 56.6C23.3 56.6 16.2 49.3 16.2 40.2Z" fill="#ffffff"/>
+    <path data-part="water" d="M19.45 42.94L19.57 43.66L20.02 45.24L20.63 46.71L21.39 48.07L22.31 49.29L23.35 50.38L24.53 51.33L25.82 52.12L27.22 52.76L28.73 53.22L30.32 53.50L32.00 53.60L33.68 53.50L35.27 53.22L36.78 52.76L38.18 52.12L39.47 51.33L40.65 50.38L41.69 49.29L42.61 48.07L43.37 46.71L43.98 45.24L44.43 43.66L44.55 42.93L44.50 42.94L44.25 42.98L44.00 43.02L43.75 43.05L43.50 43.08L43.25 43.11L43.00 43.13L42.75 43.14L42.50 43.15L42.25 43.15L42.00 43.15L41.75 43.14L41.50 43.13L41.25 43.11L41.00 43.08L40.75 43.05L40.50 43.02L40.25 42.98L40.00 42.93L39.75 42.89L39.50 42.83L39.25 42.78L39.00 42.72L38.75 42.66L38.50 42.59L38.25 42.53L38.00 42.46L37.75 42.39L37.50 42.32L37.25 42.24L37.00 42.17L36.75 42.10L36.50 42.03L36.25 41.96L36.00 41.89L35.75 41.82L35.50 41.75L35.25 41.69L35.00 41.63L34.75 41.58L34.50 41.52L34.25 41.47L34.00 41.43L33.75 41.39L33.50 41.35L33.25 41.32L33.00 41.30L32.75 41.28L32.50 41.26L32.25 41.25L32.00 41.25L31.75 41.25L31.50 41.26L31.25 41.27L31.00 41.29L30.75 41.31L30.50 41.34L30.25 41.38L30.00 41.41L29.75 41.46L29.50 41.50L29.25 41.55L29.00 41.61L28.75 41.67L28.50 41.73L28.25 41.79L28.00 41.86L27.75 41.93L27.50 42.00L27.25 42.07L27.00 42.14L26.75 42.21L26.50 42.29L26.25 42.36L26.00 42.43L25.75 42.50L25.50 42.57L25.25 42.63L25.00 42.70L24.75 42.76L24.50 42.81L24.25 42.87L24.00 42.92L23.75 42.96L23.50 43.00L23.25 43.04L23.00 43.07L22.75 43.10L22.50 43.12L22.25 43.13L22.00 43.14L21.75 43.15L21.50 43.15L21.25 43.14L21.00 43.13L20.75 43.11L20.50 43.09L20.25 43.06L20.00 43.03L19.75 42.99L19.50 42.95L19.45 42.94Z" fill="url(#fc-water-32)"/>
+    <path data-part="wave" d="M18.00 31.22L18.00 31.22L18.25 31.35L18.50 31.48L18.75 31.60L19.00 31.71L19.25 31.82L19.50 31.92L19.75 32.02L20.00 32.11L20.25 32.19L20.50 32.27L20.75 32.33L21.00 32.39L21.25 32.44L21.50 32.48L21.75 32.52L22.00 32.54L22.25 32.56L22.50 32.57L22.75 32.57L23.00 32.56L23.25 32.54L23.50 32.52L23.75 32.49L24.00 32.45L24.25 32.41L24.50 32.36L24.75 32.31L25.00 32.25L25.25 32.18L25.50 32.12L25.75 32.04L26.00 31.97L26.25 31.90L26.50 31.82L26.75 31.74L27.00 31.66L27.25 31.58L27.50 31.51L27.75 31.43L28.00 31.36L28.25 31.29L28.50 31.23L28.75 31.17L29.00 31.11L29.25 31.06L29.50 31.01L29.75 30.97L30.00 30.94L30.25 30.91L30.50 30.89L30.75 30.88L31.00 30.88L31.25 30.89L31.50 30.90L31.75 30.92L32.00 30.95L32.25 30.99L32.50 31.04L32.75 31.09L33.00 31.15L33.25 31.22L33.50 31.30L33.75 31.39L34.00 31.48L34.25 31.58L34.50 31.69L34.75 31.80L35.00 31.92L35.25 32.05L35.50 32.17L35.75 32.31L36.00 32.44L36.25 32.58L36.50 32.72L36.75 32.86L37.00 33.01L37.25 33.15L37.50 33.29L37.75 33.43L38.00 33.57L38.25 33.71L38.50 33.84L38.75 33.98L39.00 34.10L39.25 34.23L39.50 34.34L39.75 34.46L40.00 34.56L40.25 34.66L40.50 34.75L40.75 34.84L41.00 34.92L41.25 34.99L41.50 35.05L41.75 35.10L42.00 35.15L42.25 35.18L42.50 35.21L42.75 35.23L43.00 35.24L43.25 35.25L43.50 35.24L43.75 35.23L44.00 35.21L44.25 35.18L44.50 35.15L44.75 35.11L45.00 35.06L45.25 35.01L45.50 34.95L45.75 34.89L46.00 34.82L46.25 34.75L46.50 34.68L46.75 34.60L47.00 34.53L47.01 34.52L47.22 35.32L47.47 36.52L47.52 36.91L47.50 36.92L47.25 37.00L47.00 37.08L46.75 37.15L46.50 37.23L46.25 37.30L46.00 37.37L45.75 37.44L45.50 37.50L45.25 37.56L45.00 37.61L44.75 37.66L44.50 37.70L44.25 37.73L44.00 37.76L43.75 37.78L43.50 37.79L43.25 37.80L43.00 37.79L42.75 37.78L42.50 37.76L42.25 37.73L42.00 37.70L41.75 37.65L41.50 37.60L41.25 37.54L41.00 37.47L40.75 37.39L40.50 37.30L40.25 37.21L40.00 37.11L39.75 37.01L39.50 36.89L39.25 36.78L39.00 36.65L38.75 36.53L38.50 36.39L38.25 36.26L38.00 36.12L37.75 35.98L37.50 35.84L37.25 35.70L37.00 35.56L36.75 35.41L36.50 35.27L36.25 35.13L36.00 34.99L35.75 34.86L35.50 34.72L35.25 34.60L35.00 34.47L34.75 34.35L34.50 34.24L34.25 34.13L34.00 34.03L33.75 33.94L33.50 33.85L33.25 33.77L33.00 33.70L32.75 33.64L32.50 33.59L32.25 33.54L32.00 33.50L31.75 33.47L31.50 33.45L31.25 33.44L31.00 33.43L30.75 33.43L30.50 33.44L30.25 33.46L30.00 33.49L29.75 33.52L29.50 33.56L29.25 33.61L29.00 33.66L28.75 33.72L28.50 33.78L28.25 33.84L28.00 33.91L27.75 33.98L27.50 34.06L27.25 34.13L27.00 34.21L26.75 34.29L26.50 34.37L26.25 34.45L26.00 34.52L25.75 34.59L25.50 34.67L25.25 34.73L25.00 34.80L24.75 34.86L24.50 34.91L24.25 34.96L24.00 35.00L23.75 35.04L23.50 35.07L23.25 35.09L23.00 35.11L22.75 35.12L22.50 35.12L22.25 35.11L22.00 35.09L21.75 35.07L21.50 35.03L21.25 34.99L21.00 34.94L20.75 34.88L20.50 34.82L20.25 34.74L20.00 34.66L19.75 34.57L19.50 34.47L19.25 34.37L19.00 34.26L18.75 34.15L18.50 34.03L18.25 33.90L18.00 33.77L17.75 33.64L17.50 33.50L17.25 33.36L17.24 33.35L17.31 33.12L17.68 32.04L18.00 31.22Z" fill="#287b91"/>
+  </g>
+</svg>
+                    <span class="font-display text-xl font-semibold text-ink dark:text-white">Flow<span class="italic font-normal text-water">CHAOS</span></span>
+                </a>
+                <p class="mt-2 text-[0.82rem] text-ink-soft dark:text-[#a9bec4]"><span class="tagline"><b>C</b>omprehensive <b>H</b>ydraulic <b>A</b>nalysis &amp; <b>O</b>ptimization <b>S</b>ystem</span>
+</p>
+                <p class="mt-3 max-w-sm text-[0.95rem] text-ink-soft dark:text-[#a9bec4]">Modern water distribution network design and analysis. Freeware for commercial and non-commercial use.</p>
+            </div>
+                            <div>
+                    <h3 class="mb-3 font-sans text-sm font-bold text-ink dark:text-white">Use</h3>
+                    <ul class="space-y-2 text-[0.95rem]">
+                                                    <li><a class="text-ink-soft no-underline hover:text-water dark:text-[#a9bec4]" href="https://hobbybwanali.github.io/flowchaos-site/features">Features</a></li>
+                                                    <li><a class="text-ink-soft no-underline hover:text-water dark:text-[#a9bec4]" href="https://hobbybwanali.github.io/flowchaos-site/docs">Documentation</a></li>
+                                                    <li><a class="text-ink-soft no-underline hover:text-water dark:text-[#a9bec4]" href="https://hobbybwanali.github.io/flowchaos-site/download">Download</a></li>
+                                                    <li><a class="text-ink-soft no-underline hover:text-water dark:text-[#a9bec4]" href="https://hobbybwanali.github.io/flowchaos-site/docs/getting-started">Getting started</a></li>
+                                            </ul>
+                </div>
+                            <div>
+                    <h3 class="mb-3 font-sans text-sm font-bold text-ink dark:text-white">Take part</h3>
+                    <ul class="space-y-2 text-[0.95rem]">
+                                                    <li><a class="text-ink-soft no-underline hover:text-water dark:text-[#a9bec4]" href="https://hobbybwanali.github.io/flowchaos-site/support?topic=support#contact">Support or donate</a></li>
+                                                    <li><a class="text-ink-soft no-underline hover:text-water dark:text-[#a9bec4]" href="https://hobbybwanali.github.io/flowchaos-site/community">Community</a></li>
+                                                    <li><a class="text-ink-soft no-underline hover:text-water dark:text-[#a9bec4]" href="https://hobbybwanali.github.io/flowchaos-site/support?topic=bug#contact">Report a problem</a></li>
+                                                    <li><a class="text-ink-soft no-underline hover:text-water dark:text-[#a9bec4]" href="https://hobbybwanali.github.io/flowchaos-site/docs/plugins">Write a plugin</a></li>
+                                            </ul>
+                </div>
+                            <div>
+                    <h3 class="mb-3 font-sans text-sm font-bold text-ink dark:text-white">About</h3>
+                    <ul class="space-y-2 text-[0.95rem]">
+                                                    <li><a class="text-ink-soft no-underline hover:text-water dark:text-[#a9bec4]" href="https://hobbybwanali.github.io/flowchaos-site/about">About FlowCHAOS</a></li>
+                                                    <li><a class="text-ink-soft no-underline hover:text-water dark:text-[#a9bec4]" href="https://hobbybwanali.github.io/flowchaos-site/releases">Release notes</a></li>
+                                                    <li><a class="text-ink-soft no-underline hover:text-water dark:text-[#a9bec4]" href="https://hobbybwanali.github.io/flowchaos-site/support">Support and contact</a></li>
+                                                    <li><a class="text-ink-soft no-underline hover:text-water dark:text-[#a9bec4]" href="https://hobbybwanali.github.io/flowchaos-site/licence">Licence</a></li>
+                                            </ul>
+                </div>
+                    </div>
+        <div class="wrap mt-10 flex flex-wrap justify-between gap-3 border-t border-line pt-6 text-sm text-mist dark:border-[#1b3a45]">
+            <span>FlowCHAOS is freeware, licensed without a fee under the FlowCHAOS Freeware Licence.</span>
+            <span>Map data and imagery belong to their providers.</span>
+        </div>
+    </div>
+</footer>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js" defer
+        integrity="sha384-g4NTh/Iv5PPU4xPyhEWqPcwtNXOvdaDI8LLnyYfyNZOjKJeYQyjzQ9X5275eBjpt" crossorigin="anonymous"
+        referrerpolicy="no-referrer"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js" defer
+        integrity="sha384-Z3REaz79l2IaAZqJsSABtTbhjgOUYyV3p90XNnAPCSHg3EMTz1fouunq9WZRtj3d" crossorigin="anonymous"
+        referrerpolicy="no-referrer"></script>
+<script src="https://hobbybwanali.github.io/flowchaos-site/js/site.js?v=1792390476" defer></script>
+</body>
+</html>

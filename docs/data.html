@@ -1,0 +1,654 @@
+<!DOCTYPE html>
+<html lang="en" class="no-js">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Layers and data | Documentation | FlowCHAOS</title>
+    <meta name="description" content="Bring in networks, survey points, drawings, rasters and basemaps, each in its own coordinate system.
+">
+    <link rel="canonical" href="https://hobbybwanali.github.io/flowchaos-site/docs/data">
+    <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1">
+    <meta name="author" content="The FlowCHAOS contributors">
+    <meta name="application-name" content="FlowCHAOS">
+    <meta property="og:site_name" content="FlowCHAOS">
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="Layers and data | Documentation | FlowCHAOS">
+    <meta property="og:description" content="Bring in networks, survey points, drawings, rasters and basemaps, each in its own coordinate system.
+">
+    <meta property="og:url" content="https://hobbybwanali.github.io/flowchaos-site/docs/data">
+    <meta property="og:image" content="https://hobbybwanali.github.io/flowchaos-site/images/og/flowchaos.png">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:image:alt" content="FlowCHAOS: water networks designed on real maps and terrain">
+    <meta property="og:locale" content="en_GB">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Layers and data | Documentation | FlowCHAOS">
+    <meta name="twitter:description" content="Bring in networks, survey points, drawings, rasters and basemaps, each in its own coordinate system.
+">
+    <meta name="twitter:image" content="https://hobbybwanali.github.io/flowchaos-site/images/og/flowchaos.png">
+    <link rel="sitemap" type="application/xml" title="Sitemap" href="https://hobbybwanali.github.io/flowchaos-site/sitemap.xml">
+    <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"Organization","@id":"https://hobbybwanali.github.io/flowchaos-site#organisation","name":"FlowCHAOS","url":"https://hobbybwanali.github.io/flowchaos-site","logo":"https://hobbybwanali.github.io/flowchaos-site/images/flowchaos-mark.png","sameAs":[]},{"@type":"WebSite","@id":"https://hobbybwanali.github.io/flowchaos-site#website","name":"FlowCHAOS","alternateName":"Comprehensive Hydraulic Analysis and Optimization System","url":"https://hobbybwanali.github.io/flowchaos-site","inLanguage":"en","publisher":{"@id":"https://hobbybwanali.github.io/flowchaos-site#organisation"}},{"@type":"TechArticle","headline":"Layers and data","description":"Bring in networks, survey points, drawings, rasters and basemaps, each in its own coordinate system.\n","url":"https://hobbybwanali.github.io/flowchaos-site/docs/data","inLanguage":"en","dateModified":"2026-10-28","about":{"@id":"https://hobbybwanali.github.io/flowchaos-site#software"},"publisher":{"@id":"https://hobbybwanali.github.io/flowchaos-site#organisation"}},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"FlowCHAOS","item":"https://hobbybwanali.github.io/flowchaos-site"},{"@type":"ListItem","position":2,"name":"Documentation","item":"https://hobbybwanali.github.io/flowchaos-site/docs"},{"@type":"ListItem","position":3,"name":"Layers and data","item":"https://hobbybwanali.github.io/flowchaos-site/docs/data"}]}]}</script>
+    <meta name="theme-color" content="#0b7a84">
+    
+    <link rel="icon" href="https://hobbybwanali.github.io/flowchaos-site/favicon.ico?v=1792392055" sizes="any">
+    <link rel="icon" type="image/svg+xml" href="https://hobbybwanali.github.io/flowchaos-site/images/flowchaos-mark.svg?v=1792392054">
+    <link rel="icon" type="image/png" sizes="192x192" href="https://hobbybwanali.github.io/flowchaos-site/images/flowchaos-mark.png?v=1792392055">
+    <link rel="apple-touch-icon" href="https://hobbybwanali.github.io/flowchaos-site/images/flowchaos-mark.png?v=1792392055">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght,SOFT,WONK@0,9..144,400..700,0..100,0..1;1,9..144,400..700,0..100,0..1&family=JetBrains+Mono:wght@400;500&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://hobbybwanali.github.io/flowchaos-site/css/app.css?v=1792392348">
+    <script nonce="C/srrl0/ZBYcNvn1+IIV0guS">
+        document.documentElement.classList.replace('no-js', 'js');
+        try {
+            const asked = new URLSearchParams(location.search).get('theme');
+            const theme = (asked === 'light' || asked === 'dark') ? asked : localStorage.getItem('fc-theme');
+            document.documentElement.dataset.theme = theme === 'dark' ? 'dark' : 'light';  // light unless chosen
+        } catch (e) { document.documentElement.dataset.theme = 'light'; }
+    </script>
+</head>
+<body>
+<a href="#main" class="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-50 focus:rounded-full focus:bg-ink focus:px-4 focus:py-2 focus:text-white">Skip to content</a>
+
+<header class="masthead">
+    <div class="wrap flex h-[72px] items-center gap-6">
+        <a href="https://hobbybwanali.github.io/flowchaos-site" class="flex items-center gap-3 no-underline" aria-label="FlowCHAOS home">
+            <svg class="mark" width="36" height="36" viewBox="3.09 2.40 60.38 60.38" aria-hidden="true">
+    <defs><linearGradient id="fc-teal-36" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#3596ad"/>
+      <stop offset="1" stop-color="#1d6175"/>
+    </linearGradient>
+    <linearGradient id="fc-water-36" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#3fa9c2"/>
+      <stop offset="1" stop-color="#1f6a80"/>
+    </linearGradient></defs>
+    <g data-part="mark" transform="rotate(-16 32 35)">
+    <path data-part="outer-drop" d="M32 1.5C26.83 12.48 8.5 26.07 8.5 39C8.5 52.16 18.84 62.5 32 62.5C45.16 62.5 55.5 52.16 55.5 39C55.5 26.07 37.17 12.48 32 1.5Z" fill="url(#fc-teal-36)"/>
+    <path data-part="inner-drop" d="M16.2 40.2C16.2 32.6 19.9 26.6 23.9 21.8C25 19.6 25.8 17.7 26.6 15.8C27.3 18.5 28.2 20.4 29.5 21.4C30.4 17.6 31.4 14 32.4 10.8C36.8 17.6 47.8 28.2 47.8 40.2C47.8 49.3 40.7 56.6 32 56.6C23.3 56.6 16.2 49.3 16.2 40.2Z" fill="#ffffff"/>
+    <path data-part="water" d="M19.45 42.94L19.57 43.66L20.02 45.24L20.63 46.71L21.39 48.07L22.31 49.29L23.35 50.38L24.53 51.33L25.82 52.12L27.22 52.76L28.73 53.22L30.32 53.50L32.00 53.60L33.68 53.50L35.27 53.22L36.78 52.76L38.18 52.12L39.47 51.33L40.65 50.38L41.69 49.29L42.61 48.07L43.37 46.71L43.98 45.24L44.43 43.66L44.55 42.93L44.50 42.94L44.25 42.98L44.00 43.02L43.75 43.05L43.50 43.08L43.25 43.11L43.00 43.13L42.75 43.14L42.50 43.15L42.25 43.15L42.00 43.15L41.75 43.14L41.50 43.13L41.25 43.11L41.00 43.08L40.75 43.05L40.50 43.02L40.25 42.98L40.00 42.93L39.75 42.89L39.50 42.83L39.25 42.78L39.00 42.72L38.75 42.66L38.50 42.59L38.25 42.53L38.00 42.46L37.75 42.39L37.50 42.32L37.25 42.24L37.00 42.17L36.75 42.10L36.50 42.03L36.25 41.96L36.00 41.89L35.75 41.82L35.50 41.75L35.25 41.69L35.00 41.63L34.75 41.58L34.50 41.52L34.25 41.47L34.00 41.43L33.75 41.39L33.50 41.35L33.25 41.32L33.00 41.30L32.75 41.28L32.50 41.26L32.25 41.25L32.00 41.25L31.75 41.25L31.50 41.26L31.25 41.27L31.00 41.29L30.75 41.31L30.50 41.34L30.25 41.38L30.00 41.41L29.75 41.46L29.50 41.50L29.25 41.55L29.00 41.61L28.75 41.67L28.50 41.73L28.25 41.79L28.00 41.86L27.75 41.93L27.50 42.00L27.25 42.07L27.00 42.14L26.75 42.21L26.50 42.29L26.25 42.36L26.00 42.43L25.75 42.50L25.50 42.57L25.25 42.63L25.00 42.70L24.75 42.76L24.50 42.81L24.25 42.87L24.00 42.92L23.75 42.96L23.50 43.00L23.25 43.04L23.00 43.07L22.75 43.10L22.50 43.12L22.25 43.13L22.00 43.14L21.75 43.15L21.50 43.15L21.25 43.14L21.00 43.13L20.75 43.11L20.50 43.09L20.25 43.06L20.00 43.03L19.75 42.99L19.50 42.95L19.45 42.94Z" fill="url(#fc-water-36)"/>
+    <path data-part="wave" d="M18.00 31.22L18.00 31.22L18.25 31.35L18.50 31.48L18.75 31.60L19.00 31.71L19.25 31.82L19.50 31.92L19.75 32.02L20.00 32.11L20.25 32.19L20.50 32.27L20.75 32.33L21.00 32.39L21.25 32.44L21.50 32.48L21.75 32.52L22.00 32.54L22.25 32.56L22.50 32.57L22.75 32.57L23.00 32.56L23.25 32.54L23.50 32.52L23.75 32.49L24.00 32.45L24.25 32.41L24.50 32.36L24.75 32.31L25.00 32.25L25.25 32.18L25.50 32.12L25.75 32.04L26.00 31.97L26.25 31.90L26.50 31.82L26.75 31.74L27.00 31.66L27.25 31.58L27.50 31.51L27.75 31.43L28.00 31.36L28.25 31.29L28.50 31.23L28.75 31.17L29.00 31.11L29.25 31.06L29.50 31.01L29.75 30.97L30.00 30.94L30.25 30.91L30.50 30.89L30.75 30.88L31.00 30.88L31.25 30.89L31.50 30.90L31.75 30.92L32.00 30.95L32.25 30.99L32.50 31.04L32.75 31.09L33.00 31.15L33.25 31.22L33.50 31.30L33.75 31.39L34.00 31.48L34.25 31.58L34.50 31.69L34.75 31.80L35.00 31.92L35.25 32.05L35.50 32.17L35.75 32.31L36.00 32.44L36.25 32.58L36.50 32.72L36.75 32.86L37.00 33.01L37.25 33.15L37.50 33.29L37.75 33.43L38.00 33.57L38.25 33.71L38.50 33.84L38.75 33.98L39.00 34.10L39.25 34.23L39.50 34.34L39.75 34.46L40.00 34.56L40.25 34.66L40.50 34.75L40.75 34.84L41.00 34.92L41.25 34.99L41.50 35.05L41.75 35.10L42.00 35.15L42.25 35.18L42.50 35.21L42.75 35.23L43.00 35.24L43.25 35.25L43.50 35.24L43.75 35.23L44.00 35.21L44.25 35.18L44.50 35.15L44.75 35.11L45.00 35.06L45.25 35.01L45.50 34.95L45.75 34.89L46.00 34.82L46.25 34.75L46.50 34.68L46.75 34.60L47.00 34.53L47.01 34.52L47.22 35.32L47.47 36.52L47.52 36.91L47.50 36.92L47.25 37.00L47.00 37.08L46.75 37.15L46.50 37.23L46.25 37.30L46.00 37.37L45.75 37.44L45.50 37.50L45.25 37.56L45.00 37.61L44.75 37.66L44.50 37.70L44.25 37.73L44.00 37.76L43.75 37.78L43.50 37.79L43.25 37.80L43.00 37.79L42.75 37.78L42.50 37.76L42.25 37.73L42.00 37.70L41.75 37.65L41.50 37.60L41.25 37.54L41.00 37.47L40.75 37.39L40.50 37.30L40.25 37.21L40.00 37.11L39.75 37.01L39.50 36.89L39.25 36.78L39.00 36.65L38.75 36.53L38.50 36.39L38.25 36.26L38.00 36.12L37.75 35.98L37.50 35.84L37.25 35.70L37.00 35.56L36.75 35.41L36.50 35.27L36.25 35.13L36.00 34.99L35.75 34.86L35.50 34.72L35.25 34.60L35.00 34.47L34.75 34.35L34.50 34.24L34.25 34.13L34.00 34.03L33.75 33.94L33.50 33.85L33.25 33.77L33.00 33.70L32.75 33.64L32.50 33.59L32.25 33.54L32.00 33.50L31.75 33.47L31.50 33.45L31.25 33.44L31.00 33.43L30.75 33.43L30.50 33.44L30.25 33.46L30.00 33.49L29.75 33.52L29.50 33.56L29.25 33.61L29.00 33.66L28.75 33.72L28.50 33.78L28.25 33.84L28.00 33.91L27.75 33.98L27.50 34.06L27.25 34.13L27.00 34.21L26.75 34.29L26.50 34.37L26.25 34.45L26.00 34.52L25.75 34.59L25.50 34.67L25.25 34.73L25.00 34.80L24.75 34.86L24.50 34.91L24.25 34.96L24.00 35.00L23.75 35.04L23.50 35.07L23.25 35.09L23.00 35.11L22.75 35.12L22.50 35.12L22.25 35.11L22.00 35.09L21.75 35.07L21.50 35.03L21.25 34.99L21.00 34.94L20.75 34.88L20.50 34.82L20.25 34.74L20.00 34.66L19.75 34.57L19.50 34.47L19.25 34.37L19.00 34.26L18.75 34.15L18.50 34.03L18.25 33.90L18.00 33.77L17.75 33.64L17.50 33.50L17.25 33.36L17.24 33.35L17.31 33.12L17.68 32.04L18.00 31.22Z" fill="#287b91"/>
+  </g>
+</svg>
+            <span class="font-display text-[1.45rem] font-semibold tracking-tight text-ink dark:text-white">Flow<span class="italic font-normal text-water">CHAOS</span></span>
+        </a>
+        <nav id="site-nav" class="ml-auto hidden items-center gap-1 lg:flex" aria-label="Main">
+                            <a href="https://hobbybwanali.github.io/flowchaos-site/features" class="navlink">Features</a>
+                            <a href="https://hobbybwanali.github.io/flowchaos-site/docs" class="navlink is-here">Documentation</a>
+                            <a href="https://hobbybwanali.github.io/flowchaos-site/about" class="navlink">About</a>
+                            <a href="https://hobbybwanali.github.io/flowchaos-site/community" class="navlink">Community</a>
+                            <a href="https://hobbybwanali.github.io/flowchaos-site/support" class="navlink">Support</a>
+                    </nav>
+        <div class="ml-auto flex items-center gap-2 lg:ml-2">
+            <button class="theme-toggle grid size-10 place-items-center rounded-full text-ink-soft ring-1 ring-line transition hover:ring-lagoon dark:text-[#b5c7cc]" type="button" aria-label="Light or dark">
+                <svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><path d="M12 3a9 9 0 1 0 9 9 7 7 0 0 1-9-9Z" fill="currentColor"/></svg>
+            </button>
+            <a href="https://hobbybwanali.github.io/flowchaos-site/download" class="btn btn-water gap-2 max-sm:size-10 max-sm:p-0 max-sm:justify-center"
+               title="Download FlowCHAOS for Windows" aria-label="Download FlowCHAOS">
+                <svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><path d="M12 4v11m0 0-4.5-4.5M12 15l4.5-4.5M5 19.5h14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                <span class="max-sm:hidden">Download</span>
+            </a>
+            <button class="nav-toggle grid size-10 place-items-center rounded-full ring-1 ring-line lg:hidden" aria-expanded="false" aria-controls="mobile-nav" aria-label="Menu">
+                <svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path class="bar b1" d="M4 7h16"/><path class="bar b2" d="M4 12h16"/><path class="bar b3" d="M4 17h10"/></svg>
+            </button>
+        </div>
+    </div>
+    <nav id="mobile-nav" class="wrap mobile-nav" aria-label="Main">
+        <div class="mobile-nav-inner">
+                    <a href="https://hobbybwanali.github.io/flowchaos-site/features" class="navlink">Features</a>
+                    <a href="https://hobbybwanali.github.io/flowchaos-site/docs" class="navlink is-here">Documentation</a>
+                    <a href="https://hobbybwanali.github.io/flowchaos-site/about" class="navlink">About</a>
+                    <a href="https://hobbybwanali.github.io/flowchaos-site/community" class="navlink">Community</a>
+                    <a href="https://hobbybwanali.github.io/flowchaos-site/support" class="navlink">Support</a>
+                    <a href="https://hobbybwanali.github.io/flowchaos-site/download" class="navlink">Download</a>
+                </div>
+    </nav>
+</header>
+
+<main id="main">
+    <div class="wrap grid gap-10 py-10 lg:grid-cols-[250px_minmax(0,1fr)] xl:grid-cols-[250px_minmax(0,1fr)_220px]">
+    <aside class="lg:sticky lg:top-24 lg:max-h-[calc(100vh-7rem)] lg:self-start lg:overflow-y-auto" aria-label="Manual">
+        <div class="relative mb-5">
+            <input class="field py-2.5 pl-10 text-sm" type="search" placeholder="Search" data-doc-search="https://hobbybwanali.github.io/flowchaos-site/docs/search.json" aria-label="Search the documentation">
+            <svg class="pointer-events-none absolute left-3.5 top-1/2 -translate-y-1/2 text-mist" viewBox="0 0 24 24" width="16" height="16" aria-hidden="true"><circle cx="11" cy="11" r="7" fill="none" stroke="currentColor" stroke-width="2"/><path d="M16.5 16.5L21 21" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+            <div class="absolute left-0 top-full z-30 mt-2 hidden max-h-[60vh] w-[340px] overflow-y-auto rounded-3xl bg-white p-2 shadow-2xl ring-1 ring-line dark:bg-[#0d2029]" data-doc-results></div>
+        </div>
+                    <p class="mb-1.5 mt-6 px-3 text-xs font-bold tracking-wide text-mist first-of-type:mt-0">Getting started</p>
+                            <a href="https://hobbybwanali.github.io/flowchaos-site/docs/introduction" class="doclink">Introduction</a>
+                            <a href="https://hobbybwanali.github.io/flowchaos-site/docs/install" class="doclink">Install</a>
+                            <a href="https://hobbybwanali.github.io/flowchaos-site/docs/getting-started" class="doclink">Tutorial: a village supply</a>
+                            <a href="https://hobbybwanali.github.io/flowchaos-site/docs/interface" class="doclink">The window</a>
+                                <p class="mb-1.5 mt-6 px-3 text-xs font-bold tracking-wide text-mist first-of-type:mt-0">User guide</p>
+                            <a href="https://hobbybwanali.github.io/flowchaos-site/docs/projects" class="doclink">Working with projects</a>
+                            <a href="https://hobbybwanali.github.io/flowchaos-site/docs/drawing" class="doclink">Drawing and editing</a>
+                            <a href="https://hobbybwanali.github.io/flowchaos-site/docs/data" class="doclink is-here">Layers and data</a>
+                            <a href="https://hobbybwanali.github.io/flowchaos-site/docs/labels" class="doclink">Labels</a>
+                            <a href="https://hobbybwanali.github.io/flowchaos-site/docs/network-model" class="doclink">The network model</a>
+                            <a href="https://hobbybwanali.github.io/flowchaos-site/docs/analysis" class="doclink">Running an analysis</a>
+                            <a href="https://hobbybwanali.github.io/flowchaos-site/docs/options" class="doclink">Analysis options</a>
+                            <a href="https://hobbybwanali.github.io/flowchaos-site/docs/controls" class="doclink">Controls and rules</a>
+                            <a href="https://hobbybwanali.github.io/flowchaos-site/docs/water-quality" class="doclink">Water quality</a>
+                            <a href="https://hobbybwanali.github.io/flowchaos-site/docs/results" class="doclink">Reading the results</a>
+                            <a href="https://hobbybwanali.github.io/flowchaos-site/docs/map" class="doclink">Map views, legends and animation</a>
+                            <a href="https://hobbybwanali.github.io/flowchaos-site/docs/surfaces" class="doclink">Terrain and surface maps</a>
+                            <a href="https://hobbybwanali.github.io/flowchaos-site/docs/design" class="doclink">Design tools</a>
+                            <a href="https://hobbybwanali.github.io/flowchaos-site/docs/quantities" class="doclink">Quantities and planning</a>
+                            <a href="https://hobbybwanali.github.io/flowchaos-site/docs/layouts" class="doclink">Map sheets and reports</a>
+                                <p class="mb-1.5 mt-6 px-3 text-xs font-bold tracking-wide text-mist first-of-type:mt-0">Reference</p>
+                            <a href="https://hobbybwanali.github.io/flowchaos-site/docs/shortcuts" class="doclink">Keyboard shortcuts</a>
+                            <a href="https://hobbybwanali.github.io/flowchaos-site/docs/file-formats" class="doclink">File formats</a>
+                            <a href="https://hobbybwanali.github.io/flowchaos-site/docs/input-format" class="doclink">The network file</a>
+                            <a href="https://hobbybwanali.github.io/flowchaos-site/docs/units" class="doclink">Units of measurement</a>
+                            <a href="https://hobbybwanali.github.io/flowchaos-site/docs/coordinates" class="doclink">Coordinates and regional settings</a>
+                            <a href="https://hobbybwanali.github.io/flowchaos-site/docs/messages" class="doclink">Errors and warnings</a>
+                            <a href="https://hobbybwanali.github.io/flowchaos-site/docs/algorithms" class="doclink">How a network is solved</a>
+                            <a href="https://hobbybwanali.github.io/flowchaos-site/docs/glossary" class="doclink">Glossary</a>
+                            <a href="https://hobbybwanali.github.io/flowchaos-site/docs/faq" class="doclink">Questions and answers</a>
+                            <a href="https://hobbybwanali.github.io/flowchaos-site/docs/troubleshooting" class="doclink">Troubleshooting</a>
+                                <p class="mb-1.5 mt-6 px-3 text-xs font-bold tracking-wide text-mist first-of-type:mt-0">Developers</p>
+                            <a href="https://hobbybwanali.github.io/flowchaos-site/docs/plugins" class="doclink">Writing plugins</a>
+                            <a href="https://hobbybwanali.github.io/flowchaos-site/docs/plugin-tutorial" class="doclink">Tutorial: build a plugin</a>
+                            <a href="https://hobbybwanali.github.io/flowchaos-site/docs/plugin-api" class="doclink">Plugin API</a>
+                            <a href="https://hobbybwanali.github.io/flowchaos-site/docs/project-model" class="doclink">Project model</a>
+                            <a href="https://hobbybwanali.github.io/flowchaos-site/docs/plugin-examples" class="doclink">Plugin examples</a>
+                        </aside>
+
+    <article class="min-w-0">
+        <p class="eyebrow">User guide</p>
+        <h1 class="mt-2 font-display text-4xl font-semibold md:text-5xl">Layers and data</h1>
+        <div class="prose-docs mt-6"><p>Bring in networks, survey points, drawings, rasters and basemaps, each in its own coordinate system.</p>
+<h2 id="adding-layers">Adding layers</h2>
+<p>Use the <strong>Add Layer</strong> button above the layers list (or drag files onto the map):</p>
+<ul>
+<li><strong>Network layer</strong>: FlowCHAOS network files (.fcnet), hydraulic model files (.inp, .net), network
+CSV, shapefiles and KML.</li>
+<li><strong>Survey points</strong>: XYZ, CSV, TXT and spreadsheet files. Points become unconnected nodes with
+their ground level and every column of the file, ready to label and contour.</li>
+<li><strong>Raster or DEM</strong>: GeoTIFF and other rasters. A DEM can supply ground levels. A PDF drawing or map
+comes in as an image: choose its page (see Georeferencing below).</li>
+<li><strong>Vector layer from file</strong> (Ctrl+Shift+V): shapefiles, GeoPackage, GeoJSON, KML and DXF drawings as
+vector layers, every layer and kind of geometry of the file.</li>
+<li><strong>CAD drawing (DXF)</strong>: lines, polylines, arcs and splines become a network (see below), or the whole
+drawing comes in as vector layers (see DXF drawings as vector layers).</li>
+<li><strong>Surface map</strong>: contours and other maps from points or a DEM.</li>
+<li><strong>Satellite and basemaps</strong>: online imagery, street and topographic maps, vector basemaps, your own
+tile services and offline tile packages.</li>
+</ul>
+<h2 id="networks-are-layers">Networks are layers</h2>
+<p>Every network is a layer, listed under <strong>Networks</strong> in the Layers panel: the network of a new project,
+networks added with <strong>Add Layer</strong> or <strong>File &gt; Import Network &gt; Hydraulic Model</strong>, a file dropped on the map, a
+file opened with <strong>File &gt; Open</strong> (a new project holding it as its first layer), survey points, and
+empty layers made with <strong>Layer &gt; Add Empty Network Layer</strong>. A layer brings everything it needs to run:
+curves, demand profiles, controls and rules come with it, and names already used in the project are
+renamed (T1 becomes T1_2) together with every reference to them. The first layer of an empty project
+also sets the analysis options, times, energy and report settings.</p>
+<p>A network layer is changed only while it is being edited, as in a GIS: right-click it and choose
+<strong>Toggle Editing</strong> (its name turns bold, with a pencil). What you draw goes into that layer, a new pipe
+connects only to its nodes, and the other layers stay as they are; an attempt to change them says
+which layer to edit. Choosing a drawing tool starts editing by itself when it is clear which layer: the
+only one, or a new one in an empty project; with several layers FlowCHAOS asks.</p>
+<p>Right-click a network layer for its menu: Toggle Editing, Zoom to Layer, Attribute Table, labels,
+<strong>Analyse This Network</strong>, <strong>Export Layer As</strong> (FlowCHAOS network, hydraulic model, CSV, GeoJSON,
+shapefile, GeoPackage, KML or DXF of that layer alone), Rename, Properties and Remove. Right-clicking an
+element on the map shows the same commands for its layer, under <strong>Layer</strong>.</p>
+<p>A <strong>FlowCHAOS network file</strong> (.fcnet) holds one network with every property, the profiles, curves,
+controls and rules it uses, its coordinate system and its look (symbol and labels). Use it to share a
+network or to add it to another project as a layer; a project file (.fchaos) holds the whole work.</p>
+<p><strong>Properties</strong> of a network layer has, on its Information page, <strong>Show on map</strong> switches: junction
+nodes, tanks and sources, pipes, pumps and valves, and labels. Hiding the junctions shows the pipes
+alone on a dense network; the hidden elements stay in the network and in the analysis. Hide a layer and its elements leave the
+map and the analysis; its labels, colours and attribute table are its own (labels follow Map Options
+until the layer is given its own). After a run the map shows the network that was analysed.</p>
+<p>A progress window shows each stage of a long import; what was imported, and any notes, go to the
+status bar and the log. A message box opens only when something needs your attention.</p>
+<h2 id="networks-from-lines-dxf-shapefiles-kml-gpx">Networks from lines (DXF, shapefiles, KML, GPX)</h2>
+<p>Lines become pipes and their ends become junctions. A junction is placed only where pipes meet: at
+the ends of lines, where lines join end to end, and at a tee, where the end of one line lies on
+another, which is then split there. Bends stay as vertices of a pipe, so a curved main is one pipe
+with its true length, not a chain of short pipes. Two pipes that meet end to end with the same
+diameter, roughness and drawing layer are joined into one. Point features become junctions with
+their elevation and withdrawal when the file has them.</p>
+<p>From a DXF, lines, polylines, 3D polylines, arcs, splines and ellipses are read. The drawing layer of
+each line is kept as a field; a diameter in the layer name (DN150, D110, 160mm) becomes the pipe
+diameter, and the heights of 3D polylines become ground levels.</p>
+<h3>Build Network from Lines</h3>
+<p><strong>Layer &gt; Build Network from Lines</strong> (or right-click a line layer, <strong>Build Network from This Layer</strong>)
+makes a new network layer from line layers already in the project. Tick the layers to use (each is
+highlighted on the map as you choose), and for each one the fields that hold the diameter, roughness,
+material, name and ground level, with a value to use where a field is empty. Set the snapping tolerance
+that joins line ends that nearly meet, whether lines are split where another ends on them (tees), and
+whether a junction is put where two lines cross (untick it when pipes cross at different depths without
+being connected), and whether pipes that meet end to end with the same properties are joined.
+<strong>Preview</strong> counts the pipes, junctions and joins it will make; <strong>Generate</strong> adds the network as a layer
+of its own, ready to run. Dropping line files on the Networks group in the Layers panel does the same.</p>
+<h3>Check and Fix Network</h3>
+<p><strong>Layer &gt; Check and Fix Network</strong> (the second page of the Network Builder) finds what a drawing or an
+import leaves wrong in a network layer, within a tolerance in metres:</p>
+<ul>
+<li>pipes that cross with no junction, and pipe ends that lie on another pipe with no junction;</li>
+<li>ends that run just past the pipe they should join (overshoots) or stop just short of it (undershoots);</li>
+<li>junctions closer together than the tolerance, pipes drawn twice, pipes with no length and junctions
+with no pipe;</li>
+<li>parts of the network with no reservoir or tank (reported for you to decide).</li>
+</ul>
+<p><strong>Check</strong> lists them; click a row to select the elements and zoom to the place. <strong>Fix Ticked</strong> fixes the
+ticked ones together: junctions are put where pipes cross or meet, overshooting tails are cut off,
+short ends are joined to the pipe, doubled pipes and loose junctions are removed, and levels of new
+junctions are taken along their pipe. The whole fix is one step that Undo puts back.</p>
+<h2 id="vector-layers">Vector layers</h2>
+<p>Vector layers hold points, lines and polygons that are not a network: plots and parcels, roads,
+rivers, service areas, valve chambers, survey lines.</p>
+<p><strong>New Shapefile Layer</strong> (Layer menu, or the first button of the Digitizing toolbar) creates a layer of points, multipoints, lines, multilines, polygons or multipolygons, as a new
+shapefile is created in a GIS: give it a name, its geometry type, its coordinate system and its
+fields (text, whole number, decimal number, date or yes/no). A new layer starts with an <code>id</code> field that
+numbers each new feature by itself (1, 2, 3) and a <code>name</code> field; with <strong>Number new features
+automatically</strong> ticked, adding a point does not stop to ask for its values: fill them in later in the
+attribute table. The layer is written as a shapefile where you choose, or kept in the project only.
+<strong>Layer &gt; Add Vector Layer</strong> reads shapefiles, GeoPackage, GeoJSON, KML and DXF files as editable layers
+(not as a network): a file with several layers, or with points, lines and polygons together, gives one
+vector layer for each. Vector layers are listed under <strong>Vector layers</strong> and saved with the project (the layers read from one file,
+such as the drawing layers of a DXF or the tables of a GeoPackage, sit under a group named after the file,
+which shows or hides them together);
+right-click one to reproject it to another coordinate system.</p>
+<h3>DXF drawings as vector layers</h3>
+<p>A DXF added as a vector layer asks which of its drawing layers to bring in, and comes in as the
+drawing is organised: one vector layer for each drawing layer and kind of geometry (points, lines,
+polygons), or one for each kind when the drawing layers are not split. Blocks are drawn where they are
+inserted, texts become a labelled point layer at their height and angle, and every feature keeps its
+drawing layer, line type, colour and handle, with the colour of the drawing on the map. 3D entities keep
+their elevation in a field, so contour lines of a survey keep their level and can make a DEM. A DXF
+does not say its coordinate system: choose the one its coordinates are in.</p>
+<h3>Selecting features</h3>
+<p>The <strong>Select Features</strong> button (on the Selection toolbar, and in <strong>Vector &gt; Selection</strong>) selects the
+features of any vector layer, whether it is being edited or not. A click on it selects in the way last
+chosen; the arrow beside it opens every way to select:</p>
+<ul>
+<li><strong>Select by Click or Box</strong>: click a feature, or drag a box over several.</li>
+<li><strong>Select by Drawn Polygon</strong>: click the corners of a polygon; a double-click, Enter or a right-click
+selects what it touches.</li>
+<li>With either, <strong>Shift</strong> adds to the selection, <strong>Ctrl</strong> takes from it (Ctrl and a click on a feature
+that is not selected adds it), and <strong>Esc</strong> clears the selection.</li>
+<li><strong>Select by Expression</strong> (<code>area_ha &gt; 2 and crop == 'maize'</code>), <strong>Select by Spatial Relation</strong> (the
+features that intersect, lie within, contain, touch, cross, overlap, are apart from or are near the
+features of another layer, or only its selected ones), <strong>Select All</strong>, <strong>Invert Selection</strong> and
+<strong>Clear Selection</strong>.</li>
+</ul>
+<p>There is one selection tool for vector layers: it selects in any layer, and in the layer being edited the
+selected features are the ones Delete, Move, Split and the Advanced Editing commands work on. The
+network has its own, <strong>Select Network Elements</strong>, on the Navigate toolbar.</p>
+<p>Features are picked from the vector layer chosen in the Layers panel, or from every visible vector layer
+when none is chosen. Selected features are drawn in the selection colour, and the attribute table and
+the tools that work on &quot;only the selected features&quot; use them.</p>
+<h3>Processing tools for vector layers</h3>
+<p>The <strong>Vector</strong> menu (and the Processing Toolbox) has five groups of tools for vector layers. Each reads
+a layer (all its features, or only those selected on the map), works in metres for any coordinate
+system, and gives its result as a new vector layer, a selection or a table:</p>
+<ul>
+<li><strong>Measures and Summaries</strong>: Field Summary, Totals by Class, Points per Polygon, Line Length per
+Polygon (pipes in each block), Distance to Closest Feature, Crossing Points, Centre of Features.</li>
+<li><strong>Overlays</strong>: Offset Zone (a band at a distance around features), Cut to Outline, Common Parts, Cut
+Away, Combine Polygons, Parts Not Shared, Fuse Features, Enclosing Outline, Cut along Lines.</li>
+<li><strong>Shapes and Conversions</strong>: Centre Points, Outlines of Polygons, Fill Closed Lines, Break Lines into
+Segments, Reduce Vertices, Round Corners, Add Vertices, Points at Intervals (with chainage), Vertices
+as Points, Size and Position Fields, Bounding Rectangles, Split Multipart Features, Repair Shapes,
+Supply Zones around Points (the area each junction or well serves).</li>
+<li><strong>Selection and Sampling</strong>: Select by Spatial Relation, Filter by Spatial Relation, Random Sample,
+Filter by Expression, Copy Selection to New Layer, Layer Footprint, Square Grid, Scatter Points in
+Polygons.</li>
+<li><strong>Tables and Layers</strong>: Append Layers, One Layer per Value, Link Tables by Field, Link Attributes by
+Position, Change Coordinate System, Remove Repeated Shapes, Number Features, Drop Field, Field
+Calculator.</li>
+</ul>
+<h3>Editing</h3>
+<p>Select a vector layer in the Layers panel: <strong>Toggle Editing</strong> and <strong>Open Attribute Table</strong> on the
+toolbar act on it (they are greyed until a vector layer is selected). Choosing a <strong>Digitizing</strong> tool
+with a vector layer selected starts editing it. While a layer is edited the Digitizing tools work on it:</p>
+<ul>
+<li><strong>Add Feature</strong>: click the vertices; a point needs one click, and a line or polygon is finished
+with a double-click, Enter or a right-click. Backspace removes the last vertex, Esc drops the
+sketch, and with Shift held the new part is added to the selected feature of a multi layer. A new
+feature is numbered automatically and nothing is asked: a layer edited for the first time without a
+numbering field gets an <strong>id</strong> field (1, 2, 3 in the order of its features), and each new feature takes
+the next number. A field all the layer's features share one value of (a drawing layer's name) is filled
+in too; the rest are filled in the attribute table. An id typed by hand must be free: one used by another
+feature is refused, with the next free number. A layer can ask for the values with a form instead (its
+<strong>Properties &gt; Fields</strong> page).</li>
+<li>Selecting: the <strong>Select Features</strong> button of the Selection toolbar; Delete removes the selected
+features of the layer being edited.</li>
+<li><strong>Move Feature</strong>: drag a feature; it follows the pointer and lands where you release it.</li>
+<li><strong>Vertex Tool</strong>: drag a vertex to move it (the shape follows it as it moves), double-click a segment
+to add a vertex, right-click a vertex to remove it.</li>
+<li><strong>Split Features</strong>: select the polygons or lines to cut (or none, to cut every one the line
+crosses), choose Split Features, then click a cutting line across them, starting and ending outside
+them, and finish it with a double-click, Enter or a right-click. Each piece keeps the attributes;
+Undo puts the feature back whole. With snapping on, the clicks jump to nearby nodes and grid points.</li>
+</ul>
+<p><strong>Advanced Editing</strong> (the dropdown beside Delete) has <strong>Merge Selected Features</strong> (one feature from
+the selected ones, keeping the attributes of the one you choose), <strong>Separate Parts</strong> (each part of a
+multipart feature as a feature of its own), <strong>Simplify Selected Features</strong> (fewer vertices, within a
+tolerance in metres), and <strong>Copy Features</strong> and <strong>Paste Features</strong>, which bring features from one layer
+into the layer being edited, with fields matched by name and the coordinates moved into its system.
+Dissolve, union, clip and the other overlays are in the Processing Toolbox.</p>
+<p><strong>Save Layer Edits</strong> writes the layer back to the file it came from when that file can be written (a
+shapefile, GeoPackage or GeoJSON). A layer drawn in the project, or read from a drawing or KML, is a
+temporary layer: its edits are saved in the project and in a temporary file, without asking for a file
+name; <strong>Save Layer As</strong> makes a file of it. <strong>Toggle Editing</strong> to stop asks to <strong>Save</strong> the edits,
+<strong>Discard</strong> them (the layer goes back to what it was when editing started) or <strong>Cancel</strong> (keep
+editing). Every edit is one step of Undo.</p>
+<p>Pieces made by <strong>Split Features</strong>, <strong>Separate Parts</strong> and pasting are numbered: the layer's numbering
+field (or a whole-number field called id, fid or objectid) takes the next free numbers, so nothing is
+asked and no number repeats. A cutting line drawn a little short of a polygon's edge is drawn on to it.</p>
+<h3>Writing expressions</h3>
+<p>Expressions (the Update bar, the Field Calculator, Select by Expression, Find and Query) name fields
+as they read, in any case: <code>area_ha * 1.3</code>, <code>&quot;Design withdrawal (l/s)&quot; * 4 / 2</code> (double quotes for a
+name with spaces or brackets), <code>design withdrawal (l/s) * 4 / 2</code> or <code>design_withdrawal_(l/s) * 4 / 2</code>.
+'Single quotes' are text. Type two letters, or a double quote, for a list of the fields and functions
+that match; while typing in the Update bar, a click on a column heading or a cell puts that column's field
+into the expression, as a spreadsheet takes a cell into a formula.</p>
+<p>Every expression is checked as it is written: a green tick (and the line under the Expression Builder's
+box) when it can be worked out, with what the first row gives; a red cross with what is wrong, such as an
+unknown field or a bracket left open. In the Expression Builder the functions show in bold teal, fields
+in orange, text in green and numbers in purple. The Update list names every column: those that cannot
+be set (measured from the shape, or worked out by the analysis) are greyed, with the reason, and can
+still be used in the expression.</p>
+<h3>Attribute table</h3>
+<p>The attribute table lists every feature with its values and its calculated fields: <code>length_m</code> for
+lines; <code>perimeter_m</code>, <code>area_m2</code> and <code>area_ha</code> for polygons, holes left out. They are measured on the
+ellipsoid, the true ground values a GIS gives, or on the map grid when <strong>Project Properties &gt;
+Measurements &gt; Measure areas</strong> says so (a UTM grid is up to 0.1 % off the ground near its central
+meridian, more towards the edges of its zone). They are worked out from each shape, always
+current (shown in grey), and can be used like any other field to colour the layer, label it and in
+expressions. Large layers open at once: rows are drawn as they come into view.</p>
+<ul>
+<li><strong>Selecting</strong>: click rows, with Ctrl or Shift to add more; <strong>Select by Expression</strong> (with the
+Expression Builder, as a new selection, added to it, taken from it or within it), <strong>Select All</strong>,
+<strong>Invert Selection</strong> and <strong>Deselect All</strong>. The table and the map share one selection.</li>
+<li><strong>Finding</strong>: type words in the find box, or tick <strong>Selected features only</strong>; the status line counts
+the features, the selected ones and those shown.</li>
+<li><strong>Columns</strong>: click a heading to sort (numbers as numbers); right-click a heading to sort, fit, hide
+or show columns. Double-click a row number to zoom the map to that feature.</li>
+<li><strong>Editing</strong>: <strong>Toggle Editing</strong> opens the cells for typing and keeps the table in front. The <strong>Update</strong>
+bar sets a field from a value or an expression (<code>area_ha * 1.3</code>, <code>if(crop == 'maize', 2, 1)</code>) for the
+selected features or all of them. <strong>Delete Fields</strong> removes several fields at once (Tick All for a
+fresh start); the id field stays, so new features keep their numbers, and <strong>Add Field</strong> adds your own. <strong>Add Field</strong>, the <strong>Field Calculator</strong> and the <strong>Delete</strong> button
+(its menu has Delete Selected Features and Delete Field) complete it; every change is one step of
+Undo, and <strong>Save Layer Edits</strong> writes the layer to its file.</li>
+<li><strong>Copy Selected Rows</strong> (to paste into a spreadsheet) and <strong>Save Selected Features As</strong> a new file.</li>
+</ul>
+<p>The <strong>Field Calculator</strong> fills a new or an existing field from an expression of other fields, for
+example <code>area / 10000</code> for hectares or <code>concat(name, ' ', zone)</code>. It knows <code>+ - * /</code>, brackets and
+round, abs, min, max, int, float, str, len, sqrt, upper, lower and concat, and can update the
+selected features only.</p>
+<h3>Properties</h3>
+<p>Double-click a vector layer (or right-click, Properties) for its properties:</p>
+<ul>
+<li>
+<p><strong>Information</strong> and <strong>Source</strong>: the geometry, the number of features, the extent, the file.</p>
+</li>
+<li>
+<p><strong>Symbology</strong>: a <strong>single symbol</strong>, <strong>categorized</strong> (one colour for each value of a field) or
+<strong>graduated</strong> (classes of a number field). The symbol has a stroke colour, width and style (solid,
+dash, dot, dash-dot), a fill colour, opacity and style (solid, hatched, cross-hatched, diagonal,
+dotted or none), and for points a marker (circle, square, triangle, diamond, star, pentagon, hexagon,
+cross or X) and a size.</p>
+<p>Classes take their colours from a <strong>colour ramp</strong>: ramps for values (from light to dark, or two
+colours around a middle), sets of distinct colours for categories, or <strong>random colours</strong>; <strong>Invert</strong>
+turns a ramp round, and changing the ramp recolours the classes at once. Graduated classes are made by
+<strong>equal intervals</strong>, <strong>equal counts</strong> (quantiles), <strong>natural breaks</strong> (Jenks: similar values kept
+together), <strong>standard deviation</strong> or <strong>round numbers</strong>, with the number of classes and the decimals of
+their labels.</p>
+<p>The buttons above the class table: <strong>Classify</strong> (categories add the values not listed yet; graduated
+classes are made again), <strong>Add Class</strong>, <strong>Delete Class</strong>, <strong>Delete All Classes</strong>, <strong>Show All</strong> and
+<strong>Hide All</strong>. In the table, untick a class to hide it, edit a value, a range or a label in its cell,
+and click a colour to change it; <strong>Features</strong> counts the features in each class. The ramps are kept in
+<code>style/colour_ramps.json</code> in the reference data: add your own there.</p>
+</li>
+<li>
+<p><strong>Labels</strong>: a field, the font, size, colour, bold, a halo and the placement (over, above, below,
+right or left of the feature). A polygon's label sits at the point deepest inside it; a label that
+would cover another is left out until you zoom in, unless <strong>Show every label</strong> is ticked.</p>
+</li>
+<li>
+<p><strong>Fields</strong>: the fields with their types.</p>
+</li>
+<li>
+<p><strong>Display</strong>: the scales the layer shows at.</p>
+</li>
+<li>
+<p><strong>Metadata</strong>: author, abstract and keywords.</p>
+</li>
+</ul>
+<p><strong>Apply</strong> shows the change at once; OK keeps it.</p>
+<h2 id="georeferencing-and-tracing-a-map-or-drawing">Georeferencing and tracing a map or drawing</h2>
+<p><strong>Layer &gt; Georeferencer</strong> places a scanned map, a drawing, a photo or a page of a PDF on the map.
+A PDF asks for its page first: every page is shown as a preview with its sheet size (A1 landscape,
+for example), and the chosen page is drawn on white at 150 to 400 dpi and kept as an image beside the
+PDF. There is one
+Georeferencer window: it opens empty, or with the image chosen in the Layers panel, and <strong>Add Image</strong>
+loads another. Opening another image (or the practice map) asks first whether to save the point pairs
+of the one shown.</p>
+<ol>
+<li><strong>Add Point</strong>: click points on the image (grid crossings, road junctions, building corners). Each
+click adds a row to the table; the window stays where it is, so you can add all the image points
+first.</li>
+<li>Select a row and click <strong>Pick Map Point</strong>: the main map comes forward, click the same place on it
+(or type its coordinates in the table), and the window comes back with the next row waiting.</li>
+<li><strong>Pick on Map Only</strong> works on the main map alone: click a point of the overlaid image, then where it
+belongs, pair after pair; the window returns when the chosen method has the pairs it needs.</li>
+</ol>
+<p>The table shows each pair with its residual and the fit its RMS error. <strong>Delete Point</strong> (or the Delete
+key) removes the selected pair. <strong>Undo</strong> and <strong>Redo</strong> (Ctrl+Z, Ctrl+Y) step back and forward through
+the pairs and the placement; <strong>Place in View</strong> puts the whole image in the middle of the map as a
+starting position, and <strong>Reset Placement</strong> returns it to where it was when opened. The second row of
+buttons keeps the result: <strong>Load Points</strong>, <strong>Save Points</strong>, <strong>Save World File</strong> and <strong>Export GeoTIFF</strong>
+(a georeferenced copy of the image, added as a layer). When it fits, <strong>Trace Over Image</strong> keeps the image
+faintly under the network and starts the pipe tool, so the network is drawn along the lines of the
+image. The image's Layer Properties have a <strong>Georeferencing</strong> page with its state.</p>
+<p>To learn it, open <strong>File &gt; Open Sample Projects &gt; Georeferencing practice map</strong> (or the Practice Map button): a
+scanned-style sheet with a coordinate grid in UTM zone 36 South. Load Points with
+<code>practice_map.points</code> beside it for nine pairs at grid crossings, or add your own by typing the grid
+coordinates written on the sheet.</p>
+<h2 id="basemaps">Basemaps</h2>
+<p><strong>Layer &gt; Basemaps and Satellite Imagery</strong> (or the satellite button) adds online maps under the
+network:</p>
+<table>
+<thead>
+<tr>
+<th>Group</th>
+<th>Basemaps</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Satellite imagery</td>
+<td>Esri World Imagery, Esri Clarity, Esri Firefly, Google Satellite, Google Satellite Hybrid, Bing Virtual Earth</td>
+</tr>
+<tr>
+<td>Street maps</td>
+<td>OpenStreetMap, Esri World Street Map, Carto Positron, Dark Matter and Voyager, Google Maps</td>
+</tr>
+<tr>
+<td>Topographic and terrain</td>
+<td>Google Terrain, Google Terrain Hybrid, OpenTopoMap, Esri World Topographic, Hillshade, National Geographic</td>
+</tr>
+<tr>
+<td>Vector basemaps</td>
+<td>ESRI Colored Pencil, Dark, Modern Antique, Nova, Night, Topo, Charted Territory, OSM Standard, OSM Street, OSM Light Grey, OSM Dark Grey, OSM Blueprint</td>
+</tr>
+<tr>
+<td>Labels and overlays</td>
+<td>place names, boundaries and roads to put over imagery</td>
+</tr>
+</tbody>
+</table>
+<p>Vector basemaps are drawn from map data with their own style (patterns, line styles and labels), so
+they stay sharp at every zoom. Tiles are kept on disk, so maps already seen also work offline.
+Respect each provider's terms of use; any other service can be added as a custom tile address with
+<code>{z}</code>, <code>{x}</code> and <code>{y}</code> (or <code>{q}</code> for quadkey services). Once a day FlowCHAOS checks in the background
+that every catalogue service still answers; one that has been retired is greyed out in the menus.</p>
+<h2 id="measuring">Measuring</h2>
+<p>The <strong>Measure</strong> button measures distances, areas and perimeters, and angles and bearings. The
+<strong>Measure</strong> panel, under Element Properties, shows the values without covering the map, with the
+units to use: metres, kilometres, feet, yards, miles, nautical
+miles, centimetres, millimetres, inches, degrees or map units for lengths; square metres, square
+kilometres, hectares, acres, square feet, yards, miles, nautical miles, centimetres, millimetres,
+inches, square degrees or map units for areas; degrees, radians, gradians, mils or degrees, minutes
+and seconds for angles. Its buttons start again, copy the values and close (clearing the drawing
+and returning to Select); Esc clears it too. The default units of the project are set in <strong>Project Properties &gt; Measurements</strong>,
+with <strong>Measure areas</strong>: on the ellipsoid (the default, as the areas of vector features) or on the map grid.</p>
+<h2 id="merging-networks">Merging networks</h2>
+<p><strong>Layer &gt; Merge Network Layers</strong> (or right-click a network layer &gt; Merge Other Networks Into This)
+joins other network layers into one. Nodes closer than the join distance become one node; a node of
+one network lying on a pipe of the other splits that pipe and connects there; ends within the
+connection distance can be joined by a new pipe. Pipes, pumps and valves that are the same in both are
+kept once. The report lists what was joined, connected and left apart.</p>
+<h2 id="coordinate-systems">Coordinate systems</h2>
+<p>The project has one coordinate system (status bar, or <strong>Project Properties &gt; Coordinates</strong>). A file
+opened into an empty project keeps its own system: the project takes it, and nothing is reprojected
+until you choose another system yourself. A network added to a project in another system is
+transformed into the project's system, and its original system is kept with the layer. When you
+import points, choose the system they were surveyed in.</p>
+<p>Vector and raster layers in other systems are drawn in the project's system as they are. Right-click a
+vector layer &gt; <strong>Reproject Layer</strong> to add a copy in another system (save it with Save As), or a raster
+layer &gt; <strong>Save Reprojected Copy</strong>. <strong>Properties &gt; Coordinate system</strong> of a vector layer only changes the
+system it is read in, for a file that was labelled wrongly.</p>
+<h2 id="layer-properties">Layer properties</h2>
+<p>Double-click a layer (or use the properties button above the list):</p>
+<ul>
+<li><strong>Symbology</strong>: for points (junctions, tanks, reservoirs) the colour, size and opacity; for lines
+(pipes, pumps, valves) the colour, thickness and pattern (solid, dashed, dotted, dash and dot). A map
+view, when one is chosen, colours the layer instead.</li>
+<li><strong>Labels</strong>: see <em>Map views, legends and labels</em>.</li>
+<li><strong>Fields</strong>: every field with its type, how many features fill it and an example value.</li>
+<li><strong>Display</strong>: show the layer only between two map scales.</li>
+<li><strong>Metadata</strong>: author and abstract, saved with the project.</li>
+</ul>
+<p><strong>Project Properties &gt; Data Sources</strong> lists every file the project uses; missing rasters can be
+pointed at their new location there.</p>
+<h2 id="ground-levels">Ground levels</h2>
+<p>New and moved nodes take their ground level automatically. Choose the source in
+<strong>Project Properties &gt; Elevation</strong>: a DEM, online terrain, or none (type levels by hand).</p>
+<h2 id="find-and-query">Find and Query</h2>
+<p><strong>Find and Query</strong> (Edit menu, Ctrl+F, or the toolbar) is a tool window beside the map, for network
+elements and vector features alike.</p>
+<p><strong>Find</strong> matches names as you type, in all elements, one type (junctions, reservoirs, tanks, pipes,
+pumps, valves) or one vector layer (any text value of its features), by contains, starts with, exact
+or ends with, optionally with the links of the nodes found. When the project has several network
+layers, choose the one to search in, or all of them.</p>
+<p><strong>Query</strong> runs on the layer you choose, named in full: the nodes or links of one network layer, of
+all network layers, or a vector layer. A query is made of conditions (a field, a comparison and a
+value) that must all hold, or any of them, or of an expression such as
+<code>pressure_m &lt; 10 and node_type == 'JUNCTION'</code> built with the <strong>Expression Builder</strong>. The comparisons are
+below, at most, equal to, not equal to, at least, above, between (<code>10 and 20</code>), one of (<code>110, 160, 200</code>
+or <code>PVC, HDPE</code>), contains, does not contain, starts with, ends with, is empty and is not empty.
+<strong>Invert</strong> finds the ones that do not match. <strong>New Query</strong> starts again; double-click a condition to
+change it, and Delete removes it. The label above the matches says exactly what was run and on which
+layer, and with several networks each match shows the network it belongs to.</p>
+<p><strong>Save Query</strong> keeps a query by name with the project. Each saved query runs on its own, on its own
+layer, with <strong>Run</strong> (or a double-click); <strong>Load into the Editor</strong> brings it back to change, and saved
+queries can be renamed and removed.</p>
+<p>The matches are listed with the value that matched. <strong>Select on Map</strong> makes them a new selection, adds
+them to it, takes them from it or keeps only those already selected; <strong>Zoom To</strong>, <strong>Copy IDs</strong> and
+<strong>Export CSV</strong> act on the selected rows, or on all of them.</p>
+<h2 id="attribute-tables">Attribute tables</h2>
+<p><strong>Attribute Table</strong> opens the table of the layer selected in the Layers panel: each imported network
+layer has its own table, and an open table is brought forward rather than opened twice. Selection is
+shared with the map both ways: selecting rows selects those elements on the map, and selecting on the
+map highlights their rows. Edits in the table can be undone like any other edit.</p>
+</div>
+        <nav class="mt-16 grid gap-4 border-t border-line pt-8 sm:grid-cols-2 dark:border-[#1b3a45]" aria-label="Previous and next">
+            <div><a class="card block no-underline" href="https://hobbybwanali.github.io/flowchaos-site/docs/drawing"><span class="block text-xs text-mist">Previous</span><span class="font-semibold">Drawing and editing</span></a></div>
+            <div class="sm:text-right"><a class="card block no-underline" href="https://hobbybwanali.github.io/flowchaos-site/docs/labels"><span class="block text-xs text-mist">Next</span><span class="font-semibold">Labels</span></a></div>
+        </nav>
+    </article>
+
+    <aside class="hidden xl:sticky xl:top-24 xl:block xl:self-start" aria-label="On this page">
+                    <p class="mb-2 text-xs font-bold tracking-wide text-mist">On this page</p>
+                            <a class="block py-1 text-sm text-ink-soft no-underline hover:text-water dark:text-[#9fb5bb]" href="#adding-layers">Adding layers</a>
+                            <a class="block py-1 text-sm text-ink-soft no-underline hover:text-water dark:text-[#9fb5bb]" href="#networks-are-layers">Networks are layers</a>
+                            <a class="block py-1 text-sm text-ink-soft no-underline hover:text-water dark:text-[#9fb5bb]" href="#networks-from-lines-dxf-shapefiles-kml-gpx">Networks from lines (DXF, shapefiles, KML, GPX)</a>
+                            <a class="block py-1 text-sm text-ink-soft no-underline hover:text-water dark:text-[#9fb5bb]" href="#vector-layers">Vector layers</a>
+                            <a class="block py-1 text-sm text-ink-soft no-underline hover:text-water dark:text-[#9fb5bb]" href="#georeferencing-and-tracing-a-map-or-drawing">Georeferencing and tracing a map or drawing</a>
+                            <a class="block py-1 text-sm text-ink-soft no-underline hover:text-water dark:text-[#9fb5bb]" href="#basemaps">Basemaps</a>
+                            <a class="block py-1 text-sm text-ink-soft no-underline hover:text-water dark:text-[#9fb5bb]" href="#measuring">Measuring</a>
+                            <a class="block py-1 text-sm text-ink-soft no-underline hover:text-water dark:text-[#9fb5bb]" href="#merging-networks">Merging networks</a>
+                            <a class="block py-1 text-sm text-ink-soft no-underline hover:text-water dark:text-[#9fb5bb]" href="#coordinate-systems">Coordinate systems</a>
+                            <a class="block py-1 text-sm text-ink-soft no-underline hover:text-water dark:text-[#9fb5bb]" href="#layer-properties">Layer properties</a>
+                            <a class="block py-1 text-sm text-ink-soft no-underline hover:text-water dark:text-[#9fb5bb]" href="#ground-levels">Ground levels</a>
+                            <a class="block py-1 text-sm text-ink-soft no-underline hover:text-water dark:text-[#9fb5bb]" href="#find-and-query">Find and Query</a>
+                            <a class="block py-1 text-sm text-ink-soft no-underline hover:text-water dark:text-[#9fb5bb]" href="#attribute-tables">Attribute tables</a>
+                        </aside>
+</div>
+</main>
+
+<footer class="relative mt-10 overflow-hidden">
+    <svg class="wave-divider" viewBox="0 0 1440 90" preserveAspectRatio="none" aria-hidden="true"><path fill="currentColor" d="M0 50C160 20 320 80 480 60S800 10 960 30s320 60 480 30V90H0Z"/></svg>
+    <div class="bg-foam pb-12 pt-6 dark:bg-[#0d2029]">
+        <div class="wrap grid gap-10 md:grid-cols-[1.6fr_1fr_1fr_1fr]">
+            <div>
+                <a href="https://hobbybwanali.github.io/flowchaos-site" class="flex items-center gap-3 no-underline">
+                    <svg class="mark" width="32" height="32" viewBox="3.09 2.40 60.38 60.38" aria-hidden="true">
+    <defs><linearGradient id="fc-teal-32" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#3596ad"/>
+      <stop offset="1" stop-color="#1d6175"/>
+    </linearGradient>
+    <linearGradient id="fc-water-32" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#3fa9c2"/>
+      <stop offset="1" stop-color="#1f6a80"/>
+    </linearGradient></defs>
+    <g data-part="mark" transform="rotate(-16 32 35)">
+    <path data-part="outer-drop" d="M32 1.5C26.83 12.48 8.5 26.07 8.5 39C8.5 52.16 18.84 62.5 32 62.5C45.16 62.5 55.5 52.16 55.5 39C55.5 26.07 37.17 12.48 32 1.5Z" fill="url(#fc-teal-32)"/>
+    <path data-part="inner-drop" d="M16.2 40.2C16.2 32.6 19.9 26.6 23.9 21.8C25 19.6 25.8 17.7 26.6 15.8C27.3 18.5 28.2 20.4 29.5 21.4C30.4 17.6 31.4 14 32.4 10.8C36.8 17.6 47.8 28.2 47.8 40.2C47.8 49.3 40.7 56.6 32 56.6C23.3 56.6 16.2 49.3 16.2 40.2Z" fill="#ffffff"/>
+    <path data-part="water" d="M19.45 42.94L19.57 43.66L20.02 45.24L20.63 46.71L21.39 48.07L22.31 49.29L23.35 50.38L24.53 51.33L25.82 52.12L27.22 52.76L28.73 53.22L30.32 53.50L32.00 53.60L33.68 53.50L35.27 53.22L36.78 52.76L38.18 52.12L39.47 51.33L40.65 50.38L41.69 49.29L42.61 48.07L43.37 46.71L43.98 45.24L44.43 43.66L44.55 42.93L44.50 42.94L44.25 42.98L44.00 43.02L43.75 43.05L43.50 43.08L43.25 43.11L43.00 43.13L42.75 43.14L42.50 43.15L42.25 43.15L42.00 43.15L41.75 43.14L41.50 43.13L41.25 43.11L41.00 43.08L40.75 43.05L40.50 43.02L40.25 42.98L40.00 42.93L39.75 42.89L39.50 42.83L39.25 42.78L39.00 42.72L38.75 42.66L38.50 42.59L38.25 42.53L38.00 42.46L37.75 42.39L37.50 42.32L37.25 42.24L37.00 42.17L36.75 42.10L36.50 42.03L36.25 41.96L36.00 41.89L35.75 41.82L35.50 41.75L35.25 41.69L35.00 41.63L34.75 41.58L34.50 41.52L34.25 41.47L34.00 41.43L33.75 41.39L33.50 41.35L33.25 41.32L33.00 41.30L32.75 41.28L32.50 41.26L32.25 41.25L32.00 41.25L31.75 41.25L31.50 41.26L31.25 41.27L31.00 41.29L30.75 41.31L30.50 41.34L30.25 41.38L30.00 41.41L29.75 41.46L29.50 41.50L29.25 41.55L29.00 41.61L28.75 41.67L28.50 41.73L28.25 41.79L28.00 41.86L27.75 41.93L27.50 42.00L27.25 42.07L27.00 42.14L26.75 42.21L26.50 42.29L26.25 42.36L26.00 42.43L25.75 42.50L25.50 42.57L25.25 42.63L25.00 42.70L24.75 42.76L24.50 42.81L24.25 42.87L24.00 42.92L23.75 42.96L23.50 43.00L23.25 43.04L23.00 43.07L22.75 43.10L22.50 43.12L22.25 43.13L22.00 43.14L21.75 43.15L21.50 43.15L21.25 43.14L21.00 43.13L20.75 43.11L20.50 43.09L20.25 43.06L20.00 43.03L19.75 42.99L19.50 42.95L19.45 42.94Z" fill="url(#fc-water-32)"/>
+    <path data-part="wave" d="M18.00 31.22L18.00 31.22L18.25 31.35L18.50 31.48L18.75 31.60L19.00 31.71L19.25 31.82L19.50 31.92L19.75 32.02L20.00 32.11L20.25 32.19L20.50 32.27L20.75 32.33L21.00 32.39L21.25 32.44L21.50 32.48L21.75 32.52L22.00 32.54L22.25 32.56L22.50 32.57L22.75 32.57L23.00 32.56L23.25 32.54L23.50 32.52L23.75 32.49L24.00 32.45L24.25 32.41L24.50 32.36L24.75 32.31L25.00 32.25L25.25 32.18L25.50 32.12L25.75 32.04L26.00 31.97L26.25 31.90L26.50 31.82L26.75 31.74L27.00 31.66L27.25 31.58L27.50 31.51L27.75 31.43L28.00 31.36L28.25 31.29L28.50 31.23L28.75 31.17L29.00 31.11L29.25 31.06L29.50 31.01L29.75 30.97L30.00 30.94L30.25 30.91L30.50 30.89L30.75 30.88L31.00 30.88L31.25 30.89L31.50 30.90L31.75 30.92L32.00 30.95L32.25 30.99L32.50 31.04L32.75 31.09L33.00 31.15L33.25 31.22L33.50 31.30L33.75 31.39L34.00 31.48L34.25 31.58L34.50 31.69L34.75 31.80L35.00 31.92L35.25 32.05L35.50 32.17L35.75 32.31L36.00 32.44L36.25 32.58L36.50 32.72L36.75 32.86L37.00 33.01L37.25 33.15L37.50 33.29L37.75 33.43L38.00 33.57L38.25 33.71L38.50 33.84L38.75 33.98L39.00 34.10L39.25 34.23L39.50 34.34L39.75 34.46L40.00 34.56L40.25 34.66L40.50 34.75L40.75 34.84L41.00 34.92L41.25 34.99L41.50 35.05L41.75 35.10L42.00 35.15L42.25 35.18L42.50 35.21L42.75 35.23L43.00 35.24L43.25 35.25L43.50 35.24L43.75 35.23L44.00 35.21L44.25 35.18L44.50 35.15L44.75 35.11L45.00 35.06L45.25 35.01L45.50 34.95L45.75 34.89L46.00 34.82L46.25 34.75L46.50 34.68L46.75 34.60L47.00 34.53L47.01 34.52L47.22 35.32L47.47 36.52L47.52 36.91L47.50 36.92L47.25 37.00L47.00 37.08L46.75 37.15L46.50 37.23L46.25 37.30L46.00 37.37L45.75 37.44L45.50 37.50L45.25 37.56L45.00 37.61L44.75 37.66L44.50 37.70L44.25 37.73L44.00 37.76L43.75 37.78L43.50 37.79L43.25 37.80L43.00 37.79L42.75 37.78L42.50 37.76L42.25 37.73L42.00 37.70L41.75 37.65L41.50 37.60L41.25 37.54L41.00 37.47L40.75 37.39L40.50 37.30L40.25 37.21L40.00 37.11L39.75 37.01L39.50 36.89L39.25 36.78L39.00 36.65L38.75 36.53L38.50 36.39L38.25 36.26L38.00 36.12L37.75 35.98L37.50 35.84L37.25 35.70L37.00 35.56L36.75 35.41L36.50 35.27L36.25 35.13L36.00 34.99L35.75 34.86L35.50 34.72L35.25 34.60L35.00 34.47L34.75 34.35L34.50 34.24L34.25 34.13L34.00 34.03L33.75 33.94L33.50 33.85L33.25 33.77L33.00 33.70L32.75 33.64L32.50 33.59L32.25 33.54L32.00 33.50L31.75 33.47L31.50 33.45L31.25 33.44L31.00 33.43L30.75 33.43L30.50 33.44L30.25 33.46L30.00 33.49L29.75 33.52L29.50 33.56L29.25 33.61L29.00 33.66L28.75 33.72L28.50 33.78L28.25 33.84L28.00 33.91L27.75 33.98L27.50 34.06L27.25 34.13L27.00 34.21L26.75 34.29L26.50 34.37L26.25 34.45L26.00 34.52L25.75 34.59L25.50 34.67L25.25 34.73L25.00 34.80L24.75 34.86L24.50 34.91L24.25 34.96L24.00 35.00L23.75 35.04L23.50 35.07L23.25 35.09L23.00 35.11L22.75 35.12L22.50 35.12L22.25 35.11L22.00 35.09L21.75 35.07L21.50 35.03L21.25 34.99L21.00 34.94L20.75 34.88L20.50 34.82L20.25 34.74L20.00 34.66L19.75 34.57L19.50 34.47L19.25 34.37L19.00 34.26L18.75 34.15L18.50 34.03L18.25 33.90L18.00 33.77L17.75 33.64L17.50 33.50L17.25 33.36L17.24 33.35L17.31 33.12L17.68 32.04L18.00 31.22Z" fill="#287b91"/>
+  </g>
+</svg>
+                    <span class="font-display text-xl font-semibold text-ink dark:text-white">Flow<span class="italic font-normal text-water">CHAOS</span></span>
+                </a>
+                <p class="mt-2 text-[0.82rem] text-ink-soft dark:text-[#a9bec4]"><span class="tagline"><b>C</b>omprehensive <b>H</b>ydraulic <b>A</b>nalysis &amp; <b>O</b>ptimization <b>S</b>ystem</span>
+</p>
+                <p class="mt-3 max-w-sm text-[0.95rem] text-ink-soft dark:text-[#a9bec4]">Modern water distribution network design and analysis. Freeware for commercial and non-commercial use.</p>
+            </div>
+                            <div>
+                    <h3 class="mb-3 font-sans text-sm font-bold text-ink dark:text-white">Use</h3>
+                    <ul class="space-y-2 text-[0.95rem]">
+                                                    <li><a class="text-ink-soft no-underline hover:text-water dark:text-[#a9bec4]" href="https://hobbybwanali.github.io/flowchaos-site/features">Features</a></li>
+                                                    <li><a class="text-ink-soft no-underline hover:text-water dark:text-[#a9bec4]" href="https://hobbybwanali.github.io/flowchaos-site/docs">Documentation</a></li>
+                                                    <li><a class="text-ink-soft no-underline hover:text-water dark:text-[#a9bec4]" href="https://hobbybwanali.github.io/flowchaos-site/download">Download</a></li>
+                                                    <li><a class="text-ink-soft no-underline hover:text-water dark:text-[#a9bec4]" href="https://hobbybwanali.github.io/flowchaos-site/docs/getting-started">Getting started</a></li>
+                                            </ul>
+                </div>
+                            <div>
+                    <h3 class="mb-3 font-sans text-sm font-bold text-ink dark:text-white">Take part</h3>
+                    <ul class="space-y-2 text-[0.95rem]">
+                                                    <li><a class="text-ink-soft no-underline hover:text-water dark:text-[#a9bec4]" href="https://hobbybwanali.github.io/flowchaos-site/support?topic=support#contact">Support or donate</a></li>
+                                                    <li><a class="text-ink-soft no-underline hover:text-water dark:text-[#a9bec4]" href="https://hobbybwanali.github.io/flowchaos-site/community">Community</a></li>
+                                                    <li><a class="text-ink-soft no-underline hover:text-water dark:text-[#a9bec4]" href="https://hobbybwanali.github.io/flowchaos-site/support?topic=bug#contact">Report a problem</a></li>
+                                                    <li><a class="text-ink-soft no-underline hover:text-water dark:text-[#a9bec4]" href="https://hobbybwanali.github.io/flowchaos-site/docs/plugins">Write a plugin</a></li>
+                                            </ul>
+                </div>
+                            <div>
+                    <h3 class="mb-3 font-sans text-sm font-bold text-ink dark:text-white">About</h3>
+                    <ul class="space-y-2 text-[0.95rem]">
+                                                    <li><a class="text-ink-soft no-underline hover:text-water dark:text-[#a9bec4]" href="https://hobbybwanali.github.io/flowchaos-site/about">About FlowCHAOS</a></li>
+                                                    <li><a class="text-ink-soft no-underline hover:text-water dark:text-[#a9bec4]" href="https://hobbybwanali.github.io/flowchaos-site/releases">Release notes</a></li>
+                                                    <li><a class="text-ink-soft no-underline hover:text-water dark:text-[#a9bec4]" href="https://hobbybwanali.github.io/flowchaos-site/support">Support and contact</a></li>
+                                                    <li><a class="text-ink-soft no-underline hover:text-water dark:text-[#a9bec4]" href="https://hobbybwanali.github.io/flowchaos-site/licence">Licence</a></li>
+                                            </ul>
+                </div>
+                    </div>
+        <div class="wrap mt-10 flex flex-wrap justify-between gap-3 border-t border-line pt-6 text-sm text-mist dark:border-[#1b3a45]">
+            <span>FlowCHAOS is freeware, licensed without a fee under the FlowCHAOS Freeware Licence.</span>
+            <span>Map data and imagery belong to their providers.</span>
+        </div>
+    </div>
+</footer>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js" defer
+        integrity="sha384-g4NTh/Iv5PPU4xPyhEWqPcwtNXOvdaDI8LLnyYfyNZOjKJeYQyjzQ9X5275eBjpt" crossorigin="anonymous"
+        referrerpolicy="no-referrer"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js" defer
+        integrity="sha384-Z3REaz79l2IaAZqJsSABtTbhjgOUYyV3p90XNnAPCSHg3EMTz1fouunq9WZRtj3d" crossorigin="anonymous"
+        referrerpolicy="no-referrer"></script>
+<script src="https://hobbybwanali.github.io/flowchaos-site/js/site.js?v=1792390476" defer></script>
+</body>
+</html>

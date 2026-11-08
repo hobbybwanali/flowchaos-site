@@ -1,0 +1,433 @@
+<!DOCTYPE html>
+<html lang="en" class="no-js">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Quantities and planning | Documentation | FlowCHAOS</title>
+    <meta name="description" content="Bills of quantities measured from the design and kept with it, and the construction programme that follows them.
+">
+    <link rel="canonical" href="https://hobbybwanali.github.io/flowchaos-site/docs/quantities">
+    <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1">
+    <meta name="author" content="The FlowCHAOS contributors">
+    <meta name="application-name" content="FlowCHAOS">
+    <meta property="og:site_name" content="FlowCHAOS">
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="Quantities and planning | Documentation | FlowCHAOS">
+    <meta property="og:description" content="Bills of quantities measured from the design and kept with it, and the construction programme that follows them.
+">
+    <meta property="og:url" content="https://hobbybwanali.github.io/flowchaos-site/docs/quantities">
+    <meta property="og:image" content="https://hobbybwanali.github.io/flowchaos-site/images/og/flowchaos.png">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:image:alt" content="FlowCHAOS: water networks designed on real maps and terrain">
+    <meta property="og:locale" content="en_GB">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Quantities and planning | Documentation | FlowCHAOS">
+    <meta name="twitter:description" content="Bills of quantities measured from the design and kept with it, and the construction programme that follows them.
+">
+    <meta name="twitter:image" content="https://hobbybwanali.github.io/flowchaos-site/images/og/flowchaos.png">
+    <link rel="sitemap" type="application/xml" title="Sitemap" href="https://hobbybwanali.github.io/flowchaos-site/sitemap.xml">
+    <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"Organization","@id":"https://hobbybwanali.github.io/flowchaos-site#organisation","name":"FlowCHAOS","url":"https://hobbybwanali.github.io/flowchaos-site","logo":"https://hobbybwanali.github.io/flowchaos-site/images/flowchaos-mark.png","sameAs":[]},{"@type":"WebSite","@id":"https://hobbybwanali.github.io/flowchaos-site#website","name":"FlowCHAOS","alternateName":"Comprehensive Hydraulic Analysis and Optimization System","url":"https://hobbybwanali.github.io/flowchaos-site","inLanguage":"en","publisher":{"@id":"https://hobbybwanali.github.io/flowchaos-site#organisation"}},{"@type":"TechArticle","headline":"Quantities and planning","description":"Bills of quantities measured from the design and kept with it, and the construction programme that follows them.\n","url":"https://hobbybwanali.github.io/flowchaos-site/docs/quantities","inLanguage":"en","dateModified":"2026-10-21","about":{"@id":"https://hobbybwanali.github.io/flowchaos-site#software"},"publisher":{"@id":"https://hobbybwanali.github.io/flowchaos-site#organisation"}},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"FlowCHAOS","item":"https://hobbybwanali.github.io/flowchaos-site"},{"@type":"ListItem","position":2,"name":"Documentation","item":"https://hobbybwanali.github.io/flowchaos-site/docs"},{"@type":"ListItem","position":3,"name":"Quantities and planning","item":"https://hobbybwanali.github.io/flowchaos-site/docs/quantities"}]}]}</script>
+    <meta name="theme-color" content="#0b7a84">
+    
+    <link rel="icon" href="https://hobbybwanali.github.io/flowchaos-site/favicon.ico?v=1792392055" sizes="any">
+    <link rel="icon" type="image/svg+xml" href="https://hobbybwanali.github.io/flowchaos-site/images/flowchaos-mark.svg?v=1792392054">
+    <link rel="icon" type="image/png" sizes="192x192" href="https://hobbybwanali.github.io/flowchaos-site/images/flowchaos-mark.png?v=1792392055">
+    <link rel="apple-touch-icon" href="https://hobbybwanali.github.io/flowchaos-site/images/flowchaos-mark.png?v=1792392055">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght,SOFT,WONK@0,9..144,400..700,0..100,0..1;1,9..144,400..700,0..100,0..1&family=JetBrains+Mono:wght@400;500&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://hobbybwanali.github.io/flowchaos-site/css/app.css?v=1792392348">
+    <script nonce="bp/MI+KvXG2Z/Wz5BZ9Th0Db">
+        document.documentElement.classList.replace('no-js', 'js');
+        try {
+            const asked = new URLSearchParams(location.search).get('theme');
+            const theme = (asked === 'light' || asked === 'dark') ? asked : localStorage.getItem('fc-theme');
+            document.documentElement.dataset.theme = theme === 'dark' ? 'dark' : 'light';  // light unless chosen
+        } catch (e) { document.documentElement.dataset.theme = 'light'; }
+    </script>
+</head>
+<body>
+<a href="#main" class="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-50 focus:rounded-full focus:bg-ink focus:px-4 focus:py-2 focus:text-white">Skip to content</a>
+
+<header class="masthead">
+    <div class="wrap flex h-[72px] items-center gap-6">
+        <a href="https://hobbybwanali.github.io/flowchaos-site" class="flex items-center gap-3 no-underline" aria-label="FlowCHAOS home">
+            <svg class="mark" width="36" height="36" viewBox="3.09 2.40 60.38 60.38" aria-hidden="true">
+    <defs><linearGradient id="fc-teal-36" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#3596ad"/>
+      <stop offset="1" stop-color="#1d6175"/>
+    </linearGradient>
+    <linearGradient id="fc-water-36" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#3fa9c2"/>
+      <stop offset="1" stop-color="#1f6a80"/>
+    </linearGradient></defs>
+    <g data-part="mark" transform="rotate(-16 32 35)">
+    <path data-part="outer-drop" d="M32 1.5C26.83 12.48 8.5 26.07 8.5 39C8.5 52.16 18.84 62.5 32 62.5C45.16 62.5 55.5 52.16 55.5 39C55.5 26.07 37.17 12.48 32 1.5Z" fill="url(#fc-teal-36)"/>
+    <path data-part="inner-drop" d="M16.2 40.2C16.2 32.6 19.9 26.6 23.9 21.8C25 19.6 25.8 17.7 26.6 15.8C27.3 18.5 28.2 20.4 29.5 21.4C30.4 17.6 31.4 14 32.4 10.8C36.8 17.6 47.8 28.2 47.8 40.2C47.8 49.3 40.7 56.6 32 56.6C23.3 56.6 16.2 49.3 16.2 40.2Z" fill="#ffffff"/>
+    <path data-part="water" d="M19.45 42.94L19.57 43.66L20.02 45.24L20.63 46.71L21.39 48.07L22.31 49.29L23.35 50.38L24.53 51.33L25.82 52.12L27.22 52.76L28.73 53.22L30.32 53.50L32.00 53.60L33.68 53.50L35.27 53.22L36.78 52.76L38.18 52.12L39.47 51.33L40.65 50.38L41.69 49.29L42.61 48.07L43.37 46.71L43.98 45.24L44.43 43.66L44.55 42.93L44.50 42.94L44.25 42.98L44.00 43.02L43.75 43.05L43.50 43.08L43.25 43.11L43.00 43.13L42.75 43.14L42.50 43.15L42.25 43.15L42.00 43.15L41.75 43.14L41.50 43.13L41.25 43.11L41.00 43.08L40.75 43.05L40.50 43.02L40.25 42.98L40.00 42.93L39.75 42.89L39.50 42.83L39.25 42.78L39.00 42.72L38.75 42.66L38.50 42.59L38.25 42.53L38.00 42.46L37.75 42.39L37.50 42.32L37.25 42.24L37.00 42.17L36.75 42.10L36.50 42.03L36.25 41.96L36.00 41.89L35.75 41.82L35.50 41.75L35.25 41.69L35.00 41.63L34.75 41.58L34.50 41.52L34.25 41.47L34.00 41.43L33.75 41.39L33.50 41.35L33.25 41.32L33.00 41.30L32.75 41.28L32.50 41.26L32.25 41.25L32.00 41.25L31.75 41.25L31.50 41.26L31.25 41.27L31.00 41.29L30.75 41.31L30.50 41.34L30.25 41.38L30.00 41.41L29.75 41.46L29.50 41.50L29.25 41.55L29.00 41.61L28.75 41.67L28.50 41.73L28.25 41.79L28.00 41.86L27.75 41.93L27.50 42.00L27.25 42.07L27.00 42.14L26.75 42.21L26.50 42.29L26.25 42.36L26.00 42.43L25.75 42.50L25.50 42.57L25.25 42.63L25.00 42.70L24.75 42.76L24.50 42.81L24.25 42.87L24.00 42.92L23.75 42.96L23.50 43.00L23.25 43.04L23.00 43.07L22.75 43.10L22.50 43.12L22.25 43.13L22.00 43.14L21.75 43.15L21.50 43.15L21.25 43.14L21.00 43.13L20.75 43.11L20.50 43.09L20.25 43.06L20.00 43.03L19.75 42.99L19.50 42.95L19.45 42.94Z" fill="url(#fc-water-36)"/>
+    <path data-part="wave" d="M18.00 31.22L18.00 31.22L18.25 31.35L18.50 31.48L18.75 31.60L19.00 31.71L19.25 31.82L19.50 31.92L19.75 32.02L20.00 32.11L20.25 32.19L20.50 32.27L20.75 32.33L21.00 32.39L21.25 32.44L21.50 32.48L21.75 32.52L22.00 32.54L22.25 32.56L22.50 32.57L22.75 32.57L23.00 32.56L23.25 32.54L23.50 32.52L23.75 32.49L24.00 32.45L24.25 32.41L24.50 32.36L24.75 32.31L25.00 32.25L25.25 32.18L25.50 32.12L25.75 32.04L26.00 31.97L26.25 31.90L26.50 31.82L26.75 31.74L27.00 31.66L27.25 31.58L27.50 31.51L27.75 31.43L28.00 31.36L28.25 31.29L28.50 31.23L28.75 31.17L29.00 31.11L29.25 31.06L29.50 31.01L29.75 30.97L30.00 30.94L30.25 30.91L30.50 30.89L30.75 30.88L31.00 30.88L31.25 30.89L31.50 30.90L31.75 30.92L32.00 30.95L32.25 30.99L32.50 31.04L32.75 31.09L33.00 31.15L33.25 31.22L33.50 31.30L33.75 31.39L34.00 31.48L34.25 31.58L34.50 31.69L34.75 31.80L35.00 31.92L35.25 32.05L35.50 32.17L35.75 32.31L36.00 32.44L36.25 32.58L36.50 32.72L36.75 32.86L37.00 33.01L37.25 33.15L37.50 33.29L37.75 33.43L38.00 33.57L38.25 33.71L38.50 33.84L38.75 33.98L39.00 34.10L39.25 34.23L39.50 34.34L39.75 34.46L40.00 34.56L40.25 34.66L40.50 34.75L40.75 34.84L41.00 34.92L41.25 34.99L41.50 35.05L41.75 35.10L42.00 35.15L42.25 35.18L42.50 35.21L42.75 35.23L43.00 35.24L43.25 35.25L43.50 35.24L43.75 35.23L44.00 35.21L44.25 35.18L44.50 35.15L44.75 35.11L45.00 35.06L45.25 35.01L45.50 34.95L45.75 34.89L46.00 34.82L46.25 34.75L46.50 34.68L46.75 34.60L47.00 34.53L47.01 34.52L47.22 35.32L47.47 36.52L47.52 36.91L47.50 36.92L47.25 37.00L47.00 37.08L46.75 37.15L46.50 37.23L46.25 37.30L46.00 37.37L45.75 37.44L45.50 37.50L45.25 37.56L45.00 37.61L44.75 37.66L44.50 37.70L44.25 37.73L44.00 37.76L43.75 37.78L43.50 37.79L43.25 37.80L43.00 37.79L42.75 37.78L42.50 37.76L42.25 37.73L42.00 37.70L41.75 37.65L41.50 37.60L41.25 37.54L41.00 37.47L40.75 37.39L40.50 37.30L40.25 37.21L40.00 37.11L39.75 37.01L39.50 36.89L39.25 36.78L39.00 36.65L38.75 36.53L38.50 36.39L38.25 36.26L38.00 36.12L37.75 35.98L37.50 35.84L37.25 35.70L37.00 35.56L36.75 35.41L36.50 35.27L36.25 35.13L36.00 34.99L35.75 34.86L35.50 34.72L35.25 34.60L35.00 34.47L34.75 34.35L34.50 34.24L34.25 34.13L34.00 34.03L33.75 33.94L33.50 33.85L33.25 33.77L33.00 33.70L32.75 33.64L32.50 33.59L32.25 33.54L32.00 33.50L31.75 33.47L31.50 33.45L31.25 33.44L31.00 33.43L30.75 33.43L30.50 33.44L30.25 33.46L30.00 33.49L29.75 33.52L29.50 33.56L29.25 33.61L29.00 33.66L28.75 33.72L28.50 33.78L28.25 33.84L28.00 33.91L27.75 33.98L27.50 34.06L27.25 34.13L27.00 34.21L26.75 34.29L26.50 34.37L26.25 34.45L26.00 34.52L25.75 34.59L25.50 34.67L25.25 34.73L25.00 34.80L24.75 34.86L24.50 34.91L24.25 34.96L24.00 35.00L23.75 35.04L23.50 35.07L23.25 35.09L23.00 35.11L22.75 35.12L22.50 35.12L22.25 35.11L22.00 35.09L21.75 35.07L21.50 35.03L21.25 34.99L21.00 34.94L20.75 34.88L20.50 34.82L20.25 34.74L20.00 34.66L19.75 34.57L19.50 34.47L19.25 34.37L19.00 34.26L18.75 34.15L18.50 34.03L18.25 33.90L18.00 33.77L17.75 33.64L17.50 33.50L17.25 33.36L17.24 33.35L17.31 33.12L17.68 32.04L18.00 31.22Z" fill="#287b91"/>
+  </g>
+</svg>
+            <span class="font-display text-[1.45rem] font-semibold tracking-tight text-ink dark:text-white">Flow<span class="italic font-normal text-water">CHAOS</span></span>
+        </a>
+        <nav id="site-nav" class="ml-auto hidden items-center gap-1 lg:flex" aria-label="Main">
+                            <a href="https://hobbybwanali.github.io/flowchaos-site/features" class="navlink">Features</a>
+                            <a href="https://hobbybwanali.github.io/flowchaos-site/docs" class="navlink is-here">Documentation</a>
+                            <a href="https://hobbybwanali.github.io/flowchaos-site/about" class="navlink">About</a>
+                            <a href="https://hobbybwanali.github.io/flowchaos-site/community" class="navlink">Community</a>
+                            <a href="https://hobbybwanali.github.io/flowchaos-site/support" class="navlink">Support</a>
+                    </nav>
+        <div class="ml-auto flex items-center gap-2 lg:ml-2">
+            <button class="theme-toggle grid size-10 place-items-center rounded-full text-ink-soft ring-1 ring-line transition hover:ring-lagoon dark:text-[#b5c7cc]" type="button" aria-label="Light or dark">
+                <svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><path d="M12 3a9 9 0 1 0 9 9 7 7 0 0 1-9-9Z" fill="currentColor"/></svg>
+            </button>
+            <a href="https://hobbybwanali.github.io/flowchaos-site/download" class="btn btn-water gap-2 max-sm:size-10 max-sm:p-0 max-sm:justify-center"
+               title="Download FlowCHAOS for Windows" aria-label="Download FlowCHAOS">
+                <svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><path d="M12 4v11m0 0-4.5-4.5M12 15l4.5-4.5M5 19.5h14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                <span class="max-sm:hidden">Download</span>
+            </a>
+            <button class="nav-toggle grid size-10 place-items-center rounded-full ring-1 ring-line lg:hidden" aria-expanded="false" aria-controls="mobile-nav" aria-label="Menu">
+                <svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path class="bar b1" d="M4 7h16"/><path class="bar b2" d="M4 12h16"/><path class="bar b3" d="M4 17h10"/></svg>
+            </button>
+        </div>
+    </div>
+    <nav id="mobile-nav" class="wrap mobile-nav" aria-label="Main">
+        <div class="mobile-nav-inner">
+                    <a href="https://hobbybwanali.github.io/flowchaos-site/features" class="navlink">Features</a>
+                    <a href="https://hobbybwanali.github.io/flowchaos-site/docs" class="navlink is-here">Documentation</a>
+                    <a href="https://hobbybwanali.github.io/flowchaos-site/about" class="navlink">About</a>
+                    <a href="https://hobbybwanali.github.io/flowchaos-site/community" class="navlink">Community</a>
+                    <a href="https://hobbybwanali.github.io/flowchaos-site/support" class="navlink">Support</a>
+                    <a href="https://hobbybwanali.github.io/flowchaos-site/download" class="navlink">Download</a>
+                </div>
+    </nav>
+</header>
+
+<main id="main">
+    <div class="wrap grid gap-10 py-10 lg:grid-cols-[250px_minmax(0,1fr)] xl:grid-cols-[250px_minmax(0,1fr)_220px]">
+    <aside class="lg:sticky lg:top-24 lg:max-h-[calc(100vh-7rem)] lg:self-start lg:overflow-y-auto" aria-label="Manual">
+        <div class="relative mb-5">
+            <input class="field py-2.5 pl-10 text-sm" type="search" placeholder="Search" data-doc-search="https://hobbybwanali.github.io/flowchaos-site/docs/search.json" aria-label="Search the documentation">
+            <svg class="pointer-events-none absolute left-3.5 top-1/2 -translate-y-1/2 text-mist" viewBox="0 0 24 24" width="16" height="16" aria-hidden="true"><circle cx="11" cy="11" r="7" fill="none" stroke="currentColor" stroke-width="2"/><path d="M16.5 16.5L21 21" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+            <div class="absolute left-0 top-full z-30 mt-2 hidden max-h-[60vh] w-[340px] overflow-y-auto rounded-3xl bg-white p-2 shadow-2xl ring-1 ring-line dark:bg-[#0d2029]" data-doc-results></div>
+        </div>
+                    <p class="mb-1.5 mt-6 px-3 text-xs font-bold tracking-wide text-mist first-of-type:mt-0">Getting started</p>
+                            <a href="https://hobbybwanali.github.io/flowchaos-site/docs/introduction" class="doclink">Introduction</a>
+                            <a href="https://hobbybwanali.github.io/flowchaos-site/docs/install" class="doclink">Install</a>
+                            <a href="https://hobbybwanali.github.io/flowchaos-site/docs/getting-started" class="doclink">Tutorial: a village supply</a>
+                            <a href="https://hobbybwanali.github.io/flowchaos-site/docs/interface" class="doclink">The window</a>
+                                <p class="mb-1.5 mt-6 px-3 text-xs font-bold tracking-wide text-mist first-of-type:mt-0">User guide</p>
+                            <a href="https://hobbybwanali.github.io/flowchaos-site/docs/projects" class="doclink">Working with projects</a>
+                            <a href="https://hobbybwanali.github.io/flowchaos-site/docs/drawing" class="doclink">Drawing and editing</a>
+                            <a href="https://hobbybwanali.github.io/flowchaos-site/docs/data" class="doclink">Layers and data</a>
+                            <a href="https://hobbybwanali.github.io/flowchaos-site/docs/labels" class="doclink">Labels</a>
+                            <a href="https://hobbybwanali.github.io/flowchaos-site/docs/network-model" class="doclink">The network model</a>
+                            <a href="https://hobbybwanali.github.io/flowchaos-site/docs/analysis" class="doclink">Running an analysis</a>
+                            <a href="https://hobbybwanali.github.io/flowchaos-site/docs/options" class="doclink">Analysis options</a>
+                            <a href="https://hobbybwanali.github.io/flowchaos-site/docs/controls" class="doclink">Controls and rules</a>
+                            <a href="https://hobbybwanali.github.io/flowchaos-site/docs/water-quality" class="doclink">Water quality</a>
+                            <a href="https://hobbybwanali.github.io/flowchaos-site/docs/results" class="doclink">Reading the results</a>
+                            <a href="https://hobbybwanali.github.io/flowchaos-site/docs/map" class="doclink">Map views, legends and animation</a>
+                            <a href="https://hobbybwanali.github.io/flowchaos-site/docs/surfaces" class="doclink">Terrain and surface maps</a>
+                            <a href="https://hobbybwanali.github.io/flowchaos-site/docs/design" class="doclink">Design tools</a>
+                            <a href="https://hobbybwanali.github.io/flowchaos-site/docs/quantities" class="doclink is-here">Quantities and planning</a>
+                            <a href="https://hobbybwanali.github.io/flowchaos-site/docs/layouts" class="doclink">Map sheets and reports</a>
+                                <p class="mb-1.5 mt-6 px-3 text-xs font-bold tracking-wide text-mist first-of-type:mt-0">Reference</p>
+                            <a href="https://hobbybwanali.github.io/flowchaos-site/docs/shortcuts" class="doclink">Keyboard shortcuts</a>
+                            <a href="https://hobbybwanali.github.io/flowchaos-site/docs/file-formats" class="doclink">File formats</a>
+                            <a href="https://hobbybwanali.github.io/flowchaos-site/docs/input-format" class="doclink">The network file</a>
+                            <a href="https://hobbybwanali.github.io/flowchaos-site/docs/units" class="doclink">Units of measurement</a>
+                            <a href="https://hobbybwanali.github.io/flowchaos-site/docs/coordinates" class="doclink">Coordinates and regional settings</a>
+                            <a href="https://hobbybwanali.github.io/flowchaos-site/docs/messages" class="doclink">Errors and warnings</a>
+                            <a href="https://hobbybwanali.github.io/flowchaos-site/docs/algorithms" class="doclink">How a network is solved</a>
+                            <a href="https://hobbybwanali.github.io/flowchaos-site/docs/glossary" class="doclink">Glossary</a>
+                            <a href="https://hobbybwanali.github.io/flowchaos-site/docs/faq" class="doclink">Questions and answers</a>
+                            <a href="https://hobbybwanali.github.io/flowchaos-site/docs/troubleshooting" class="doclink">Troubleshooting</a>
+                                <p class="mb-1.5 mt-6 px-3 text-xs font-bold tracking-wide text-mist first-of-type:mt-0">Developers</p>
+                            <a href="https://hobbybwanali.github.io/flowchaos-site/docs/plugins" class="doclink">Writing plugins</a>
+                            <a href="https://hobbybwanali.github.io/flowchaos-site/docs/plugin-tutorial" class="doclink">Tutorial: build a plugin</a>
+                            <a href="https://hobbybwanali.github.io/flowchaos-site/docs/plugin-api" class="doclink">Plugin API</a>
+                            <a href="https://hobbybwanali.github.io/flowchaos-site/docs/project-model" class="doclink">Project model</a>
+                            <a href="https://hobbybwanali.github.io/flowchaos-site/docs/plugin-examples" class="doclink">Plugin examples</a>
+                        </aside>
+
+    <article class="min-w-0">
+        <p class="eyebrow">User guide</p>
+        <h1 class="mt-2 font-display text-4xl font-semibold md:text-5xl">Quantities and planning</h1>
+        <div class="prose-docs mt-6"><p>Bills of quantities measured from the design and kept with it, and the construction programme that follows them.</p>
+<h2 id="the-boq-workbench">The BOQ Workbench</h2>
+<p><strong>File &gt; Export &gt; Bill of Quantities</strong> (or the BOQ button) opens the BOQ Workbench in its own window. The
+bill is part of the project: it is saved with it, and every change can be undone from the main
+window.</p>
+<h3>Generating a bill</h3>
+<p><strong>Generate</strong> asks for the BOQ type (water supply, irrigation, building plumbing), the contents (every
+section of the type with blanks to complete, or only the work found on the map), the company and
+client details, the regional preset (currency, tax, levies, contingency), the default pipe materials
+and the trench sizes. The bill is then measured from the network:</p>
+<ul>
+<li>pipes by material, outside diameter and pressure class (from the modelled or static pressures);</li>
+<li>fittings from the geometry: bends by angle, tees, crosses, reducers, end caps, flange adaptors;</li>
+<li>valves by type and size, chambers, air valves, washouts and hydrants;</li>
+<li>earthworks from the trench width and depth: clearing, excavation, bedding, backfill and surplus;</li>
+<li>pumps with their duty point, tanks with their volume and stands, sources and connections.</li>
+</ul>
+<h3>Editing and tracing</h3>
+<p>The bill is a tree of bills, elements and items. Double-click a description, unit, quantity, rate or
+note to change it; add items, elements and bills, move rows up and down, or delete them. The
+<strong>From</strong> column tells where each quantity comes from:</p>
+<table>
+<thead>
+<tr>
+<th>From</th>
+<th>Meaning</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Network</td>
+<td>measured from the map</td>
+</tr>
+<tr>
+<td>Lump sum</td>
+<td>a fixed quantity</td>
+</tr>
+<tr>
+<td>To complete</td>
+<td>a provisional item: type its quantity</td>
+</tr>
+<tr>
+<td>Typed</td>
+<td>added or changed by hand</td>
+</tr>
+</tbody>
+</table>
+<p>Select a measured item and press <strong>Show on Map</strong>: the pipes and nodes it was measured from are
+selected on the map. When the network changes, <strong>Update Quantities</strong> measures it again: measured
+items follow, items typed by hand and every rate are kept, new work is added and work that left the
+network is marked. <em>Show: Changed by the last update</em> lists what moved.</p>
+<h3>Pricing</h3>
+<ul>
+<li>Type a rate in the <strong>Rate</strong> column.</li>
+<li>Build it up in the <strong>Item</strong> panel: materials, labour, plant and equipment and transport for one
+unit, plus overheads and profit; <strong>Use This Rate</strong> prices the selected items.</li>
+<li><strong>Rates &gt; Import Rates from a Priced Spreadsheet</strong> reads any workbook with <em>Description</em> and <em>Rate</em>
+columns (a contractor's priced bill, a company rate list) into the project's rate library and
+prices the matching items. <strong>Add This Bill's Rates to the Library</strong> keeps your rates for the next
+bill.</li>
+<li>Plugins can add their own rate sources (see <em>Writing plugins</em>).</li>
+</ul>
+<p>Items with a quantity but no rate are shaded; <em>Show: Quantity but no rate</em> lists them.</p>
+<h3>Summary</h3>
+<p>The <strong>Summary</strong> panel gives each bill's total, the net total, contingency, levies, tax and the
+grand total, the cost per kilometre of pipe and per connection, how complete the pricing is, and a
+chart of each bill's share of the cost.</p>
+<h3>Revisions and export</h3>
+<p><strong>Revisions &gt; Save a Revision</strong> keeps a copy (Rev A, Rev B, ...). <strong>Compare with a Revision</strong> lists
+every item whose quantity or rate changed and the change in the grand total; <strong>Restore a Revision</strong>
+brings one back. <strong>Export</strong> writes the bill as a spreadsheet (.xlsx) with the company letterhead, a
+document (.docx) or CSV.</p>
+<h3>Fittings as they are made</h3>
+<p>Fittings follow the pipe material (the <code>materials</code> section of <code>resources/data/boq/catalog.json</code>, which you can edit):</p>
+<table>
+<thead>
+<tr>
+<th>Material</th>
+<th>Joint</th>
+<th>Bends made</th>
+<th>Turns taken without a fitting</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Polyethylene up to 90 mm</td>
+<td>compression</td>
+<td>90 degree elbows</td>
+<td>up to 60 degrees (laid to a curve from the coil)</td>
+</tr>
+<tr>
+<td>Polyethylene 110 mm and over</td>
+<td>butt fusion or electrofusion</td>
+<td>11.25, 22.5, 30, 45, 60, 90</td>
+<td>up to 11.25 degrees</td>
+</tr>
+<tr>
+<td>uPVC, PVC-O</td>
+<td>rubber ring socket</td>
+<td>11.25, 22.5, 45, 90</td>
+<td>up to 2 degrees (joint deflection)</td>
+</tr>
+<tr>
+<td>Ductile iron</td>
+<td>push-in socket</td>
+<td>11.25, 22.5, 45, 90</td>
+<td>up to 4 degrees</td>
+</tr>
+<tr>
+<td>GRP</td>
+<td>double bell coupling</td>
+<td>11.25, 22.5, 30, 45, 60, 90</td>
+<td>up to 2 degrees</td>
+</tr>
+<tr>
+<td>Steel</td>
+<td>welded</td>
+<td>cut to the angle</td>
+<td>up to 3 degrees</td>
+</tr>
+<tr>
+<td>GI, PPR, copper</td>
+<td>threaded, socket fusion, capillary</td>
+<td>45, 90</td>
+<td>up to 5 degrees</td>
+</tr>
+</tbody>
+</table>
+<p>A turn that is not one of the angles made is built from two or three bends (67 degrees in PVC is a 45
+and a 22.5). Bends of 11.25 and 22.5 degrees are standard catalogue items for PVC, ductile iron and
+large polyethylene. The bill also counts:</p>
+<ul>
+<li>joints between pipe lengths or coils (butt fusion joints every 12 m, compression couplings every coil,
+threaded sockets, double bell couplings; none for pipes with their own sockets);</li>
+<li>flange adaptors at valves and pumps as the material needs (stub flange and backing ring for
+polyethylene, flange adaptor for PVC, flanged spigot for ductile iron);</li>
+<li>thrust blocks at bends of 22.5 degrees and more, tees and dead ends of 75 mm and larger, but not on
+welded polyethylene, which carries the end load itself;</li>
+<li>route marker posts every 100 m, at turns and at valves.</li>
+</ul>
+<p>Each pipe takes the lowest pressure class its material is made in that covers the pressure with the
+margin (polyethylene PN6 to PN25, ductile iron to PN64); a line above the highest class is reported
+in the notes. The notes also list what to order: the number of lengths or coils of each pipe, with an
+allowance for waste and cutting.</p>
+<h2 id="construction-planning">Construction planning</h2>
+<p><strong>Analysis &gt; Project Planning</strong> opens the planner:</p>
+<ul>
+<li>a task table and a Gantt chart side by side, with drag to move, resize and link tasks;</li>
+<li>constraints, deadlines, calendars and working time;</li>
+<li>critical path, PERT probabilities, resources and levelling;</li>
+<li>baselines, progress, status date and earned value with the cost curve;</li>
+<li>schedule risk and a schedule quality check (the <strong>Risk and quality</strong> tab).</li>
+</ul>
+<p><strong>Schedule risk.</strong> The plan is scheduled many times (1,000 by default) with each duration drawn at
+random: from the task's optimistic, most likely and pessimistic days when they are given, otherwise
+within a range around its duration (90 to 125 % unless you change it). The tab shows the finish date
+met in half the runs (P50), in 80 (P80) and in 90 (P90), the chance of finishing as planned, the
+spread of the finish as a chart and how often each task was on the critical path.</p>
+<p><strong>Schedule quality check.</strong> The 14-point assessment used to judge whether a plan can be relied on:
+tasks without a predecessor or successor, leads, lags, links other than finish to start, hard
+constraints, high and negative float, long tasks, invalid progress, tasks without resources, missed
+tasks, a critical path that runs to the finish, the critical path length index and the baseline
+execution index. Each row gives what was found, the limit, Pass or Fail and the tasks concerned;
+checks that need a baseline, a status date or a deadline say so until they have them.</p>
+<p><strong>Manual and automatic scheduling.</strong> An auto scheduled task takes its dates from its links,
+constraints and the calendar. <strong>Task &gt; Manually Schedule</strong> pins the selected tasks to their start
+dates: they stay there when their predecessors move (the plan warns when a predecessor finishes later),
+and dragging the bar moves the pinned date. <strong>Task &gt; Auto Schedule</strong> gives them back to the scheduler.
+<strong>Project &gt; New Tasks Manually Scheduled</strong> decides how new tasks start. Manual tasks are drawn with
+brackets at both ends of the bar and can be listed with <strong>View &gt; Filter &gt; Manually Scheduled Tasks</strong>.</p>
+<p><strong>Formatting the Gantt chart.</strong> <strong>View &gt; Gantt Chart Style</strong> sets the theme (the colours of task,
+critical, summary and manual bars, milestones, progress, baseline and links, each of which can be
+changed), the bar shape (rounded, square, shaded or flat) and height, how progress is drawn, the text
+beside the bars (task names, resource names, durations, dates, percent complete) and the parts shown
+(links, baseline, critical path, float, non-working days, gridlines, the today and status date lines).
+<strong>View &gt; Gantt Presets</strong> applies a whole format at once (Standard, Tracking, Critical path,
+Presentation, Detailed, Print in black and white); the themes and presets are in
+<code>resources/data/planning/gantt_styles.json</code>. The style is kept with the plan, and printed and exported
+charts use it.</p>
+<p><strong>View</strong> also filters the tasks (critical, milestones, incomplete, late, manually scheduled) and
+shows the outline to a level. <strong>Project &gt; Move Project</strong> moves the whole plan to a new start date with
+every constraint, deadline and manual start. The <strong>Resource</strong> menu assigns resources to the selected
+tasks, adds and removes resources, levels them and opens the resource sheet and usage.</p>
+<p>The Gantt chart and the network diagram (CPM) each export as PNG, JPEG, TIFF, BMP, SVG or PDF
+(<strong>File &gt; Export</strong>). <strong>File &gt; New Plan from Template</strong> starts from a complete sample, a town water supply scheme with
+phases, crews and machines, costs, overlapping links, a baseline and progress, or from a template of a
+smallholder irrigation scheme, a borehole with solar pumping, a pipeline rehabilitation, or a
+feasibility study and detailed design. A schedule can also be generated from the project's quantities. Plans are saved with the project or as
+<code>.chaosproj</code> files, and exchanged as project schedule XML.</p>
+</div>
+        <nav class="mt-16 grid gap-4 border-t border-line pt-8 sm:grid-cols-2 dark:border-[#1b3a45]" aria-label="Previous and next">
+            <div><a class="card block no-underline" href="https://hobbybwanali.github.io/flowchaos-site/docs/design"><span class="block text-xs text-mist">Previous</span><span class="font-semibold">Design tools</span></a></div>
+            <div class="sm:text-right"><a class="card block no-underline" href="https://hobbybwanali.github.io/flowchaos-site/docs/layouts"><span class="block text-xs text-mist">Next</span><span class="font-semibold">Map sheets and reports</span></a></div>
+        </nav>
+    </article>
+
+    <aside class="hidden xl:sticky xl:top-24 xl:block xl:self-start" aria-label="On this page">
+                    <p class="mb-2 text-xs font-bold tracking-wide text-mist">On this page</p>
+                            <a class="block py-1 text-sm text-ink-soft no-underline hover:text-water dark:text-[#9fb5bb]" href="#the-boq-workbench">The BOQ Workbench</a>
+                            <a class="block py-1 text-sm text-ink-soft no-underline hover:text-water dark:text-[#9fb5bb]" href="#construction-planning">Construction planning</a>
+                        </aside>
+</div>
+</main>
+
+<footer class="relative mt-10 overflow-hidden">
+    <svg class="wave-divider" viewBox="0 0 1440 90" preserveAspectRatio="none" aria-hidden="true"><path fill="currentColor" d="M0 50C160 20 320 80 480 60S800 10 960 30s320 60 480 30V90H0Z"/></svg>
+    <div class="bg-foam pb-12 pt-6 dark:bg-[#0d2029]">
+        <div class="wrap grid gap-10 md:grid-cols-[1.6fr_1fr_1fr_1fr]">
+            <div>
+                <a href="https://hobbybwanali.github.io/flowchaos-site" class="flex items-center gap-3 no-underline">
+                    <svg class="mark" width="32" height="32" viewBox="3.09 2.40 60.38 60.38" aria-hidden="true">
+    <defs><linearGradient id="fc-teal-32" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#3596ad"/>
+      <stop offset="1" stop-color="#1d6175"/>
+    </linearGradient>
+    <linearGradient id="fc-water-32" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#3fa9c2"/>
+      <stop offset="1" stop-color="#1f6a80"/>
+    </linearGradient></defs>
+    <g data-part="mark" transform="rotate(-16 32 35)">
+    <path data-part="outer-drop" d="M32 1.5C26.83 12.48 8.5 26.07 8.5 39C8.5 52.16 18.84 62.5 32 62.5C45.16 62.5 55.5 52.16 55.5 39C55.5 26.07 37.17 12.48 32 1.5Z" fill="url(#fc-teal-32)"/>
+    <path data-part="inner-drop" d="M16.2 40.2C16.2 32.6 19.9 26.6 23.9 21.8C25 19.6 25.8 17.7 26.6 15.8C27.3 18.5 28.2 20.4 29.5 21.4C30.4 17.6 31.4 14 32.4 10.8C36.8 17.6 47.8 28.2 47.8 40.2C47.8 49.3 40.7 56.6 32 56.6C23.3 56.6 16.2 49.3 16.2 40.2Z" fill="#ffffff"/>
+    <path data-part="water" d="M19.45 42.94L19.57 43.66L20.02 45.24L20.63 46.71L21.39 48.07L22.31 49.29L23.35 50.38L24.53 51.33L25.82 52.12L27.22 52.76L28.73 53.22L30.32 53.50L32.00 53.60L33.68 53.50L35.27 53.22L36.78 52.76L38.18 52.12L39.47 51.33L40.65 50.38L41.69 49.29L42.61 48.07L43.37 46.71L43.98 45.24L44.43 43.66L44.55 42.93L44.50 42.94L44.25 42.98L44.00 43.02L43.75 43.05L43.50 43.08L43.25 43.11L43.00 43.13L42.75 43.14L42.50 43.15L42.25 43.15L42.00 43.15L41.75 43.14L41.50 43.13L41.25 43.11L41.00 43.08L40.75 43.05L40.50 43.02L40.25 42.98L40.00 42.93L39.75 42.89L39.50 42.83L39.25 42.78L39.00 42.72L38.75 42.66L38.50 42.59L38.25 42.53L38.00 42.46L37.75 42.39L37.50 42.32L37.25 42.24L37.00 42.17L36.75 42.10L36.50 42.03L36.25 41.96L36.00 41.89L35.75 41.82L35.50 41.75L35.25 41.69L35.00 41.63L34.75 41.58L34.50 41.52L34.25 41.47L34.00 41.43L33.75 41.39L33.50 41.35L33.25 41.32L33.00 41.30L32.75 41.28L32.50 41.26L32.25 41.25L32.00 41.25L31.75 41.25L31.50 41.26L31.25 41.27L31.00 41.29L30.75 41.31L30.50 41.34L30.25 41.38L30.00 41.41L29.75 41.46L29.50 41.50L29.25 41.55L29.00 41.61L28.75 41.67L28.50 41.73L28.25 41.79L28.00 41.86L27.75 41.93L27.50 42.00L27.25 42.07L27.00 42.14L26.75 42.21L26.50 42.29L26.25 42.36L26.00 42.43L25.75 42.50L25.50 42.57L25.25 42.63L25.00 42.70L24.75 42.76L24.50 42.81L24.25 42.87L24.00 42.92L23.75 42.96L23.50 43.00L23.25 43.04L23.00 43.07L22.75 43.10L22.50 43.12L22.25 43.13L22.00 43.14L21.75 43.15L21.50 43.15L21.25 43.14L21.00 43.13L20.75 43.11L20.50 43.09L20.25 43.06L20.00 43.03L19.75 42.99L19.50 42.95L19.45 42.94Z" fill="url(#fc-water-32)"/>
+    <path data-part="wave" d="M18.00 31.22L18.00 31.22L18.25 31.35L18.50 31.48L18.75 31.60L19.00 31.71L19.25 31.82L19.50 31.92L19.75 32.02L20.00 32.11L20.25 32.19L20.50 32.27L20.75 32.33L21.00 32.39L21.25 32.44L21.50 32.48L21.75 32.52L22.00 32.54L22.25 32.56L22.50 32.57L22.75 32.57L23.00 32.56L23.25 32.54L23.50 32.52L23.75 32.49L24.00 32.45L24.25 32.41L24.50 32.36L24.75 32.31L25.00 32.25L25.25 32.18L25.50 32.12L25.75 32.04L26.00 31.97L26.25 31.90L26.50 31.82L26.75 31.74L27.00 31.66L27.25 31.58L27.50 31.51L27.75 31.43L28.00 31.36L28.25 31.29L28.50 31.23L28.75 31.17L29.00 31.11L29.25 31.06L29.50 31.01L29.75 30.97L30.00 30.94L30.25 30.91L30.50 30.89L30.75 30.88L31.00 30.88L31.25 30.89L31.50 30.90L31.75 30.92L32.00 30.95L32.25 30.99L32.50 31.04L32.75 31.09L33.00 31.15L33.25 31.22L33.50 31.30L33.75 31.39L34.00 31.48L34.25 31.58L34.50 31.69L34.75 31.80L35.00 31.92L35.25 32.05L35.50 32.17L35.75 32.31L36.00 32.44L36.25 32.58L36.50 32.72L36.75 32.86L37.00 33.01L37.25 33.15L37.50 33.29L37.75 33.43L38.00 33.57L38.25 33.71L38.50 33.84L38.75 33.98L39.00 34.10L39.25 34.23L39.50 34.34L39.75 34.46L40.00 34.56L40.25 34.66L40.50 34.75L40.75 34.84L41.00 34.92L41.25 34.99L41.50 35.05L41.75 35.10L42.00 35.15L42.25 35.18L42.50 35.21L42.75 35.23L43.00 35.24L43.25 35.25L43.50 35.24L43.75 35.23L44.00 35.21L44.25 35.18L44.50 35.15L44.75 35.11L45.00 35.06L45.25 35.01L45.50 34.95L45.75 34.89L46.00 34.82L46.25 34.75L46.50 34.68L46.75 34.60L47.00 34.53L47.01 34.52L47.22 35.32L47.47 36.52L47.52 36.91L47.50 36.92L47.25 37.00L47.00 37.08L46.75 37.15L46.50 37.23L46.25 37.30L46.00 37.37L45.75 37.44L45.50 37.50L45.25 37.56L45.00 37.61L44.75 37.66L44.50 37.70L44.25 37.73L44.00 37.76L43.75 37.78L43.50 37.79L43.25 37.80L43.00 37.79L42.75 37.78L42.50 37.76L42.25 37.73L42.00 37.70L41.75 37.65L41.50 37.60L41.25 37.54L41.00 37.47L40.75 37.39L40.50 37.30L40.25 37.21L40.00 37.11L39.75 37.01L39.50 36.89L39.25 36.78L39.00 36.65L38.75 36.53L38.50 36.39L38.25 36.26L38.00 36.12L37.75 35.98L37.50 35.84L37.25 35.70L37.00 35.56L36.75 35.41L36.50 35.27L36.25 35.13L36.00 34.99L35.75 34.86L35.50 34.72L35.25 34.60L35.00 34.47L34.75 34.35L34.50 34.24L34.25 34.13L34.00 34.03L33.75 33.94L33.50 33.85L33.25 33.77L33.00 33.70L32.75 33.64L32.50 33.59L32.25 33.54L32.00 33.50L31.75 33.47L31.50 33.45L31.25 33.44L31.00 33.43L30.75 33.43L30.50 33.44L30.25 33.46L30.00 33.49L29.75 33.52L29.50 33.56L29.25 33.61L29.00 33.66L28.75 33.72L28.50 33.78L28.25 33.84L28.00 33.91L27.75 33.98L27.50 34.06L27.25 34.13L27.00 34.21L26.75 34.29L26.50 34.37L26.25 34.45L26.00 34.52L25.75 34.59L25.50 34.67L25.25 34.73L25.00 34.80L24.75 34.86L24.50 34.91L24.25 34.96L24.00 35.00L23.75 35.04L23.50 35.07L23.25 35.09L23.00 35.11L22.75 35.12L22.50 35.12L22.25 35.11L22.00 35.09L21.75 35.07L21.50 35.03L21.25 34.99L21.00 34.94L20.75 34.88L20.50 34.82L20.25 34.74L20.00 34.66L19.75 34.57L19.50 34.47L19.25 34.37L19.00 34.26L18.75 34.15L18.50 34.03L18.25 33.90L18.00 33.77L17.75 33.64L17.50 33.50L17.25 33.36L17.24 33.35L17.31 33.12L17.68 32.04L18.00 31.22Z" fill="#287b91"/>
+  </g>
+</svg>
+                    <span class="font-display text-xl font-semibold text-ink dark:text-white">Flow<span class="italic font-normal text-water">CHAOS</span></span>
+                </a>
+                <p class="mt-2 text-[0.82rem] text-ink-soft dark:text-[#a9bec4]"><span class="tagline"><b>C</b>omprehensive <b>H</b>ydraulic <b>A</b>nalysis &amp; <b>O</b>ptimization <b>S</b>ystem</span>
+</p>
+                <p class="mt-3 max-w-sm text-[0.95rem] text-ink-soft dark:text-[#a9bec4]">Modern water distribution network design and analysis. Freeware for commercial and non-commercial use.</p>
+            </div>
+                            <div>
+                    <h3 class="mb-3 font-sans text-sm font-bold text-ink dark:text-white">Use</h3>
+                    <ul class="space-y-2 text-[0.95rem]">
+                                                    <li><a class="text-ink-soft no-underline hover:text-water dark:text-[#a9bec4]" href="https://hobbybwanali.github.io/flowchaos-site/features">Features</a></li>
+                                                    <li><a class="text-ink-soft no-underline hover:text-water dark:text-[#a9bec4]" href="https://hobbybwanali.github.io/flowchaos-site/docs">Documentation</a></li>
+                                                    <li><a class="text-ink-soft no-underline hover:text-water dark:text-[#a9bec4]" href="https://hobbybwanali.github.io/flowchaos-site/download">Download</a></li>
+                                                    <li><a class="text-ink-soft no-underline hover:text-water dark:text-[#a9bec4]" href="https://hobbybwanali.github.io/flowchaos-site/docs/getting-started">Getting started</a></li>
+                                            </ul>
+                </div>
+                            <div>
+                    <h3 class="mb-3 font-sans text-sm font-bold text-ink dark:text-white">Take part</h3>
+                    <ul class="space-y-2 text-[0.95rem]">
+                                                    <li><a class="text-ink-soft no-underline hover:text-water dark:text-[#a9bec4]" href="https://hobbybwanali.github.io/flowchaos-site/support?topic=support#contact">Support or donate</a></li>
+                                                    <li><a class="text-ink-soft no-underline hover:text-water dark:text-[#a9bec4]" href="https://hobbybwanali.github.io/flowchaos-site/community">Community</a></li>
+                                                    <li><a class="text-ink-soft no-underline hover:text-water dark:text-[#a9bec4]" href="https://hobbybwanali.github.io/flowchaos-site/support?topic=bug#contact">Report a problem</a></li>
+                                                    <li><a class="text-ink-soft no-underline hover:text-water dark:text-[#a9bec4]" href="https://hobbybwanali.github.io/flowchaos-site/docs/plugins">Write a plugin</a></li>
+                                            </ul>
+                </div>
+                            <div>
+                    <h3 class="mb-3 font-sans text-sm font-bold text-ink dark:text-white">About</h3>
+                    <ul class="space-y-2 text-[0.95rem]">
+                                                    <li><a class="text-ink-soft no-underline hover:text-water dark:text-[#a9bec4]" href="https://hobbybwanali.github.io/flowchaos-site/about">About FlowCHAOS</a></li>
+                                                    <li><a class="text-ink-soft no-underline hover:text-water dark:text-[#a9bec4]" href="https://hobbybwanali.github.io/flowchaos-site/releases">Release notes</a></li>
+                                                    <li><a class="text-ink-soft no-underline hover:text-water dark:text-[#a9bec4]" href="https://hobbybwanali.github.io/flowchaos-site/support">Support and contact</a></li>
+                                                    <li><a class="text-ink-soft no-underline hover:text-water dark:text-[#a9bec4]" href="https://hobbybwanali.github.io/flowchaos-site/licence">Licence</a></li>
+                                            </ul>
+                </div>
+                    </div>
+        <div class="wrap mt-10 flex flex-wrap justify-between gap-3 border-t border-line pt-6 text-sm text-mist dark:border-[#1b3a45]">
+            <span>FlowCHAOS is freeware, licensed without a fee under the FlowCHAOS Freeware Licence.</span>
+            <span>Map data and imagery belong to their providers.</span>
+        </div>
+    </div>
+</footer>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js" defer
+        integrity="sha384-g4NTh/Iv5PPU4xPyhEWqPcwtNXOvdaDI8LLnyYfyNZOjKJeYQyjzQ9X5275eBjpt" crossorigin="anonymous"
+        referrerpolicy="no-referrer"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js" defer
+        integrity="sha384-Z3REaz79l2IaAZqJsSABtTbhjgOUYyV3p90XNnAPCSHg3EMTz1fouunq9WZRtj3d" crossorigin="anonymous"
+        referrerpolicy="no-referrer"></script>
+<script src="https://hobbybwanali.github.io/flowchaos-site/js/site.js?v=1792390476" defer></script>
+</body>
+</html>

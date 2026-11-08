@@ -1,0 +1,5 @@
+User-agent: *
+Allow: /
+Disallow: /download/
+
+Sitemap: https://hobbybwanali.github.io/flowchaos-site/sitemap.xml
